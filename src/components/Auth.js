@@ -25,7 +25,7 @@ const Auth = () => {
   const handleRedirect = async () => {
     const { data: { user } } = await supabase.auth.getUser();
     if (user && window.location.hostname === 'snorl.ax') {
-      window.location.href = 'https://fallout76.snorl.ax/plans/beta/';
+      window.location.href = process.env.REACT_APP_REDIRECT_URL;
     }
   };
 
@@ -64,7 +64,7 @@ const Auth = () => {
       const { data, error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: 'https://fallout76.snorl.ax/plans/'
+          redirectTo: process.env.REACT_APP_REDIRECT_URL
         }
       });
       if (error) {
