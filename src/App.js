@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { supabase } from './supabaseClient';
 import Auth from './components/Auth';
 import PlanList from './components/PlanList';
-import ApparelList from './components/ApparelList'; // Add this import
+import ApparelList from './components/ApparelList';
 import ThemeSwitcher from './components/ThemeSwitcher';
 import './App.css';
 import './themes.css';
@@ -51,6 +51,31 @@ function App() {
     document.body.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
   }, [theme]);
+
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://accounts.google.com/gsi/client';
+    script.async = true;
+    script.defer = true;
+    document.body.appendChild(script);
+
+    script.onload = () => {
+      window.google.accounts.id.initialize({
+        client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
+        callback: handleGoogleSignIn
+      });
+    };
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
+  const handleGoogleSignIn = (response) => {
+    // Handle the sign-in response here
+    console.log('Signed in with Google:', response);
+    // You may want to update the session state or perform other actions here
+  };
 
   const handleThemeChange = (newTheme) => {
     setTheme(newTheme);
