@@ -1,0 +1,26 @@
+:root {
+    /* Default theme (e.g., the current green theme) */
+    --background-color: #383838;
+    --text-color: #00dd00;
+    --accent-color: #ff0000;
+    --border-color: #00dd00;
+    --smaller-text: #ffffff;
+  }
+  
+  [data-theme="blue"] {
+    --background-color: #1a1a2e;
+    --text-color: #4fc3dc;
+    --accent-color: #ff2e63;
+    --border-color: #4fc3dc;
+    --smaller-text: #ffffff;
+  }
+  
+  [data-theme="amber"] {
+    --background-color: #251800;
+    --text-color: #ffa500;
+    --accent-color: #ff4500;
+    --border-color: #ffa500;
+    --smaller-text: #ffffff;
+  }
+  
+  /* Add more themes as needed */
