@@ -114,10 +114,11 @@ const Auth = () => {
                   <button type="submit" className="custom-button">
                     {isRegistering ? 'Register' : 'Sign In'}
                   </button>
-                </form>
-                <button onClick={handleGoogleSignIn} className="custom-button">
+                  <button onClick={handleGoogleSignIn} className="custom-button">
                   Login With Google
                 </button>
+                </form>
+
                 <p>
                   {isRegistering ? 'Already have an account? ' : "Don't have an account? "}
                   <button onClick={() => setIsRegistering(!isRegistering)} className="custom-button">

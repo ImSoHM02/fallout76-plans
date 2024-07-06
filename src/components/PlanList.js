@@ -261,13 +261,6 @@ const PlanList = ({ session }) => {
     }
   };
 
-  const handleSignOut = async () => {
-    const { error } = await supabase.auth.signOut();
-    if (error) console.error('Error signing out:', error);
-    localStorage.removeItem('completedPlans');
-    setCompletedPlans({});
-  };
-
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
   };
@@ -352,9 +345,6 @@ const PlanList = ({ session }) => {
     <div className="plan-list">
       <div className={`content-wrapper ${isUploading ? 'blurred' : ''}`}>
         <div className="button-container">
-          {session && (
-            <button onClick={handleSignOut} className="custom-button" disabled={isUploading}>Sign Out</button>
-          )}
           <button onClick={handleDownload} className="custom-button" disabled={isUploading}>Download Progress</button>
           <label className="custom-file-upload">
             <input type="file" onChange={handleUpload} accept=".json" disabled={isUploading} />

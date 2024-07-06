@@ -6,10 +6,27 @@ import ThemeSwitcher from './components/ThemeSwitcher';
 import './App.css';
 import './themes.css';
 
+// New AuthButtons component
+const AuthButtons = ({ session }) => {
+  const handleSignOut = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) console.error('Error signing out:', error);
+  };
+
+  return (
+    <div className="auth-buttons">
+      {session ? (
+        <button onClick={handleSignOut} className="custom-button">Sign Out</button>
+      ) : (
+        <Auth />
+      )}
+    </div>
+  );
+};
+
 function App() {
   const [session, setSession] = useState(null);
   const [theme, setTheme] = useState(() => {
-    // Initialize theme from localStorage or default to 'default'
     return localStorage.getItem('theme') || 'default';
   });
 
@@ -29,7 +46,6 @@ function App() {
 
   useEffect(() => {
     document.body.setAttribute('data-theme', theme);
-    // Save theme to localStorage whenever it changes
     localStorage.setItem('theme', theme);
   }, [theme]);
 
@@ -48,7 +64,7 @@ function App() {
             </div>
           </div>
         </header>
-        {!session && <Auth />}
+        <AuthButtons session={session} /> {/* New AuthButtons component */}
         <PlanList session={session} />
       </div>
       <footer className="site-footer">

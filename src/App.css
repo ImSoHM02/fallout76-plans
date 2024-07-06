@@ -582,11 +582,20 @@ input[type="file"] {
 
 .hide-completed-label {
   display: flex;
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
 }
 
 .hide-completed-checkbox {
   margin-right: 8px;
+}
+
+.auth-buttons {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+  background-color: transparent;
 }
 
 @media (min-width:320px) and (max-width: 768px) {
