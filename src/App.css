@@ -157,6 +157,11 @@ input[type="file"] {
   padding: 0px 50px;
   justify-content: flex-start;
   align-items: center;
+  transition: margin-left 0.3s ease-in-out;
+}
+
+.main.shifted {
+  margin-left: 250px;
 }
 
 .search-container {
@@ -263,6 +268,17 @@ input[type="file"] {
   margin-bottom: 10px;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+}
+
+.plan-container-style-apparel {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  border-radius: 0.25rem;
+  border-left: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
 }
 
 .plan-checkbox-style {   
@@ -598,6 +614,89 @@ input[type="file"] {
   background-color: transparent;
 }
 
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: var(--background-color);
+  transition: left 0.3s ease-in-out;
+  z-index: 1000;
+  border-right: 1px solid var(--border-color);
+  padding-top: 60px; /* Make room for the toggle button */
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+.sidebar nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 20px;
+}
+
+.sidebar nav ul li {
+  padding: 10px 20px;
+}
+
+.sidebar nav ul li button {
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 1.2rem;
+  cursor: pointer;
+  font-family: 'VT323', monospace;
+  width: 100%;
+  text-align: left;
+  transition: color 0.2s;
+}
+
+.sidebar nav ul li button:hover {
+  color: #ff0000;
+}
+
+.sidebar-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.sidebar-toggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: none;
+  border: none;
+  color: var(--text-color);
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 1001;
+  transition: left 0.3s ease-in-out;
+}
+
+.sidebar-toggle.open {
+  left: 270px; /* 250px (sidebar width) + 20px */
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    left: -100%;
+  }
+}
+
 @media (min-width:320px) and (max-width: 768px) {
   .infobox, .plan-list {
     min-width: 90%;
@@ -606,5 +705,13 @@ input[type="file"] {
   .main {
     min-width: 90%;
     padding: unset;
+  }
+
+  .sidebar-toggle.open {
+    left: calc(100% - 50px);
+  }
+
+  .main.shifted {
+    margin-left: 0;
   }
 }

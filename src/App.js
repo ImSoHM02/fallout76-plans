@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { supabase } from './supabaseClient';
 import Auth from './components/Auth';
 import PlanList from './components/PlanList';
+import ApparelList from './components/ApparelList'; // Add this import
 import ThemeSwitcher from './components/ThemeSwitcher';
 import './App.css';
 import './themes.css';
@@ -29,6 +30,8 @@ function App() {
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem('theme') || 'default';
   });
+  const [selectedCategory, setSelectedCategory] = useState('plans');
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
@@ -53,9 +56,28 @@ function App() {
     setTheme(newTheme);
   };
 
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+    setIsSidebarOpen(false);
+  };
+
   return (
     <div className="wrapper">
       <div className="overlay"></div>
+      <button 
+        className={`sidebar-toggle ${isSidebarOpen ? 'open' : ''}`} 
+        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+      >
+        &#9776;
+      </button>
+      <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
+        <nav>
+          <ul>
+            <li><button onClick={() => handleCategoryChange('plans')}>Plans</button></li>
+            <li><button onClick={() => handleCategoryChange('apparel')}>Apparel</button></li>
+          </ul>
+        </nav>
+      </div>
       <div className="main">
         <header className="header-style">
           <div className="header-content">
@@ -64,8 +86,12 @@ function App() {
             </div>
           </div>
         </header>
-        <AuthButtons session={session} /> {/* New AuthButtons component */}
-        <PlanList session={session} />
+        <AuthButtons session={session} />
+        {selectedCategory === 'plans' ? (
+          <PlanList session={session} />
+        ) : (
+          <ApparelList session={session} />
+        )}
       </div>
       <footer className="site-footer">
         <div className="footer-content">
