@@ -1,4 +1,3 @@
-// src/components/AuthButtons.js
 import React from 'react';
 import Auth from './Auth';
 import { supabase } from '../supabaseClient';

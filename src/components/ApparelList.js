@@ -1,4 +1,3 @@
-// src/components/ApparelList.js
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { supabase } from '../supabaseClient';
 

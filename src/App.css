@@ -167,7 +167,7 @@ input[type="file"] {
 .search-container {
   width: 100%;
   max-width: 600px;
-  margin: 20px auto; /* Changed from '20px 0' to '20px auto' */
+  margin: 20px auto;
   display: flex;
   justify-content: center;
 }
@@ -175,14 +175,14 @@ input[type="file"] {
 .search-input {
   border-radius: 0.25rem;
   width: 100%;
-  max-width: 400px; /* Added max-width for better control */
+  max-width: 400px;
   padding: 10px;
   font-size: 16px;
   border: 1px solid var(--border-color);
   background-color: transparent;
   font-family: 'VT323', monospace; 
   color: var(--text-color);
-  text-align: center; /* Center the text inside the input */
+  text-align: center;
 }
 
 .search-input::placeholder {
@@ -405,7 +405,7 @@ input[type="file"] {
 }
 
 .auth-container.expanded .auth-content {
-  max-height: 500px; /* Adjust this value as needed */
+  max-height: 500px;
   opacity: 1;
 }
 
@@ -624,7 +624,7 @@ input[type="file"] {
   transition: left 0.3s ease-in-out;
   z-index: 1000;
   border-right: 1px solid var(--border-color);
-  padding-top: 60px; /* Make room for the toggle button */
+  padding-top: 60px;
 }
 
 .sidebar.open {
@@ -682,7 +682,7 @@ input[type="file"] {
 }
 
 .sidebar-toggle.open {
-  left: 270px; /* 250px (sidebar width) + 20px */
+  left: 270px;
 }
 
 .header-content {

@@ -7,7 +7,6 @@ import ThemeSwitcher from './components/ThemeSwitcher';
 import './App.css';
 import './themes.css';
 
-// New AuthButtons component
 const AuthButtons = ({ session }) => {
   const handleSignOut = async () => {
     const { error } = await supabase.auth.signOut();
@@ -72,9 +71,7 @@ function App() {
   }, []);
 
   const handleGoogleSignIn = (response) => {
-    // Handle the sign-in response here
     console.log('Signed in with Google:', response);
-    // You may want to update the session state or perform other actions here
   };
 
   const handleThemeChange = (newTheme) => {
