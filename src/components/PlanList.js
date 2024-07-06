@@ -36,6 +36,7 @@ const PlanList = ({ session }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isUploading, setIsUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
+  const [hideCompleted, setHideCompleted] = useState(false);
 
   const fetchPlans = useCallback(async () => {
     try {
@@ -79,20 +80,34 @@ const PlanList = ({ session }) => {
 
   const fetchCompletedPlans = useCallback(async () => {
     if (session) {
-      const { data, error } = await supabase
-        .from('completed_plans')
-        .select('plan_id')
-        .eq('user_id', session.user.id);
-
-      if (error) {
-        console.error('Error fetching completed plans:', error);
-      } else {
-        const completedPlanIds = data.reduce((acc, item) => {
-          acc[item.plan_id] = true;
-          return acc;
-        }, {});
-        setCompletedPlans(completedPlanIds);
+      let allCompletedPlans = [];
+      let page = 0;
+      const pageSize = 1000;
+      let hasMore = true;
+  
+      while (hasMore) {
+        const { data, error, count } = await supabase
+          .from('completed_plans')
+          .select('plan_id', { count: 'exact' })
+          .eq('user_id', session.user.id)
+          .range(page * pageSize, (page + 1) * pageSize - 1);
+  
+        if (error) {
+          console.error('Error fetching completed plans:', error);
+          break;
+        }
+  
+        allCompletedPlans = [...allCompletedPlans, ...data];
+        hasMore = count > (page + 1) * pageSize;
+        page++;
       }
+  
+      console.log(`Fetched ${allCompletedPlans.length} completed plans from the database`);
+      const completedPlanIds = allCompletedPlans.reduce((acc, item) => {
+        acc[item.plan_id] = true;
+        return acc;
+      }, {});
+      setCompletedPlans(completedPlanIds);
     } else {
       const savedCompletedPlans = localStorage.getItem('completedPlans');
       if (savedCompletedPlans) {
@@ -194,12 +209,15 @@ const PlanList = ({ session }) => {
               console.log(`Processing batch: ${i / batchSize + 1}, Size: ${batch.length}`);
               const { data, error } = await supabase
                 .from('completed_plans')
-                .upsert(batch.map(planId => ({ user_id: session.user.id, plan_id: planId })))
+                .upsert(
+                  batch.map(planId => ({ user_id: session.user.id, plan_id: planId })),
+                  { onConflict: ['user_id', 'plan_id'], ignoreDuplicates: true }
+                )
                 .select();
               
               if (error) {
                 console.error('Error in batch upload:', error);
-                throw error; // This will stop the process and move to the catch block
+                throw error;
               } else {
                 totalUploaded += data.length;
                 console.log(`Batch uploaded. Total uploaded so far: ${totalUploaded}`);
@@ -211,10 +229,10 @@ const PlanList = ({ session }) => {
               }
               
               // Update progress
-              const progress = Math.round((totalUploaded / uploadedPlanIds.length) * 100);
+              const progress = Math.round((i + batch.length) / uploadedPlanIds.length * 100);
               setUploadProgress(progress);
             }
-  
+    
             console.log(`Upload complete. Total plans uploaded: ${totalUploaded}`);
           } else {
             uploadedPlanIds.forEach(id => {
@@ -222,7 +240,7 @@ const PlanList = ({ session }) => {
             });
             localStorage.setItem('completedPlans', JSON.stringify(newCompletedPlans));
           }
-  
+    
           // Set a small delay before updating state and closing overlay
           setTimeout(() => {
             setCompletedPlans(newCompletedPlans);
@@ -230,7 +248,7 @@ const PlanList = ({ session }) => {
             setUploadProgress(0);
             alert('Upload complete. All plans have been added.');
           }, 1000); // 1 second delay
-  
+    
           await fetchCompletedPlans(); // Refetch to ensure sync with database
         } catch (error) {
           console.error('Error during upload:', error);
@@ -252,6 +270,10 @@ const PlanList = ({ session }) => {
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
+  };
+
+  const handleHideCompletedChange = (event) => {
+    setHideCompleted(event.target.checked);
   };
 
   const { organizedPlans, totalObtainablePlans, totalUnobtainablePlans } = useMemo(() => {
@@ -281,20 +303,22 @@ const PlanList = ({ session }) => {
 
   const { completedObtainablePlans, completedUnobtainablePlans } = useMemo(() => {
     const obtainable = plans.filter(plan => 
-      plan.obtainable === true && 
+      (plan.obtainable === true || plan.obtainable === 'true') && 
       completedPlans[plan.plan_id]
     ).length;
-
+  
     const unobtainable = plans.filter(plan => 
-      plan.obtainable === false && 
+      (plan.obtainable === false || plan.obtainable === 'false') && 
       completedPlans[plan.plan_id]
     ).length;
-
+  
+    console.log(`Calculated completed plans: Obtainable - ${obtainable}, Unobtainable - ${unobtainable}`);
+  
     return { completedObtainablePlans: obtainable, completedUnobtainablePlans: unobtainable };
   }, [plans, completedPlans]);
 
   const filteredPlans = useMemo(() => {
-    if (!searchTerm) return organizedPlans;
+    if (!searchTerm && !hideCompleted) return organizedPlans;
   
     const filtered = { obtainable: {}, unobtainable: {} };
     ['obtainable', 'unobtainable'].forEach(category => {
@@ -304,8 +328,9 @@ const PlanList = ({ session }) => {
           const filteredSections = {};
           Object.entries(sections).forEach(([section, items]) => {
             const filteredItems = items.filter(item =>
-              (item.name && item.name.toLowerCase().includes(searchTerm.toLowerCase())) ||
-              (item.location && item.location.toLowerCase().includes(searchTerm.toLowerCase()))
+              (!hideCompleted || !completedPlans[item.planId]) &&
+              ((item.name && item.name.toLowerCase().includes(searchTerm.toLowerCase())) ||
+              (item.location && item.location.toLowerCase().includes(searchTerm.toLowerCase())))
             );
             if (filteredItems.length > 0) {
               filteredSections[section] = filteredItems;
@@ -321,7 +346,7 @@ const PlanList = ({ session }) => {
       });
     });
     return filtered;
-  }, [organizedPlans, searchTerm]);
+  }, [organizedPlans, searchTerm, hideCompleted, completedPlans]);
 
   return (
     <div className="plan-list">
@@ -363,6 +388,17 @@ const PlanList = ({ session }) => {
             onChange={handleSearch}
             className="search-input"
           />
+        </div>
+        <div className="hide-completed-container">
+          <label className="hide-completed-label">
+            <input
+              type="checkbox"
+              checked={hideCompleted}
+              onChange={handleHideCompletedChange}
+              className="hide-completed-checkbox"
+            />
+            Hide Completed
+          </label>
         </div>
         {['obtainable', 'unobtainable'].map(category => (
           <div key={category}>

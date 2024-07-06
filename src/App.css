@@ -566,6 +566,29 @@ input[type="file"] {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
+.search-container {
+  margin-bottom: 10px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+}
+
+.hide-completed-container {
+  margin-bottom: 20px;
+}
+
+.hide-completed-label {
+  display: flex;
+  align-items: center;
+}
+
+.hide-completed-checkbox {
+  margin-right: 8px;
+}
+
 @media (min-width:320px) and (max-width: 768px) {
   .infobox, .plan-list {
     min-width: 90%;
