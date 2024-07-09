@@ -1,22 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import { supabase } from './supabaseClient';
-import Auth from './components/Auth';
-import PlanList from './components/PlanList';
-import ApparelList from './components/ApparelList';
-import ThemeSwitcher from './components/ThemeSwitcher';
-import './App.css';
-import './themes.css';
+import React, { useState, useEffect } from "react";
+import { supabase } from "./supabaseClient";
+import Auth from "./components/Auth";
+import PlanList from "./components/PlanList";
+import ApparelList from "./components/ApparelList";
+import Calculator from "./components/Calculator"; // Import the new Calculator component
+import ThemeSwitcher from "./components/ThemeSwitcher";
+import "./App.css";
+import "./themes.css";
 
 const AuthButtons = ({ session }) => {
   const handleSignOut = async () => {
     const { error } = await supabase.auth.signOut();
-    if (error) console.error('Error signing out:', error);
+    if (error) console.error("Error signing out:", error);
   };
 
   return (
     <div className="auth-buttons">
       {session ? (
-        <button onClick={handleSignOut} className="custom-button">Sign Out</button>
+        <button onClick={handleSignOut} className="custom-button">
+          Sign Out
+        </button>
       ) : (
         <Auth />
       )}
@@ -27,52 +30,29 @@ const AuthButtons = ({ session }) => {
 function App() {
   const [session, setSession] = useState(null);
   const [theme, setTheme] = useState(() => {
-    return localStorage.getItem('theme') || 'default';
+    return localStorage.getItem("theme") || "default";
   });
-  const [selectedCategory, setSelectedCategory] = useState('plans');
+  const [selectedCategory, setSelectedCategory] = useState("plans");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
     });
-  
+
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, session) => {
       setSession(session);
     });
-  
+
     return () => subscription.unsubscribe();
   }, []);
 
   useEffect(() => {
-    document.body.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
+    document.body.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
   }, [theme]);
-
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://accounts.google.com/gsi/client';
-    script.async = true;
-    script.defer = true;
-    document.body.appendChild(script);
-
-    script.onload = () => {
-      window.google.accounts.id.initialize({
-        client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
-        callback: handleGoogleSignIn
-      });
-    };
-
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
-
-  const handleGoogleSignIn = (response) => {
-    console.log('Signed in with Google:', response);
-  };
 
   const handleThemeChange = (newTheme) => {
     setTheme(newTheme);
@@ -86,17 +66,30 @@ function App() {
   return (
     <div className="wrapper">
       <div className="overlay"></div>
-      <button 
-        className={`sidebar-toggle ${isSidebarOpen ? 'open' : ''}`} 
+      <button
+        className={`sidebar-toggle ${isSidebarOpen ? "open" : ""}`}
         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
       >
         &#9776;
       </button>
-      <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
+      <div className={`sidebar ${isSidebarOpen ? "open" : ""}`}>
         <nav>
           <ul>
-            <li><button onClick={() => handleCategoryChange('plans')}>Plans</button></li>
-            <li><button onClick={() => handleCategoryChange('apparel')}>Apparel</button></li>
+            <li>
+              <button onClick={() => handleCategoryChange("plans")}>
+                Plans
+              </button>
+            </li>
+            <li>
+              <button onClick={() => handleCategoryChange("apparel")}>
+                Apparel
+              </button>
+            </li>
+            <li>
+              <button onClick={() => handleCategoryChange("calculator")}>
+                Calculator
+              </button>
+            </li>
           </ul>
         </nav>
       </div>
@@ -109,16 +102,20 @@ function App() {
           </div>
         </header>
         <AuthButtons session={session} />
-        {selectedCategory === 'plans' ? (
+        {selectedCategory === "plans" ? (
           <PlanList session={session} />
-        ) : (
+        ) : selectedCategory === "apparel" ? (
           <ApparelList session={session} />
+        ) : (
+          <Calculator />
         )}
       </div>
       <footer className="site-footer">
         <div className="footer-content">
           <nav className="footer-nav">
-            Special thanks to <a href="https://fed76.info/plan-collectors">The Plan Collectors</a> <a href="https://discord.gg/ksF63Z2">(Discord)</a>
+            Special thanks to{" "}
+            <a href="https://fed76.info/plan-collectors">The Plan Collectors</a>{" "}
+            <a href="https://discord.gg/ksF63Z2">(Discord)</a>
           </nav>
           <div className="theme-selector-footer">
             <ThemeSwitcher currentTheme={theme} setTheme={handleThemeChange} />

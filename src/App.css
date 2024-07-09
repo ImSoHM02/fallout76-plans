@@ -10,7 +10,13 @@
 }
 
 .overlay:before {
-  background: linear-gradient(#101010 50%, rgba(16, 16, 16, 0.2) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.03));
+  background: linear-gradient(#101010 50%, rgba(16, 16, 16, 0.2) 50%),
+    linear-gradient(
+      90deg,
+      rgba(255, 0, 0, 0.03),
+      rgba(0, 255, 0, 0.02),
+      rgba(0, 0, 255, 0.03)
+    );
   background-size: 100% 3px, 6px 100%;
   content: "";
   display: block;
@@ -22,9 +28,9 @@
   left: 0;
   z-index: -1;
 }
-  
+
 .overlay:after {
-  animation: flicker 0.30s infinite;
+  animation: flicker 0.3s infinite;
   background: rgba(16, 16, 16, 0.2);
   content: "";
   display: block;
@@ -45,14 +51,14 @@
 }
 
 input {
-  font-family: 'VT323', monospace;
+  font-family: "VT323", monospace;
 }
 
 body {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  font-family: 'VT323', monospace;
+  font-family: "VT323", monospace;
   color: var(--text-color);
   background-color: var(--background-color);
   margin: 0;
@@ -62,12 +68,12 @@ body {
 h1 {
   font-size: 3rem;
   line-height: 1;
-  font-weight: 700; 
+  font-weight: 700;
   color: var(--border-color);
 }
 
 h2 {
-  margin-bottom:.5rem;
+  margin-bottom: 0.5rem;
   font-size: 2rem;
   font-weight: unset;
 }
@@ -102,7 +108,7 @@ h2 {
   border-bottom: unset;
   border-top: unset;
   font-size: 1rem;
-  font-family: 'VT323', monospace;
+  font-family: "VT323", monospace;
   color: #ffffff;
   width: auto;
   text-align: left;
@@ -118,7 +124,7 @@ h2 {
   border-bottom: unset;
   border-top: unset;
   font-size: 1rem;
-  font-family: 'VT323', monospace;
+  font-family: "VT323", monospace;
   color: #ffffff;
   width: auto;
   text-align: left;
@@ -130,7 +136,8 @@ h2 {
   overflow: hidden;
 }
 
-.custom-button:hover, .custom-file-upload:hover {
+.custom-button:hover,
+.custom-file-upload:hover {
   color: #ff0000;
 }
 
@@ -180,13 +187,13 @@ input[type="file"] {
   font-size: 16px;
   border: 1px solid var(--border-color);
   background-color: transparent;
-  font-family: 'VT323', monospace; 
+  font-family: "VT323", monospace;
   color: var(--text-color);
   text-align: center;
 }
 
 .search-input::placeholder {
-  font-family: 'VT323', monospace;
+  font-family: "VT323", monospace;
   opacity: 1;
   text-align: center;
 }
@@ -208,7 +215,8 @@ input[type="file"] {
   margin: 20px 0;
 }
 
-.plans-label, .plans-numbers {
+.plans-label,
+.plans-numbers {
   font-size: 18px;
 }
 
@@ -244,7 +252,7 @@ input[type="file"] {
   border-bottom: unset;
   border-top: unset;
   font-size: 1.25rem;
-  font-family: 'VT323', monospace;
+  font-family: "VT323", monospace;
   color: #ffffff;
   width: auto;
   text-align: left;
@@ -281,7 +289,7 @@ input[type="file"] {
   border-right: 1px solid var(--border-color);
 }
 
-.plan-checkbox-style {   
+.plan-checkbox-style {
   appearance: none;
   border: 1px solid var(--border-color);
   padding: 5px;
@@ -294,8 +302,8 @@ input[type="file"] {
 }
 
 .plan-checkbox-style:checked {
-  background-color: var(--border-color);;
-  border-color: var(--border-color);;
+  background-color: var(--border-color);
+  border-color: var(--border-color);
 }
 
 .plan-checkbox-style:hover {
@@ -361,7 +369,8 @@ input[type="file"] {
   color: var(--text-color);
 }
 
-.footer-nav a:hover, .footer-nav a:focus {
+.footer-nav a:hover,
+.footer-nav a:focus {
   text-decoration: underline;
   color: #ff0000;
 }
@@ -371,7 +380,7 @@ input[type="file"] {
 }
 
 .unobtainable-plans-title {
-  margin-bottom:.5rem;
+  margin-bottom: 0.5rem;
   color: #ff6b6b;
   font-size: 2rem;
   margin-top: 20px;
@@ -418,7 +427,7 @@ input[type="file"] {
 
 .auth-container input,
 .modal-content input {
-  font-family: 'VT323', monospace;
+  font-family: "VT323", monospace;
   width: 100%;
   max-width: 300px;
   margin: 10px 0;
@@ -451,8 +460,8 @@ input[type="file"] {
 
 .auth-container .google-button {
   background-color: transparent;
-  border: 1px solid #4285F4;
-  color: #4285F4;
+  border: 1px solid #4285f4;
+  color: #4285f4;
 }
 
 .auth-container .google-button:hover {
@@ -518,7 +527,7 @@ input[type="file"] {
 }
 
 .modal-content input::placeholder {
-  color: var(--text-color);;
+  color: var(--text-color);
   opacity: 0.7;
 }
 
@@ -539,8 +548,8 @@ input[type="file"] {
 
 .modal-content .google-button {
   background-color: transparent;
-  border: 1px solid #4285F4;
-  color: #4285F4;
+  border: 1px solid #4285f4;
+  color: #4285f4;
 }
 
 .modal-content .google-button:hover {
@@ -647,7 +656,7 @@ input[type="file"] {
   color: var(--text-color);
   font-size: 1.2rem;
   cursor: pointer;
-  font-family: 'VT323', monospace;
+  font-family: "VT323", monospace;
   width: 100%;
   text-align: left;
   transition: color 0.2s;
@@ -690,6 +699,128 @@ input[type="file"] {
   align-items: center;
 }
 
+.calculator {
+  max-width: 600px;
+  margin: 0 auto;
+  font-family: "VT323", monospace;
+  color: var(--text-color);
+}
+
+.calculator-section {
+  margin-bottom: 30px;
+}
+
+.calculator h2 {
+  color: var(--text-color);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 1.1em;
+}
+
+.calculator input[type="number"],
+.calculator input[type="text"],
+.calculator select {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--background-color);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  font-family: "VT323", monospace;
+  font-size: 1em;
+}
+
+.calculator select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%23ffffff" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+  background-repeat: no-repeat;
+  background-position-x: calc(100% - 10px);
+  background-position-y: 50%;
+}
+
+.calculator input[type="number"]:focus,
+.calculator input[type="text"]:focus,
+.calculator select:focus {
+  outline: none;
+  border-color: var(--accent-color);
+}
+
+.results-group {
+  margin-top: 20px;
+}
+
+.results-group p {
+  margin-bottom: 10px;
+  font-size: 1.1em;
+}
+
+.calculated-value {
+  font-weight: bold;
+  font-size: 1.1em;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 2px 5px;
+  border-radius: 3px;
+  margin: 0 3px;
+  display: inline-block;
+  word-break: break-word;
+}
+
+.score-value {
+  color: #ffd700;
+}
+
+.enemy-value {
+  color: #ff6b6b;
+}
+
+.ingredient-value {
+  color: #98fb98;
+}
+
+.recipe-count-value {
+  color: #87cefa;
+}
+
+@media (max-width: 600px) {
+  .calculator {
+    padding: 10px;
+  }
+
+  .calculator h2 {
+    font-size: 1.5em;
+  }
+
+  .input-group label {
+    font-size: 1em;
+  }
+
+  .calculator input[type="number"],
+  .calculator input[type="text"],
+  .calculator select {
+    font-size: 0.9em;
+    padding: 8px;
+  }
+
+  .results-group p {
+    font-size: 1em;
+  }
+
+  .calculated-value {
+    font-size: 1em;
+    padding: 1px 3px;
+  }
+}
+
 @media (max-width: 768px) {
   .sidebar {
     width: 100%;
@@ -697,8 +828,9 @@ input[type="file"] {
   }
 }
 
-@media (min-width:320px) and (max-width: 768px) {
-  .infobox, .plan-list {
+@media (min-width: 320px) and (max-width: 768px) {
+  .infobox,
+  .plan-list {
     min-width: 90%;
   }
 

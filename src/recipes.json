@@ -1,0 +1,574 @@
+[
+	{
+		"Recipe": "Aged Mirelurk Queen Steak",
+		"Ingredients": "2 Queen Mirelurk Meat, 2 Mirelurk Egg, 2 Salt"
+	},
+	{
+		"Recipe": "Appalachili",
+		"Ingredients": "1 Brahmin Meat, 1 Silt Bean, 2 Tato"
+	},
+	{
+		"Recipe": "Awesome Opossum Bacon",
+		"Ingredients": "1 Opossum Meat"
+	},
+	{
+		"Recipe": "Baked Bloatfly",
+		"Ingredients": "1 Bloatfly Meat"
+	},
+	{
+		"Recipe": "Blackberry Honeycrisp",
+		"Ingredients": "3 Blackberries, 2 Razorgrain, 3 Royal Jelly"
+	},
+	{
+		"Recipe": "Blackberry Juice",
+		"Ingredients": "1 Blackberry"
+	},
+	{
+		"Recipe": "Blight Soup",
+		"Ingredients": "1 Blight"
+	},
+	{
+		"Recipe": "Bloatfly Loaf",
+		"Ingredients": "2 Bloatfly Meat, 2 Glowing Fungus, 2 Salt"
+	},
+	{
+		"Recipe": "Bloodbug Pepper Steak",
+		"Ingredients": "2 Bloodbug Meat, 3 Bloodleaf, 2 Pepper"
+	},
+	{
+		"Recipe": "Bloodbug Steak",
+		"Ingredients": "1 Bloodbug Meat"
+	},
+	{
+		"Recipe": "Boiled Water",
+		"Ingredients": "2 Dirty Water"
+	},
+	{
+		"Recipe": "Brain Bombs",
+		"Ingredients": "3 Brain Fungus, 2 Mothman Eggs, 3 Sugar Bombs"
+	},
+	{
+		"Recipe": "Brain Fungus Soup",
+		"Ingredients": "1 Brain Fungus"
+	},
+	{
+		"Recipe": "Broiled Scorchbeast Brain",
+		"Ingredients": "1 Scorchbeast Brain"
+	},
+	{
+		"Recipe": "Carrot Flower Nectar",
+		"Ingredients": "1 Carrot Flower"
+	},
+	{
+		"Recipe": "Carrot Soup",
+		"Ingredients": "1 Carrot"
+	},
+	{
+		"Recipe": "Cat Meat Steak",
+		"Ingredients": "1 Cat Meat"
+	},
+	{
+		"Recipe": "Charred Scorchbeast Liver",
+		"Ingredients": "1 Scorchbeast Liver"
+	},
+	{
+		"Recipe": "Chew Stick",
+		"Ingredients": "1 Lure Weed"
+	},
+	{
+		"Recipe": "Chicken Noodle Soup",
+		"Ingredients": "1 Chicken Thigh"
+	},
+	{
+		"Recipe": "Company Tea",
+		"Ingredients": "1 Whiskey, 1 Nuka-cola, 1 Cream, 1 Sweet Labrador Tea"
+	},
+	{
+		"Recipe": "Cooked Softshell Meat",
+		"Ingredients": "1 Softshell Mirelurk Meat"
+	},
+	{
+		"Recipe": "Corn Pone",
+		"Ingredients": "2 Corn, 2 Mirelurk Egg, 1 Sugar"
+	},
+	{
+		"Recipe": "Corn Soup",
+		"Ingredients": "1 Corn"
+	},
+	{
+		"Recipe": "Corpse Seed Juice",
+		"Ingredients": "2 Corpse Seed"
+	},
+	{
+		"Recipe": "Cramburger",
+		"Ingredients": "1 Cram, 2 Mirelurk Eggs, 2 Tatos"
+	},
+	{
+		"Recipe": "Cranberry Cobbler",
+		"Ingredients": "1 Cranberry"
+	},
+	{
+		"Recipe": "Cranberry Jam",
+		"Ingredients": "2 Carrot Flower, 2 Diseased Cranberries, 2 Sugar"
+	},
+	{
+		"Recipe": "Cranberry Juice",
+		"Ingredients": "1 Diseased Cranberry"
+	},
+	{
+		"Recipe": "Cranberry Meatball Grinder",
+		"Ingredients": "3 Cranberry, 3 Scorchbeast Meat, 2 Spices"
+	},
+	{
+		"Recipe": "Cranberry Relish",
+		"Ingredients": "2 Cranberries, 2 Gourds, 2 Sugar"
+	},
+	{
+		"Recipe": "Crispy Cave Cricket",
+		"Ingredients": "1 Cave Cricket Meat"
+	},
+	{
+		"Recipe": "Crispy Squirrel Bits",
+		"Ingredients": "1 Squirrel Bits"
+	},
+	{
+		"Recipe": "Deathclaw Egg Omelette",
+		"Ingredients": "1 Deathclaw Egg"
+	},
+	{
+		"Recipe": "Deathclaw Steak",
+		"Ingredients": "1 Deathclaw Meat"
+	},
+	{
+		"Recipe": "Deathclaw Wellington",
+		"Ingredients": "2 Deathclaw Eggs, 2 Deathclaw Meat, 2 Pepper"
+	},
+	{
+		"Recipe": "Dog Meat Steak",
+		"Ingredients": "2 Mongrel Dog Meat, 2 Mutfruit, 2 Salt"
+	},
+	{
+		"Recipe": "Firecap Soup",
+		"Ingredients": "1 Firecap"
+	},
+	{
+		"Recipe": "Firecap Tasty Souffle",
+		"Ingredients": "2 Firecap, 2 Salt, 2 Pepper"
+	},
+	{
+		"Recipe": "Firecracker Berry Juice",
+		"Ingredients": "1 Firecracker Berry"
+	},
+	{
+		"Recipe": "Fox Jerky",
+		"Ingredients": "1 Fox Meat"
+	},
+	{
+		"Recipe": "Fried Deerskins",
+		"Ingredients": "2 Radstag Meat, 2 Snaptail Reeds, 2 Thistle, 1 Bourbon"
+	},
+	{
+		"Recipe": "Fried Fog Crawler",
+		"Ingredients": "1 Fried Fog Crawler Meat"
+	},
+	{
+		"Recipe": "Fried Radtoad Legs",
+		"Ingredients": "2 Radtoad Legs, 2 Razorgrain, 2 Pepper"
+	},
+	{
+		"Recipe": "Glowing Fungus Puree",
+		"Ingredients": "2 Firecap, 2 Glowing Fungus, 1 Pepper"
+	},
+	{
+		"Recipe": "Glowing Fungus Soup",
+		"Ingredients": "1 Glowing Fungus"
+	},
+	{
+		"Recipe": "Glowing Meat Steak",
+		"Ingredients": "1 Glowing Meat"
+	},
+	{
+		"Recipe": "Gourd Soup",
+		"Ingredients": "1 Gourd"
+	},
+	{
+		"Recipe": "Granny's Tea",
+		"Ingredients": "1 Cranberry, 2 Soot Flowers, 1 Sugar Bombs"
+	},
+	{
+		"Recipe": "Grilled Hermit Crab",
+		"Ingredients": "1 Hermit Crab Meat"
+	},
+	{
+		"Recipe": "Grilled Radroach",
+		"Ingredients": "1 Radroach Meat"
+	},
+	{
+		"Recipe": "Grilled Radstag",
+		"Ingredients": "1 Radstag Meat"
+	},
+	{
+		"Recipe": "Grilled Radtoad",
+		"Ingredients": "1 Radtoad Leg"
+	},
+	{
+		"Recipe": "Ground Mole Rat",
+		"Ingredients": "2 Mole Rat Meat, 2 Silt Bean, 2 Pepper"
+	},
+	{
+		"Recipe": "Gulper Slurry",
+		"Ingredients": "1 Gulper Innards"
+	},
+	{
+		"Recipe": "Iguana Soup",
+		"Ingredients": "2 Squirrel Bits, 2 Silt Bean, 1 Spices"
+	},
+	{
+		"Recipe": "Iguana on a Stick",
+		"Ingredients": "1 Iguana Bits"
+	},
+	{
+		"Recipe": "Infused Bloodleaf Tea",
+		"Ingredients": "2 Bloodleaf / 1 Ginseng Root / 2 Tato"
+	},
+	{
+		"Recipe": "Infused Soot Flower Tea",
+		"Ingredients": "2 Soot Flower, 2 Starlight Berries, 1 Pepper"
+	},
+	{
+		"Recipe": "Megasloth Tenderloin",
+		"Ingredients": "2 Megasloth Meat, 2 Silt Bean, 2 Salt"
+	},
+	{
+		"Recipe": "Melon Juice",
+		"Ingredients": "1 Melon"
+	},
+	{
+		"Recipe": "Mirelurk Cake",
+		"Ingredients": "2 Mirelurk Egg, 2 Mirelurk Meat, 2 Sugar"
+	},
+	{
+		"Recipe": "Mirelurk Cake with Bloodleaf Aioli",
+		"Ingredients": "3 Bloodleaf, 3 Mirelurk Meat, 2 Pepper"
+	},
+	{
+		"Recipe": "Mirelurk Egg Omelette",
+		"Ingredients": "1 Mirelurk Egg"
+	},
+	{
+		"Recipe": "Mirelurk Jerky",
+		"Ingredients": "2 Blight, 2 Mirelurk Meat, 2 Salt"
+	},
+	{
+		"Recipe": "Mirelurk Queen Steak",
+		"Ingredients": "1 Queen Mirelurk Meat"
+	},
+	{
+		"Recipe": "Mirelurk Softshell Cake",
+		"Ingredients": "2 Softshell Mirelurk Meat, 2 Tato, 2 Spices"
+	},
+	{
+		"Recipe": "Mole Rat Chunks",
+		"Ingredients": "1 Mole Rat Meat"
+	},
+	{
+		"Recipe": "Mothman Egg Omelette",
+		"Ingredients": "1 Mothman Egg"
+	},
+	{
+		"Recipe": "Mountain Hocks",
+		"Ingredients": "2 Mole Rat Meat, 2 Glowing Resin, 1 Vodka"
+	},
+	{
+		"Recipe": "Mud Cookie",
+		"Ingredients": "1 Mirelurk Egg, 2 Razorgrain, 1 Blackwater Brew"
+	},
+	{
+		"Recipe": "Mut Chops",
+		"Ingredients": "1 Mongrel Dog Meat"
+	},
+	{
+		"Recipe": "Mutant Hound Chops",
+		"Ingredients": "1 Mutant Hound Meat"
+	},
+	{
+		"Recipe": "Mutant Hound Stew",
+		"Ingredients": "2 Mutant Hound Meat, 2 Starlight Berries, 1 Pepper"
+	},
+	{
+		"Recipe": "Mutfruit Juice",
+		"Ingredients": "1 Mutfruit"
+	},
+	{
+		"Recipe": "Poached Angler",
+		"Ingredients": "1 Angler Meat"
+	},
+	{
+		"Recipe": "Pothole Potpie",
+		"Ingredients": "1 Squirrel Bits, 1 Fancy Lads Snack Cake"
+	},
+	{
+		"Recipe": "Pumpkin Pie",
+		"Ingredients": "2 Mirelurk Eggs, 2 Pumpkins, 2 Sugar"
+	},
+	{
+		"Recipe": "Pumpkin Soup",
+		"Ingredients": "1 Pumpkin"
+	},
+	{
+		"Recipe": "Purified Water",
+		"Ingredients": "1 Dirty Water, 1 Water Filter"
+	},
+	{
+		"Recipe": "Radrat Steak",
+		"Ingredients": "1 Radrat Meat"
+	},
+	{
+		"Recipe": "Radscorpion Egg Omelette",
+		"Ingredients": "1 Radscorpion Egg"
+	},
+	{
+		"Recipe": "Radscorpion Filet",
+		"Ingredients": "2 Radscorpion Egg, 2 Radscorpion Meat, 2 Pepper"
+	},
+	{
+		"Recipe": "Radscorpion Steak",
+		"Ingredients": "1 Radscorpion Meat"
+	},
+	{
+		"Recipe": "Radstag Stew",
+		"Ingredients": "2 Radstag Meat, 2 Tato, 1 Spices"
+	},
+	{
+		"Recipe": "Radtoad Omelette",
+		"Ingredients": "1 Radtoad Egg"
+	},
+	{
+		"Recipe": "Razorgrain Soup",
+		"Ingredients": "1 Razorgrain"
+	},
+	{
+		"Recipe": "Ribeye Steak",
+		"Ingredients": "1 Brahmin Meat"
+	},
+	{
+		"Recipe": "Roast Megasloth",
+		"Ingredients": "1 Megasloth Meat"
+	},
+	{
+		"Recipe": "Roasted Ant",
+		"Ingredients": "1 Ant Meat"
+	},
+	{
+		"Recipe": "Roasted Mirelurk Meat",
+		"Ingredients": "1 Mirelurk Meat"
+	},
+	{
+		"Recipe": "Roasted Scorchbeast Heart",
+		"Ingredients": "1 Scorchbeast Heart"
+	},
+	{
+		"Recipe": "Royal Jelly Taffy",
+		"Ingredients": "1 Royal Jelly"
+	},
+	{
+		"Recipe": "Scorchbeast Mixed Meat Stew",
+		"Ingredients": "1 Scorchbeast Brain, Heart, Liver, Lung, Meat, 1 Pepper"
+	},
+	{
+		"Recipe": "Scorchbeast Steak",
+		"Ingredients": "1 Scorchbeast Meat"
+	},
+	{
+		"Recipe": "Seared Venison with Berries",
+		"Ingredients": "3 Radstag Meat, 3 Starlight Berries, 2 Pepper"
+	},
+	{
+		"Recipe": "Seasoned Rabbit Skewers",
+		"Ingredients": "1 Rabbit Leg"
+	},
+	{
+		"Recipe": "Silt Bean Puree",
+		"Ingredients": "2 Silt Bean, 2 Tato, 1 Spices"
+	},
+	{
+		"Recipe": "Silt Bean Soup",
+		"Ingredients": "1 Silt Bean"
+	},
+	{
+		"Recipe": "Simple Ash Rose Tea",
+		"Ingredients": "2 Ash Rose"
+	},
+	{
+		"Recipe": "Simple Aster Tea",
+		"Ingredients": "2 Aster, 2 Firecracker Berries, 1 Sugar"
+	},
+	{
+		"Recipe": "Simple Bloodleaf Tea",
+		"Ingredients": "1 Bloodleaf"
+	},
+	{
+		"Recipe": "Simple Fern Flower Tea",
+		"Ingredients": "1 Mutated Fern Flower"
+	},
+	{
+		"Recipe": "Simple Soot Flower Tea",
+		"Ingredients": "1 Soot Flower"
+	},
+	{
+		"Recipe": "Smoked Mirelurk Filets",
+		"Ingredients": "3 Ash Rose, 3 Mirelurk Meat, 2 Salt"
+	},
+	{
+		"Recipe": "Smoked Scorchbeast Lung",
+		"Ingredients": "1 Scorchbeast Lung"
+	},
+	{
+		"Recipe": "Soot Flower Herb Paste",
+		"Ingredients": "1 Toxic Soot Flower"
+	},
+	{
+		"Recipe": "Squirrel on a Stick",
+		"Ingredients": "2 Corn, 2 Squirrel Bits, 2 Sugar"
+	},
+	{
+		"Recipe": "Starlight Berry Cobbler",
+		"Ingredients": "1 Starlight Berry"
+	},
+	{
+		"Recipe": "Steeped Ash Rose Tea",
+		"Ingredients": "1 Sugar, 2 Ash Rose, 2 Gourd Blossom"
+	},
+	{
+		"Recipe": "Steeped Aster Tea",
+		"Ingredients": "2 Mutated Fern, 2 Aster, 1 Ginseng"
+	},
+	{
+		"Recipe": "Steeped Carrot Flower Tea",
+		"Ingredients": "2 Carrot Flower, 1 Honey, 2 Melon Bloom"
+	},
+	{
+		"Recipe": "Steeped Fern Flower Tea",
+		"Ingredients": "2 Aster, 1 Honey, 2 Mutated Fern"
+	},
+	{
+		"Recipe": "Steeped Fever Blossom Tea",
+		"Ingredients": "2 Fever Blossom, 2 Soot Flower, 1 Honey"
+	},
+	{
+		"Recipe": "Steeped Gourd Blossom Tea",
+		"Ingredients": "2 Gourd Blossom, 2 Soot Flower, 1 Sugar"
+	},
+	{
+		"Recipe": "Steeped Melon Bloom Tea",
+		"Ingredients": "2 Melon Bloom, 2 Soot Flower, 1 Sugar"
+	},
+	{
+		"Recipe": "Steeped Melon Blossom Chai",
+		"Ingredients": "2 Melon Blossom, 2 Mutated Fern, 1 Spices"
+	},
+	{
+		"Recipe": "Steeped Strangler Bloom Tea",
+		"Ingredients": "2 Strangler Pod, 1 Honey"
+	},
+	{
+		"Recipe": "Steeped Strangler Pod Tea",
+		"Ingredients": "3 Rhododendron, 2 Strangler Pods, 1 Sugar"
+	},
+	{
+		"Recipe": "Steeped Tato Flower Tea",
+		"Ingredients": "2 Tato Flower, 2 Carrot Flower, 1 Ginseng"
+	},
+	{
+		"Recipe": "Steeped Thistle Tea",
+		"Ingredients": "2 Thistle, 1 Sugar"
+	},
+	{
+		"Recipe": "Stingwing Filet",
+		"Ingredients": "1 Stingwing Meat"
+	},
+	{
+		"Recipe": "Stingwing Stew",
+		"Ingredients": "2 Stingwing Meat, 2 Tato, 1 Spices"
+	},
+	{
+		"Recipe": "Sugar",
+		"Ingredients": "2 Snaptail Reed"
+	},
+	{
+		"Recipe": "Sunshine Oil",
+		"Ingredients": "1 Sugar Bombs, 1 Glowing Blood, 3 Blight"
+	},
+	{
+		"Recipe": "Swamp Tofu",
+		"Ingredients": "1 Swamp Plant"
+	},
+	{
+		"Recipe": "Swamp Tofu Soup",
+		"Ingredients": "2 Gourds, 2 Swamp Plant, 1 Salt"
+	},
+	{
+		"Recipe": "Sweet Blackberry Tea",
+		"Ingredients": "2 Starlight Berries, 2 Blackberries, 1 Sugar"
+	},
+	{
+		"Recipe": "Sweet Labrador Tea",
+		"Ingredients": "1 Starlight Berries, 2 Honeycomb, 2 Rhododendron"
+	},
+	{
+		"Recipe": "Sweet Mutfruit Tea",
+		"Ingredients": "2 Mutfruit, 2 Starlight Berries, 1 Sugar"
+	},
+	{
+		"Recipe": "Sweet Roll",
+		"Ingredients": "3 Sugar Bombs, 3 Sugar, 2 Spices"
+	},
+	{
+		"Recipe": "Sweet Tato Stew",
+		"Ingredients": "2 Mutfruit, 2 Tato, 1 Sugar"
+	},
+	{
+		"Recipe": "Sweetwater Special Blend",
+		"Ingredients": "2 Bloodleaf, 1 Bourbon, 1 Honey"
+	},
+	{
+		"Recipe": "Syrup",
+		"Ingredients": "1 Glowing Resin"
+	},
+	{
+		"Recipe": "Tarberry Juice",
+		"Ingredients": "1 Tarberry"
+	},
+	{
+		"Recipe": "Tasty Radscorpion Egg Omelette",
+		"Ingredients": "2 Radscorpion Egg, 2 Tato, 2 Pepper"
+	},
+	{
+		"Recipe": "Tasty Squirrel Stew",
+		"Ingredients": "2 Squirrel Bits, 2 Tato, 1 Salt"
+	},
+	{
+		"Recipe": "Tato Juice",
+		"Ingredients": "1 Tato"
+	},
+	{
+		"Recipe": "Tato Salad Surprise",
+		"Ingredients": "1 Thistle, 1 Tato, 1 Sugar"
+	},
+	{
+		"Recipe": "Vegetable Medley Soup",
+		"Ingredients": "2 Carrot, 2 Tato, 1 Salt"
+	},
+	{
+		"Recipe": "Wolf Ribs",
+		"Ingredients": "1 Raw Wolf Meat"
+	},
+	{
+		"Recipe": "Yao Guai Ribs",
+		"Ingredients": "1 Yao Guai Meat"
+	},
+	{
+		"Recipe": "Yao Guai Roast",
+		"Ingredients": "2 Yao Guai Meat, 2 Mutfruit, 2 Pepper"
+	}
+]
