@@ -2,7 +2,7 @@
   "name": "fallout76-plans",
   "version": "0.1.0",
   "private": true,
-  "homepage": "/plans/",
+  "homepage": "",
   "dependencies": {
     "@supabase/supabase-js": "^2.44.2",
     "@testing-library/jest-dom": "^5.17.0",
