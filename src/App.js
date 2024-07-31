@@ -3,29 +3,11 @@ import { supabase } from "./supabaseClient";
 import Auth from "./components/Auth";
 import PlanList from "./components/PlanList";
 import ApparelList from "./components/ApparelList";
-import Calculator from "./components/Calculator"; // Import the new Calculator component
+import Calculator from "./components/Calculator";
+import Storage from "./components/Storage";
 import ThemeSwitcher from "./components/ThemeSwitcher";
 import "./App.css";
 import "./themes.css";
-
-const AuthButtons = ({ session }) => {
-  const handleSignOut = async () => {
-    const { error } = await supabase.auth.signOut();
-    if (error) console.error("Error signing out:", error);
-  };
-
-  return (
-    <div className="auth-buttons">
-      {session ? (
-        <button onClick={handleSignOut} className="custom-button">
-          Sign Out
-        </button>
-      ) : (
-        <Auth />
-      )}
-    </div>
-  );
-};
 
 function App() {
   const [session, setSession] = useState(null);
@@ -63,6 +45,11 @@ function App() {
     setIsSidebarOpen(false);
   };
 
+  const handleSignOut = async () => {
+    const { error } = await supabase.auth.signOut();
+    if (error) console.error("Error signing out:", error);
+  };
+
   return (
     <div className="wrapper">
       <div className="overlay"></div>
@@ -90,8 +77,22 @@ function App() {
                 Calculator
               </button>
             </li>
+            <li>
+              <button onClick={() => handleCategoryChange("storage")}>
+                Storage
+              </button>
+            </li>
           </ul>
         </nav>
+        <div className="sidebar-footer">
+          {session ? (
+            <button onClick={handleSignOut} className="custom-button">
+              Sign Out
+            </button>
+          ) : (
+            <Auth />
+          )}
+        </div>
       </div>
       <div className="main">
         <header className="header-style">
@@ -101,14 +102,15 @@ function App() {
             </div>
           </div>
         </header>
-        <AuthButtons session={session} />
         {selectedCategory === "plans" ? (
           <PlanList session={session} />
         ) : selectedCategory === "apparel" ? (
           <ApparelList session={session} />
-        ) : (
+        ) : selectedCategory === "calculator" ? (
           <Calculator />
-        )}
+        ) : selectedCategory === "storage" ? (
+          <Storage session={session} />
+        ) : null}
       </div>
       <footer className="site-footer">
         <div className="footer-content">
