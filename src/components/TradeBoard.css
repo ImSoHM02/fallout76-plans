@@ -1,0 +1,120 @@
+.trade-board {
+    font-family: "VT323", monospace;
+    color: var(--text-color);
+    padding: 20px;
+  }
+
+  .trade-board h2 {
+    font-size: 2rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    margin-top: unset;
+    font-weight: normal;
+    text-align: center;
+  }
+  
+  .trade-board-content {
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center;
+  }
+  
+  .new-listing-form {
+    min-width: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: "VT323", monospace;
+  }
+  
+  .submit-btn {
+    background-color: transparent;
+    color: var(--text-color);
+    padding: 10px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: "VT323", monospace;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .submit-btn:hover {
+    background-color: var(--text-color);
+    color: var(--background-color);
+  }
+  
+  .listings-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .share-profile a {
+    color: var(--text-color);
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+  }
+  
+  .share-profile a:hover,
+  .share-profile a:focus {
+    text-decoration: underline;
+    color: #ff0000;
+  }
+  
+  .listing-item {
+    min-width: 350px;
+    max-width: 350px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 15px;
+  }
+
+  .trade-listings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .listing-prefixes {
+    margin-bottom: 10px;
+  }
+  
+  .prefix {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-right: 5px;
+    font-size: 14px;
+    display: inline-block;
+  }

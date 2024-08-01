@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../supabaseClient';
 
-const Auth = () => {
+const Auth = ({ onLogin }) => {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -32,26 +32,23 @@ const Auth = () => {
     e.preventDefault();
     setLoading(true);
     
+    let authResult;
     if (isRegistering) {
-      const { error } = await supabase.auth.signUp({
+      authResult = await supabase.auth.signUp({
         email,
         password,
       });
-      if (error) {
-        alert(error.message);
-      } else {
-        alert('Registration successful! Please check your email for verification.');
-      }
     } else {
-      const { error } = await supabase.auth.signInWithPassword({
+      authResult = await supabase.auth.signInWithPassword({
         email,
         password,
       });
-      if (error) {
-        alert(error.message);
-      } else {
-        handleRedirect();
-      }
+    }
+
+    if (authResult.error) {
+      alert(authResult.error.message);
+    } else {
+      onLogin(authResult.data.user);
     }
     
     setLoading(false);

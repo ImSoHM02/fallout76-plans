@@ -1,0 +1,17 @@
+.tooltip-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .tooltip-text {
+    position: fixed; /* Change from absolute to fixed */
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 6px;
+    z-index: 1000; /* Ensure it's above other elements */
+    white-space: nowrap;
+    font-size: 14px;
+    pointer-events: none; /* Prevents the tooltip from interfering with mouse events */
+  }

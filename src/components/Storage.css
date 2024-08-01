@@ -1,136 +1,239 @@
 .storage {
-    font-family: "VT323", monospace;
-    color: var(--text-color);
-    padding: 20px;
-  }
-  
-  .storage-content {
-    display: flex;
-    flex-direction: column;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-  
-  .weapon-form-container {
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto 30px;
-  }
-  
-  .weapon-form {
-    background-color: rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-  
-  .form-group select,
-  .form-group input,
-  .form-group textarea {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    background-color: transparent;
-    color: var(--text-color);
-    font-family: "VT323", monospace;
-  }
-  
-  .prefixes .prefix-selects {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .prefixes select {
-    flex: 1;
-  }
-  
-  .submit-btn {
-    background-color: transparent;
-    color: var(--text-color);
-    padding: 10px 15px;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    font-family: "VT323", monospace;
-    transition: background-color 0.3s, color 0.3s;
-  }
-  
-  .submit-btn:hover {
-    background-color: var(--text-color);
-    color: var(--background-color);
-  }
-  
-  .weapon-list-container {
-    width: 100%;
-  }
-  
-  .weapon-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  
+  font-family: "VT323", monospace;
+  color: var(--text-color);
+  padding: 20px;
+}
+
+.storage h2 {
+  font-size: 2rem;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+  font-weight: normal;
+  text-align: center;
+  margin-top: unset;
+}
+
+.storage-content {
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.character-count {
+  font-size: 12px;
+  color: var(--smaller-text);
+  text-align: right;
+  margin-top: 4px;
+}
+
+.weapon-form-container {
+  max-width: 600px;
+  margin: 0 auto 30px;
+}
+
+optgroup {
+  font-weight: 100;
+  display: block;
+}
+
+.weapon-form {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.delete-btn {
+  background-color: transparent;
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-family: "VT323", monospace;
+  font-size: 14px;
+  transition: background-color 0.3s, color 0.3s;
+  margin-top: 10px;
+}
+
+.delete-btn:hover {
+  background-color: #ff4d4d;
+  color: white;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group > select,
+.form-group > input,
+.form-group > textarea,
+.prefixes .prefix-selects select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: "VT323", monospace;
+  box-sizing: border-box;
+}
+
+.form-group > select,
+.prefixes .prefix-selects select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%23ffffff" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position-x: calc(100% - 10px);
+  background-position-y: 50%;
+  padding-right: 30px;
+}
+
+.prefixes .prefix-selects {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.prefixes .prefix-selects select {
+  width: calc(33.33% - 7px);
+}
+
+.submit-btn {
+  background-color: transparent;
+  color: var(--text-color);
+  padding: 10px 15px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: "VT323", monospace;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: var(--text-color);
+  color: var(--background-color);
+}
+
+.edit-btn {
+  background-color: transparent;
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-family: "VT323", monospace;
+  font-size: 14px;
+  transition: background-color 0.3s, color 0.3s;
+  margin-right: 10px;
+}
+
+.edit-btn:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.cancel-btn {
+  background-color: transparent;
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: "VT323", monospace;
+  transition: background-color 0.3s, color 0.3s;
+  margin-left: 10px;
+}
+
+.cancel-btn:hover {
+  background-color: #f44336;
+  color: white;
+}
+
+.weapon-list-container {
+  width: 100%;
+}
+
+.weapon-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.weapon-item {
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 15px;
+  width: 275px;
+  height: 200px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.weapon-item-content {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.weapon-item-footer {
+  margin-top: auto;
+}
+
+.weapon-name {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.weapon-prefixes {
+  margin-bottom: 5px;
+}
+
+.prefix {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-right: 5px;
+  font-size: 14px;
+  display: inline-block;
+  margin-bottom: 3px;
+}
+
+.weapon-details {
+  color: var(--smaller-text);
+}
+
+.weapon-comments {
+  margin-top: 5px;
+  font-style: italic;
+  color: var(--smaller-text);
+  word-break: break-word;
+}
+
+@media (max-width: 1200px) {
   .weapon-item {
-    background-color: rgba(0, 0, 0, 0.2);
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    padding: 15px;
-    width: calc(33.333% - 14px);
-    box-sizing: border-box;
+    width: calc(50% - 7.5px);
   }
-  
-  .weapon-name {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 5px;
+}
+
+@media (max-width: 768px) {
+  .weapon-item {
+    width: 100%;
+    height: auto;
+    max-height: 250px;
   }
-  
-  .weapon-prefixes {
-    margin-bottom: 5px;
-  }
-  
-  .prefix {
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 2px 6px;
-    border-radius: 4px;
-    margin-right: 5px;
-    font-size: 14px;
-    display: inline-block;
-    margin-bottom: 3px;
-  }
-  
-  .weapon-details {
-    font-size: 14px;
-    color: var(--smaller-text);
-  }
-  
-  .weapon-comments {
-    margin-top: 5px;
-    font-style: italic;
-    color: var(--smaller-text);
-    word-break: break-word;
-  }
-  
-  @media (max-width: 1200px) {
-    .weapon-item {
-      width: calc(50% - 10px);
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .weapon-item {
-      width: 100%;
-    }
-  }
+}

@@ -102,6 +102,13 @@ h2 {
   margin: 20px 0;
 }
 
+.sign-in-message {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 18px;
+  color: var(--text-color);
+}
+
 .custom-button {
   border-left: unset;
   border-right: unset;
@@ -621,6 +628,43 @@ input[type="file"] {
   justify-content: flex-end;
   padding: 10px;
   background-color: transparent;
+}
+
+.delete-btn {
+  background-color: transparent;
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-family: "VT323", monospace;
+  font-size: 14px;
+  transition: background-color 0.3s, color 0.3s;
+  margin-top: 10px;
+}
+
+.delete-btn:hover {
+  background-color: #ff4d4d;
+  color: white;
+}
+
+.sidebar-header {
+  padding: 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.sidebar-auth-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.sidebar-auth-buttons .custom-button {
+  width: 100%;
+  text-align: center;
+}
+
+.sidebar nav {
+  padding-top: 20px;
 }
 
 .sidebar {
