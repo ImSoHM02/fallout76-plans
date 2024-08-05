@@ -6,8 +6,8 @@ import UsernameSetup from "./components/UsernameSetup";
 import PlanList from "./components/PlanList";
 import ApparelList from "./components/ApparelList";
 import Calculator from "./components/Calculator";
-import Storage from "./components/Storage";
-import TradeBoard from "./components/TradeBoard";
+//import Storage from "./components/Storage";
+//import TradeBoard from "./components/TradeBoard";
 import PublicTradeProfile from "./components/PublicTradeProfile";
 import ThemeSwitcher from "./components/ThemeSwitcher";
 import "./App.css";
@@ -108,10 +108,10 @@ function App() {
         return <ApparelList session={session} />;
       case "calculator":
         return <Calculator />;
-      case "storage":
-        return session ? <Storage session={session} /> : <div className="sign-in-message">Please sign in to access Storage.</div>;
-      case "tradeboard":
-        return session ? <TradeBoard session={session} /> : <div className="sign-in-message">Please sign in to access Trade Board.</div>;
+//      case "storage":
+//        return session ? <Storage session={session} /> : <div className="sign-in-message">Please sign in to access Storage.</div>;
+//      case "tradeboard":
+//        return session ? <TradeBoard session={session} /> : <div className="sign-in-message">Please sign in to access Trade Board.</div>;
       default:
         return null;
     }
@@ -148,7 +148,7 @@ function App() {
                   Calculator
                 </button>
               </li>
-              <li>
+              {/* <li>
                 <button onClick={() => handleCategoryChange("storage")}>
                   Storage
                 </button>
@@ -157,7 +157,7 @@ function App() {
                 <button onClick={() => handleCategoryChange("tradeboard")}>
                   Trade Board
                 </button>
-              </li>
+              </li> */}
             </ul>
           </nav>
         </div>

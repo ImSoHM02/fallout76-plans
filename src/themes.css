@@ -1,9 +1,9 @@
 :root {
     /* Default theme (e.g., the current green theme) */
-    --background-color: #383838;
-    --text-color: #00dd00;
-    --accent-color: #ff0000;
-    --border-color: #00dd00;
+    --background-color: #1c3019;
+    --text-color: #39ff14;
+    --accent-color: #ff00ff;
+    --border-color: #39ff14;
     --smaller-text: #ffffff;
   }
   
@@ -20,6 +20,30 @@
     --text-color: #ffa500;
     --accent-color: #ff4500;
     --border-color: #ffa500;
+    --smaller-text: #ffffff;
+  }
+
+  [data-theme="purple"] {
+    --background-color: #2a0a29;
+    --text-color: #bf00ff;
+    --accent-color: #ff00ff;
+    --border-color: #bf00ff;
+    --smaller-text: #ffffff;
+  }
+  
+  [data-theme="cyan"] {
+    --background-color: #003333;
+    --text-color: #00ffff;
+    --accent-color: #ff1493;
+    --border-color: #00ffff;
+    --smaller-text: #ffffff;
+  }
+  
+  [data-theme="yellow"] {
+    --background-color: #332600;
+    --text-color: #ffff00;
+    --accent-color: #ff4500;
+    --border-color: #ffff00;
     --smaller-text: #ffffff;
   }
   

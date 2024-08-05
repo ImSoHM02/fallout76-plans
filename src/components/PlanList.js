@@ -446,14 +446,14 @@ const PlanList = ({ session }) => {
               <span className="plans-numbers">
                 {completedObtainablePlans} / {totalObtainablePlans}
               </span>
-              <span className="plans-label"> obtainable plans completed</span>
+              <span> obtainable plans completed</span>
             </div>
             <div className="plans-section">
               <span className="plans-label">Unobtainable Progress: </span>
               <span className="plans-numbers">
                 {completedUnobtainablePlans} / {totalUnobtainablePlans}
               </span>
-              <span className="plans-label"> unobtainable plans completed</span>
+              <span> unobtainable plans completed</span>
             </div>
           </div>
         </div>
@@ -515,24 +515,17 @@ const PlanList = ({ session }) => {
                           isUnobtainable={category === "unobtainable"}
                         >
                           {items.map((item) => (
-                            <div
-                              key={item.planId}
-                              className="plan-container-style"
-                            >
-                              <label>
+                            <div key={item.planId} className="plan-container-style">
+                              <label className="plan-label">
                                 <input
                                   type="checkbox"
                                   className="plan-checkbox-style"
                                   checked={completedPlans[item.planId] || false}
-                                  onChange={() =>
-                                    handleCheckboxChange(item.planId)
-                                  }
+                                  onChange={() => handleCheckboxChange(item.planId)}
                                 />
                                 <span
                                   className={`plan-name-style ${
-                                    category === "unobtainable"
-                                      ? "unobtainable-plan"
-                                      : ""
+                                    category === "unobtainable" ? "unobtainable-plan" : ""
                                   }`}
                                 >
                                   {item.name}

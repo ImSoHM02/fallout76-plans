@@ -97,9 +97,10 @@ h2 {
 
 .button-container {
   display: flex;
-  justify-content: center;
   gap: 10px;
   margin: 20px 0;
+  justify-content: center;
+  align-items: baseline;
 }
 
 .sign-in-message {
@@ -296,6 +297,11 @@ input[type="file"] {
   border-right: 1px solid var(--border-color);
 }
 
+.plan-label {
+  display: flex;
+  align-items: center;
+}
+
 .plan-checkbox-style {
   appearance: none;
   border: 1px solid var(--border-color);
@@ -306,6 +312,9 @@ input[type="file"] {
   transition: background-color 0.3s, border-color 0.3s;
   cursor: pointer;
   margin-right: 0.5rem;
+  flex-shrink: 0;
+  align-self: flex-start;
+  margin-top: 3px; /* Adjust this value as needed */
 }
 
 .plan-checkbox-style:checked {
@@ -327,8 +336,8 @@ input[type="file"] {
 .location-text-style {
   color: #a0aec0;
   font-style: italic;
-  margin-left: 25px;
-  font-size: 14px;
+  margin-left: 40px;
+  font-size: 15px;
 }
 
 .check-all-label {
@@ -835,6 +844,144 @@ input[type="file"] {
   color: #87cefa;
 }
 
+@media (max-width: 768px) {
+  h2 {
+    text-align: center;
+  }
+
+  .sidebar {
+    width: 100%;
+    left: -100%;
+  }
+
+  .item-container-style {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  .group-title-container-style {
+    flex-direction: row;
+    align-items: flex;
+    padding: 10px;
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .group-title-style {
+    font-size: 1.1rem;
+    width: 100%;
+    padding: 5px 0;
+  }
+
+  .details-container-style {
+    padding-left: 10px;
+  }
+
+  .plan-container-style,
+  .plan-container-style-apparel {
+    padding: 10px 5px;
+  }
+
+  .check-all-checkbox {
+    transform: scale(1);
+    width: 18px;
+    height: 18px;
+  }
+
+  .plan-checkbox-style {
+    width: 16px;
+    height: 16px;
+    margin-top: 2px; /* Adjust this value for smaller screens */
+  }
+
+  .check-all-label {
+    font-size: 1rem;
+    margin-left: 5px;
+    display: flex;
+    align-items: center;
+  }
+
+  .plan-name-style {
+    font-size: 1rem;
+    margin-left: 5px;
+  }
+
+  .location-text-style {
+    margin-left: 40px;
+    font-size: 15px;
+    display: block;
+    margin-top: 5px;
+  }
+
+  .custom-button,
+  .custom-file-upload {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+
+  .search-input {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .hide-completed-container {
+    margin-bottom: 15px;
+  }
+
+  .hide-completed-label {
+    font-size: 0.9rem;
+  }
+
+  .delete-btn {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+
+  .custom-button,
+  .custom-file-upload,
+  .group-title-style,
+  .delete-btn {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .plan-checkbox-style,
+  .check-all-checkbox {
+    position: relative;
+  }
+
+  .plan-checkbox-style::after,
+  .check-all-checkbox::after {
+    content: '';
+    position: absolute;
+    top: -13px;
+    left: -13px;
+    right: -13px;
+    bottom: -13px;
+  }
+
+  .plans-section {
+    text-align: center;
+  }
+
+  .plans-label {
+    display: none;
+  }
+
+  .plans-numbers {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+
+  .plans-section span:last-child {
+    font-size: 1em;
+  }
+
+  .plans-section + .plans-section {
+    margin-top: 10px;
+  }
+}
+
 @media (max-width: 600px) {
   .calculator {
     padding: 10px;
@@ -865,10 +1012,63 @@ input[type="file"] {
   }
 }
 
-@media (max-width: 768px) {
-  .sidebar {
-    width: 100%;
-    left: -100%;
+@media (max-width: 480px) {
+  .group-title-container-style {
+    flex-direction: row;
+    align-items: flex;
+    width: 90%;
+  }
+
+  .group-title-style {
+    font-size: 1rem;
+  }
+
+  .plan-checkbox-style,
+  .check-all-checkbox {
+    width: 16px;
+    height: 16px;
+  }
+
+  .plan-name-style {
+    font-size: 0.9rem;
+  }
+
+  .location-text-style {
+    margin-left: 40px;
+    font-size: 15px;
+  }
+
+  .custom-button,
+  .custom-file-upload {
+    font-size: 0.8rem;
+    padding: 6px 10px;
+  }
+
+  .search-input {
+    font-size: 12px;
+    padding: 6px;
+  }
+
+  .hide-completed-label {
+    font-size: 0.8rem;
+  }
+
+  .delete-btn {
+    font-size: 11px;
+    padding: 3px 6px;
+  }
+}
+
+@media (max-width: 320px) {
+  .group-title-container-style {
+    display: flex;
+    width: 85%;
+    padding: 8px;
+    flex-direction: row;
+  }
+
+  .group-title-style {
+    font-size: 0.9rem;
   }
 }
 

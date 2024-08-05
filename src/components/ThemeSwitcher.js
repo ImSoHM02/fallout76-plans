@@ -1,6 +1,6 @@
 import React from 'react';
 
-const themes = ['default', 'blue', 'amber']; // Add more theme names as needed
+const themes = ['default', 'blue', 'amber', 'purple', 'cyan', 'yellow']; // Add more theme names as needed
 
 const ThemeSwitcher = ({ currentTheme, setTheme }) => {
   return (
