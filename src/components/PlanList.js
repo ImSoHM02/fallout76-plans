@@ -51,37 +51,38 @@ const PlanList = ({ session }) => {
       const cachedPlans = localStorage.getItem("cachedPlans");
       const cacheTimestamp = localStorage.getItem("plansCacheTimestamp");
       const cacheAge = Date.now() - parseInt(cacheTimestamp || "0");
-
-      if (cachedPlans && cacheAge < 24 * 60 * 60 * 1000) {
+  
+      if (cachedPlans && cacheAge < 60 * 60 * 1000) { // 1 hour cache
         setPlans(JSON.parse(cachedPlans));
         return;
       }
-
+  
       let allPlans = [];
       let page = 0;
       const pageSize = 1000;
       let hasMore = true;
-
+  
       while (hasMore) {
         const { data, error, count } = await supabase
           .from("plans")
           .select("*", { count: "exact" })
           .range(page * pageSize, (page + 1) * pageSize - 1);
-
+  
         if (error) {
           throw error;
         }
-
+  
         allPlans = [...allPlans, ...data];
         hasMore = count > (page + 1) * pageSize;
         page++;
       }
-
+  
       setPlans(allPlans);
-
+  
       localStorage.setItem("cachedPlans", JSON.stringify(allPlans));
       localStorage.setItem("plansCacheTimestamp", Date.now().toString());
     } catch (error) {
+      console.error("Error fetching plans:", error);
       setPlans([]);
     }
   }, []);
@@ -130,6 +131,19 @@ const PlanList = ({ session }) => {
     fetchPlans();
     fetchCompletedPlans();
   }, [fetchPlans, fetchCompletedPlans]);
+
+  useEffect(() => {
+    // Initial fetch
+    fetchPlans();
+  
+    // Set up background sync
+    const intervalId = setInterval(() => {
+      fetchPlans();
+    }, 30 * 60 * 1000); // Refresh every 30 minutes
+  
+    // Clean up the interval on component unmount
+    return () => clearInterval(intervalId);
+  }, [fetchPlans]);
 
   const handleCheckboxChange = async (planId, forceValue = null) => {
     const newValue = forceValue !== null ? forceValue : !completedPlans[planId];
