@@ -13,7 +13,6 @@
 
 # security
 /src/supabaseClient.js
-/src/weaponData.json
 
 # misc
 .DS_Store
