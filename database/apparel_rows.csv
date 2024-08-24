@@ -1,0 +1,437 @@
+a_id,outfit_name,craftable,plan_name,rarity,type
+0,Amusement Park Worker Outfit,false,,Common,Outfit
+1,Apocalyptic Farmer Headwear,true,Plan: Apocalyptic Farmer headwear,Common,Headwear
+2,Apocalyptic Farmer Outfit,true,Plan: Apocalyptic Farmer outfit,Common,Outfit
+3,Arctic Marine Armor Helmet,true,Plan: Arctic marine armor helmet,Common,Headwear
+4,Arktos Lab Coat,false,,Common,Outfit
+5,Army Fatigues,false,,Common,Outfit
+6,Army Helmet,false,,Common,Headwear
+7,Assault Gas Mask,false,,Common,Headwear
+8,Assaultron Helmet,true,Learn from scrapping Scrap Assaultron Head,Common,Headwear
+9,Asylum Worker Hat Blue,false,,Common,Headwear
+10,Asylum Worker Hat Brown,false,,Common,Headwear
+11,Asylum Worker Hat Forrest,false,,Common,Headwear
+12,Asylum Worker Hat Green,false,,Common,Headwear
+13,Asylum Worker Hat Pink,false,,Common,Headwear
+14,Asylum Worker Hat Red,false,,Common,Headwear
+15,Asylum Worker Hat Weathered,false,,Common,Headwear
+16,Asylum Worker Hat White,false,,Common,Headwear
+17,Asylum Worker Hat White Dirty,false,,Common,Headwear
+18,Asylum Worker Hat Yellow,false,,Common,Headwear
+19,Asylum Worker Uniform Blue,false,,Uncommon,Outfit
+20,Asylum Worker Uniform Brown,false,,Uncommon,Outfit
+21,Asylum Worker Uniform Forest,false,,Ultra Rare,Outfit
+22,Asylum Worker Uniform Green,false,,Uncommon,Outfit
+23,Asylum Worker Uniform Pink,false,,Rare,Outfit
+24,Asylum Worker Uniform Red,false,,Ultra Rare,Outfit
+25,Asylum Worker Uniform Weathered,false,,Common,Outfit
+26,Asylum Worker Uniform White,false,,Common,Outfit
+27,Asylum Worker Uniform White Dirty,false,,Common,Outfit
+28,Asylum Worker Uniform Yellow,false,,Rare,Outfit
+29,Baseball Cap,false,,Common,Headwear
+30,Baseball Uniform,false,,Common,Outfit
+31,Bathrobe,false,,Common,Outfit
+32,Battered Fedora,false,,Common,Headwear
+33,Bear Gas Mask,,,Uncommon,Headwear
+34,Beer Hat,false,,Common,Headwear
+35,Black Cowboy Hat,false,,Common,Headwear
+36,Black Hard Hat,false,,Common,Headwear
+37,Black Hazmat Suit,false,,Common,Outfit
+38,Black Prospector's Hat,false,,Common,Headwear
+39,Black Rim Glasses,false,,Common,Eyewear
+40,Blood Eagle Leather Jacket and Jeans,false,,Common,Outfit
+41,Bloody Chef Hat,false,,Uncommon,Headwear
+42,Bloody Chef Outfit,false,,Uncommon,Outfit
+43,Blue Bandana,false,,Common,Headwear
+44,Blue Batting Helmet,false,,Common,Headwear
+45,Blue Devil Outfit,true,Blue Devil Outfit,Uncommon,Outfit
+46,Blue Devil Pelt Hood,true,Blue Devil Pelt Hood,Uncommon,Headwear
+47,Blue Hard Hat,false,,Common,Headwear
+48,Blue Ridge Caravan Outfit,false,,Uncommon,Outfit
+49,Blue Ridge Scout Helmet,true,Blue Ridge Scout Helmet,Common,Headwear
+50,Blue Ridge Scout Outfit,true,Blue Ridge Scout Outfit,Uncommon,Outfit
+51,Blueridge Caravan Gas Mask,false,,Uncommon,Headwear
+52,Bomber Jacket,false,,Common,Outfit
+53,Bone Chill Skull Mask,true,Bone Chill Skull Mask,Uncommon,Headwear
+54,BOS Hood,false,,Uncommon,Headwear
+55,BOS Jumpsuit,false,,Ultra Rare,Outfit
+56,Bottle and Cappy Jacket and Jeans,false,,Common,Outfit
+57,Bottle and Cappy Orange Jacket & Jeans,false,,Common,Outfit
+58,Bottle and Cappy Red Jacket & Jeans,false,,Common,Outfit
+59,Bottlecap Sunglasses,false,,Common,Eyewear
+60,Bowler,false,,Common,Headwear
+61,Bowler Hat,false,,Common,Headwear
+62,Brotherhood Civvies,true,Brotherhood Civvies,Common,Outfit
+63,Brotherhood Fatigues,false,,Common,Underarmor (BoS)
+64,Brotherhood Knight Suit,true,BOS Knight Uniform,Common,Underarmor (BoS)
+65,Brotherhood Lab Coat,false,,Common,Outfit
+66,Brotherhood Officer Suit,true,BOS Officer Uniform,Common,Underarmor (BoS)
+67,Brotherhood Scribe Outfit,false,,Common,Outfit
+68,Brotherhood Soldier Suit,true,BOS Soldier Uniform,Common,Underarmor (BoS)
+69,Brotherhood Special Ops Mask,false,,Common,Headwear
+70,Brotherhood Special Ops Suit,false,,Common,Outfit
+71,Brown Fisherman's Overalls,false,,Common,Outfit
+72,Burnt Vault 63 Recon Helmet,true,Vault 63 Recon Helmet Burnt,Uncommon,Headwear
+73,Burnt Vault 63 Recon Outfit,true,Vault 63 Recon Outfit Burnt,Uncommon,Outfit
+74,Burnt Vault 63 Riot Control Helmet,true,Vault 63 Riot Control Helmet Burnt,Uncommon,Headwear
+75,Burnt Vault 63 Riot Control Outfit,true,Vault 63 Riot Control Outfit Burnt,Uncommon,Outfit
+76,Burnt Vault 63 Security Helmet,true,Vault 63 Security Helmet Burnt,Uncommon,Headwear
+77,Burnt Vault 63 Security Outfit,true,Vault 63 Security Outfit Burnt,Uncommon,Outfit
+78,Burnt Vault Chemist Coat,true,Burnt Vault Chemist Coat,Uncommon,Outfit
+79,Burnt Vault Lab Coat,true,Burnt Vault Lab Coat,Uncommon,Outfit
+80,Camden Park Uniform,false,,Common,Outfit
+81,Camo Bandana,false,,Common,Headwear
+82,Campaign Hat,false,,Common,Headwear
+83,Cappy Jacket & Jeans,false,,Common,Outfit
+84,Casual Outfit,false,,Common,Outfit
+85,Cave Diving Suit,false,,Common,Outfit
+86,Centurion Helmet,true,Plan: Centurion helmet,Uncommon,Headwear
+87,Chally the Moo Moo Mask,false,,Uncommon,Headwear
+88,Chally the Moo Moo Outfit,false,,Uncommon,Outfit
+89,Chef Hat,false,,Common,Headwear
+90,Chinese Stealth Armor,true,Chinese Stealth Armor,Common,Armor
+91,Chinese Stealth Helmet,true,Chinese Stealth Helmet,Common,Headwear
+92,Civil War Era Dress,true,Civil War Era Dress,Common,Outfit
+93,Civil War Era Suit,true,Civil War Era suit,Common,Outfit
+94,Civil War Era Top Hat,true,Civil War Era Top Hat,Common,Headwear
+95,Clean Spacesuit,false,,Rare,Outfit
+96,Clean Spacesuit Helmet,false,,Common,Headwear
+97,Clean Steel Worker Uniform,false,,Common,Outfit
+98,Clown Hat,false,,Common,Headwear
+99,Clown Outfit,false,,Common,Outfit
+100,Combat Armor Helmet,true,Learn from scrapping Combat Armor Helmet,Common,Headwear
+101,Communist Commander Hat,false,,Uncommon,Headwear
+102,Communist Commander Outfit,false,,Uncommon,Outfit
+103,Confederate Hat,true,Confederate Hat,Common,Headwear
+104,Confederate Uniform,true,Confederate Uniform,Common,Outfit
+105,Cop Cap,false,,Common,Headwear
+106,Cop Cap,false,,Common,Headwear
+107,Covert Scout Armor Mask,true,Plan: Covert scout armor mask,Common,Headwear
+108,Cowboy Chaps,true,Cowboy Chaps,Uncommon,Outfit
+109,Cowboy Duster,true,Cowboy Duster,Uncommon,Outfit
+110,Cowboy Hat,true,Cowboy Hat,Uncommon,Headwear
+111,Crude Skull Mask,true,Crude Skull Mask,Uncommon,Headwear
+112,Crumpled Fedora,false,,Common,Headwear
+113,Cryptid Hunter Boonie Hat,true,Cryptid Hunter Boonie Hat,Uncommon,Headwear
+114,Cultist Adept Hood,true,Cultist Adept Hood,Uncommon,Headwear
+115,Cultist Adept Robe,true,Cultist Adept Robes,Uncommon,Outfit
+116,Cultist Elder Hood,false,,Uncommon,Outfit
+117,Cultist Elder Robe,false,,Uncommon,Headwear
+118,Cultist Enlightened Hood,true,Cultist Enlightened Robes,Uncommon,Headwear
+119,Cultist Enlightened Robe,true,Cultist Enlightened Hood,Uncommon,Outfit
+120,Cultist Eventide Hood,true,Cultist Eventide Hood,Uncommon,Headwear
+121,Cultist Eventide Robe,true,Cultist Eventide Robes,Uncommon,Outfit
+122,Cultist Incarnate Helmet,true,Cultist Incarnate Helmet,Uncommon,Headwear
+123,Cultist Monarch Mask,true,Cultist Monarch Mask,Common,Headwear
+124,Cultist Monarch Outfit,true,Cultist Monarch Outfit,Common,Outfit
+125,Cultist Neophyte Hood,true,Cultist Neophyte Hood,Uncommon,Headwear
+126,Cultist Neophyte Robe,true,Cultist Neophyte Robes,Uncommon,Outfit
+127,Damaged Hazmat Suit,false,,Common,Outfit
+128,Deathclaw Hunter Hat,false,,Uncommon,Hat
+129,Deathclaw Hunter Outfit,false,,Uncommon,Outfit
+130,Deputy's Hat,true,Deputy's Hat,Uncommon,Headwear
+131,Dirty Army Fatigues,false,,Common,Outfit
+132,Dirty Army Helmet,false,,Common,Headwear
+133,Dirty Fedora,false,,Common,Headwear
+134,Dirty Tan Suit,false,,Common,Outfit
+135,Drifter Outfit,false,,Common,Outfit
+136,Emmett Mountain Hazmat Suit,false,,Rare,Outfit
+137,Enclave Officer Hat,false,,Common,Headwear
+138,Enclave Officer Uniform,false,,Common,Outfit
+139,Enforcer's Outfit,true,Plan: Enforcer's outfit,Common,Outfit
+140,Engineer's Uniform,false,,Common,Outfit
+141,Executioner Mask,true,Executioner Mask,Uncommon,Headwear
+142,Explorer Outfit,false,,Common,Outfit
+143,Eye of Ra,false,,Common,Accessory
+144,Eyebot Helmet,true,Learn from scrapping Military Grade Circuitboard,Common,Headwear
+145,Eyeglasses,false,,Common,Eyewear
+146,Faded Visor,false,,Common,Headwear
+147,Farmhand Clothes,false,,Common,Outfit
+148,Fashionable Glasses,false,,Common,Eyewear
+149,Fashionable Raider Hat,false,,Common,Headwear
+150,Fashionable Raider Outfit,false,,Common,Outfit
+151,Fasnacht Alien Mask,false,,Common,Headwear
+152,Fasnacht Baffoon Mask,false,,Rare,Headwear
+153,Fasnacht Beret,false,,Common,Headwear
+154,Fasnacht Blue Devil Mask,false,,Common,Headwear
+155,Fasnacht Brahmin Mask,false,,Rare,Headwear
+156,Fasnacht Crazy Guy Mask,false,,Rare,Headwear
+157,Fasnacht Deathclaw Mask,false,,Rare,Headwear
+158,Fasnacht Demon Mask,false,,Rare,Headwear
+159,Fasnacht Fiend Mask,false,,Rare,Headwear
+160,Fasnacht Giant Mask,false,,Common,Headwear
+161,Fasnacht Glowing Alien Mask,false,,Rare,Headwear
+162,Fasnacht Glowing Blue Devil Mask,false,,Rare,Headwear
+163,Fasnacht Glowing Honey Bee Mask,false,,Rare,Headwear
+164,Fasnacht Glowing Minotaur Mask,false,,Rare,Headwear
+165,Fasnacht Glowing Pig Mask,false,,Rare,Headwear
+166,Fasnacht Glowing Robot Mask,false,,Rare,Headwear
+167,Fasnacht Glowing Scorchbeast Mask,false,,Rare,Headwear
+168,Fasnacht Glowing Scorchbeast Queen Mask,false,,Rare,Headwear
+169,Fasnacht Glowing Turkey Mask,false,,Rare,Headwear
+170,Fasnacht Glowing Unicorn Mask,false,,Rare,Headwear
+171,Fasnacht Goblin Mask,false,,Common,Headwear
+172,Fasnacht Hag Mask,false,,Rare,Headwear
+173,Fasnacht Honey Bee Mask,false,,Common,Headwear
+174,Fasnacht Jester Mask,false,,Common,Headwear
+175,Fasnacht Loon Mask,false,,Rare,Headwear
+176,Fasnacht Man Mask,false,,Common,Headwear
+177,Fasnacht Minotaur Mask,false,,Common,Headwear
+178,Fasnacht Owl Mask,false,,Common,Headwear
+179,Fasnacht Pig Mask,false,,Common,Headwear
+180,Fasnacht Raven Mask,false,,Rare,Headwear
+181,Fasnacht Robot Mask,false,,Common,Headwear
+182,Fasnacht Scorchbeast Mask,false,,Common,Headwear
+183,Fasnacht Scorchbeast Queen Mask,false,,Common,Headwear
+184,Fasnacht Skull Mask,false,,Common,Headwear
+185,Fasnacht Soldier Mask,false,,Common,Headwear
+186,Fasnacht Sun Mask,false,,Common,Headwear
+187,Fasnacht Toothy Man Mask,false,,Common,Headwear
+188,Fasnacht Turkey Mask,false,,Common,Headwear
+189,Fasnacht Unicorn Mask,false,,Common,Headwear
+190,Fasnacht Winter Man Mask,false,,Common,Headwear
+191,Fasnacht Witch Mask,false,,Common,Headwear
+192,Field Scribe's Hat,false,,Common,Headwear
+193,Field Scribe's Uniform,false,,Common,Outfit
+194,Fire Breather Helmet,false,,Common,Headwear
+195,Fire Breather Uniform,false,,Common,Outfit
+196,Fireman Helmet,false,,Common,Headwear
+197,Fireman Uniform,false,,Common,Outfit
+198,Fisherman's Hat,false,,Common,Headwear
+199,Fisherman's Outfit,false,,Common,Outfit
+200,Fisherman's Overalls,false,,Rare,Outfit
+201,Flannel Shirt and Jeans,true,Flannel Shirt and Jeans,Common,Underarmor (Casual)
+202,Flight Helmet,false,,Uncommon,Headwear
+203,Forest Camo Jumpsuit,false,,Ultra Rare,Outfit
+204,Forest Operative Underarmor,false,,Common,Underarmor (Enclave)
+205,Forest Scout Armor Mask,false,,Ultra Rare,Headwear
+206,Garb of Mysteries,false,,Common,Outfit
+207,Garrahan Foreman Helmet,false,,Uncommon,Outfit
+208,Garrahan Foreman Outfit,false,,Uncommon,Outfit
+209,Gas Mask,false,,Common,Headwear
+210,Gas Mask with Goggles,false,,Common,Headwear
+211,Gladiator Mask,false,,Rare,Headwear
+212,Gazelle Gas Mask,false,,Uncommon,Headwear
+213,Golf Outfit,false,,Common,Outfit
+214,Golf Skirt,false,,Common,Outfit
+215,Grafton Monster Mask,false,,Uncommon,Headwear
+216,Gray Knit Cap,false,,Common,Headwear
+217,Greaser Jacket and Jeans,false,,Common,Outfit
+218,Green Bandana,false,,Common,Headwear
+219,Green Hood,false,,Uncommon,Headwear
+220,Green Rag Hat,false,,Common,Headwear
+221,Green Shirt and Combat Boots,false,,Common,Outfit
+222,Grey Fisherman's Overalls,false,,Rare,Outfit
+223,Grey Hard Hat,false,,Common,Headwear
+224,Grillmaster's Hat,false,,Uncommon,Headwear
+225,Halloween Costume Skeleton,true,Skeleton Costume,Common,Outfit
+226,Halloween Costume Skull,true,Halloween Skull Mask,Common,Headwear
+227,Halloween Costume Witch,true,Witch Costume,Common,Outfit
+228,Halloween Costume Witch Hat,true,Costume Witch Hat,Common,Headwear
+229,Hammered Skull Mask,true,Hammered Skull Mask,Uncommon,Headwear
+230,Hard Hat,false,,Common,Headwear
+231,Harness,true,Harness,Common,Underarmor (Raider)
+232,Hazmat Suit,true,Hazmat Suit,Common,Outfit
+233,Hazmat Suit - Teal,true,Hazmat Suit - Teal,Uncommon,Outfit
+234,Hooded Rags,false,,Common,Outfit
+235,Hunter's Long Coat,false,,Rare,Outfit
+236,Imposter Sheepsquatch Helmet,false,,Uncommon,Headwear
+237,Imposter Sheepsquatch Outfit,false,,Uncommon,Outfit
+238,Insurgent Hat,true,Insurgent Hat,Common,Headwear
+239,Insurgent Outfit,true,Insurgent Outfit,Common,Outfit
+240,Jack O'Lantern Pant Suit,false,,Common,Outfit
+241,Jack O'Lantern Short Suit,false,,Common,Outfit
+242,Jaguar Pant Suit,false,,Uncommon,Outfit
+243,Jitterbug Judy Outfit,true,Jitterbug Judy Outfit,Uncommon,Outfit
+244,Lab Coat,false,,Common,Outfit
+245,Leather Coat,false,,Ultra Rare,Outfit
+246,Leopard Print Bandana,false,,Common,Headwear
+247,Letterman's Jacket and Jeans,false,,Common,Outfit
+248,Long Johns,true,Long Johns,Common,Underarmor (Raider)
+249,Longshoreman Outfit,false,,Rare,Outfit
+250,Makeshift Ronin Helmet,true,Plan: Makeshift ronin helmet,Rare,Headwear
+251,Marine Armor Helmet,true,Marine Armor Helmet,Common,Headwear
+252,Marine Tactical Helmet,true,Marine Tactical Helmet,Common,Headwear
+253,Marine Wetsuit,true,Marine Wetsuit,Common,Underarmor (Marine)
+254,Mechanic Jumpsuit,false,,Common,Outfit
+255,Medical Goggles,false,,Common,Eyewear
+256,Mercenary Outfit,true,Mercenary Outfit,Common,Headwear
+257,Metal Helmet,true,Learn from scrapping Metal Helmet,Common,Headwear
+258,Military Cap,false,,Common,Headwear
+259,Military Fatigues,false,,Common,Underarmor (Casual)
+260,Milkman Hat,true,Milkman Hat,Uncommon,Headwear
+261,Milkman Outfit,true,Milkman Outfit,Uncommon,Outfit
+262,Miner Hat,false,,Common,Headwear
+263,Miner Hat Clean,false,,Common,Headwear
+264,Miner Uniform,false,,Common,Outfit
+265,Mining Helmet,false,,Common,Headwear
+266,Mr. Fuzzy Mining Helmet,false,,Uncommon,Headwear
+267,Mr. Fuzzy Yellow Hard Hat,false,,Common,Headwear
+268,Muni Drudger Outfit,true,Plan: Muni drudger outfit,Rare,Outfit
+269,Muni Operator Outfit,true,Plan: Muni operator outfit,Common,Outfit
+270,Muni Worker Outfit,true,Plan: Muni worker outfit,Common,Outfit
+271,Newsboy Cap,false,,Common,Headwear
+272,Nuka Cade Jumpsuit,false,,Common,Outfit
+273,Nuka Cola Jacket and Jeans,false,,Common,Outfit
+274,Nuka World Cowboy Duster,true,Nuka World Cowboy Duster,Uncommon,Outfit
+275,Nuka World Cowboy Hat,true,Nuka World Cowboy Hat,Uncommon,Headwear
+276,Nuka World Geyser Jacket & Jeans,false,,Common,Outfit
+277,Nuka World Jacket & Jeans,false,,Common,Outfit
+278,Nuka World Jacket and Jeans,false,,Common,Outfit
+279,Nuka World On Tour Shirt,false,,Common,Outfit
+280,Nurse Uniform,false,,Common,Outfit
+281,Ogua Hunter Hood,true,Ogua Hunter Hood,Uncommon,Headwear
+282,Ogua Hunter Outfit,true,Ogua Hunter Outfit,Uncommon,Outfit
+283,Old Fisherman's Hat,false,,Common,Headwear
+284,Old Ring,false,,Common,Accessory
+285,Orange Hard Hat,false,,Common,Headwear
+286,Padded Blue Jacket,false,,Common,Outfit
+287,Party Hat,false,,Common,Headwear
+288,Pastor's Vestments,false,,Common,Outfit
+289,Patched Suit,false,,Common,Outfit
+290,Patched Three Piece Suit,false,,Common,Outfit
+291,Patrolman Sunglasses,false,,Common,Eyewear
+292,Pioneer Scout Hat: Possum,false,,Common,Headwear
+293,Pioneer Scout Hat: Tadpole,false,,Common,Headwear
+294,Pioneer Scout Possum Shorts,false,,Common,Outfit
+295,Pioneer Scout Possum Skirt,false,,Common,Outfit
+296,Pioneer Scout Tadpole Shorts,false,,Common,Outfit
+297,Pioneer Scout Tadpole Skirt,false,,Common,Outfit
+298,Pioneer Scout Tadpole Uniform,false,,Common,Outfit
+299,Pirate Costume,false,,Common,Outfit
+300,Pirate Costume Hat,false,,Common,Headwear
+301,Police Uniform,false,,Common,Outfit
+302,Polly's Old Head,false,,Common,Headwear
+303,Pompadour Wig,false,,Common,Headwear
+304,Prisoner Collar,false,,Common,Collar
+305,Pristine Miner Uniform,false,,Common,Outfit
+306,Prospector's Hat,false,,Common,Headwear
+307,Prototype Hazmat Suit,false,,Rare,Outfit
+308,Rad Skull Rider Helmet,true,Rad Skull Rider Helmet,Uncommon,Headwear
+309,Radicals Face Mask,false,,Common,Headwear
+310,Radstag Hide Outfit,false,,Common,Outfit
+311,Raider Leathers,true,Raider Leathers,Common,Underarmor (Raider)
+312,Ranger Hat,false,,Common,Headwear
+313,Ranger Hat Clean,false,,Common,Headwear
+314,Ranger Outfit,false,,Common,Outfit
+315,Ranger Outfit Clean,false,,Rare,Outfit
+316,Ratty Skirt,false,,Common,Outfit
+317,Reclaimed Deep Mining Gas Mask,false,,Uncommon,Headwear
+318,Red Bandana,false,,Common,Headwear
+319,Red Dress,false,,Common,Outfit
+320,Red Hard Hat,false,,Common,Headwear
+321,Responder Fireman Helmet,false,,Ultra Rare,Headwear
+322,Responder Fireman Uniform,false,,Ultra Rare,Outfit
+323,Responder Police Uniform,false,,Common,Outfit
+324,Responders Paramedic Jumpsuit,false,,Common,Outfit
+325,Responders' Padded Jacket,true,Responders' Padded Jacket,Common,Outfit
+326,Ritual Bindings,false,,Common,Outfit
+327,Ritual Mask,false,,Common,Headwear
+328,Road Leathers,true,Road Leathers,Common,Underarmor (Raider)
+329,Rooster Gas Mask,,,Uncommon,Headwear
+330,Sack Hood,false,,Uncommon,Headwear
+331,Sack Hood with Hoses,false,,Common,Headwear
+332,Saltwater Taffy Outfit,,,Common,Outfit
+333,Sack Hood with Straps,false,,Common,Headwear
+334,Scavenger Outfit,false,,Common,Outfit
+335,Science Scribe's Uniform,false,,Common,Outfit
+336,Sea Captain's Hat,false,,Common,Headwear
+337,Seasoned Survivor Outfit,true,Seasoned Survivor Outfit,Rare,Outfit
+338,Secret Service Helmet,true,Secret Service Helmet,Common,Headwear
+339,Secret Service Underarmor,true,Secret Service Underarmor,Common,Underarmor (Secret Service)
+340,Sentry Bot Helmet,true,Learn from scrapping Military Grade Circuitboard,Common,Headwear
+341,Sheepsquatch Mascot Head,false,,Common,Headwear
+342,Sheepsquatch Mascot Outfit,false,,Common,Outfit
+343,Shedoah T Shirt and Jeans,true,Shedoah T Shirt and Jeans,Uncommon,Outfit
+344,Sheriff's Hat,true,Sheriff's Hat,Uncommon,Headwear
+345,Skiing Navy And Orange Outfit,false,,Common,Outfit
+346,Skiing Outfit,false,,Common,Outfit
+347,Skiing Outfit Hat,false,,Common,Headwear
+348,Skiing Outfit Hat Clean,false,,Common,Headwear
+349,Skiing Purple And White Outfit,true,Skiing Outfit,Common,Outfit
+350,Skiing Red And Green Outfit,false,,Rare,Outfit
+351,Skull Bandana,false,,Common,Headwear
+352,Skull Lord Blood Eagle Helmet,false,,Uncommon,Headwear
+353,Skull Lord Blood Eagle Suit,false,,Uncommon,Headwear
+354,Snake Wrangler Hat,true,Snake Wrangler Hat,Rare,Headwear
+355,Snake Wrangler Outfit,true,Snake Wrangler Outfit,Rare,Outfit
+356,Socialite Outfit,true,Socialite Outfit,Common,Outfit
+357,Soiled Mr. Fuzzy Mascot Head,false,,Rare,Headwear
+358,Soiled Mr. Fuzzy Mascot Suit,false,,Rare,Outfit
+359,Spacesuit,false,,Common,Outfit
+360,Spacesuit Helmet,false,,Common,Headwear
+361,Spectacular Performer's Headwear,true,Plan: Spectacular performer's headwear,Common,Headwear
+362,Spectacular Performer's Outfit,true,,Atom Shop,Outfit
+363,Steel Worker Hat,false,,Common,Headwear
+364,Steel Worker Hat Clean,false,,Common,Headwear
+365,Steel Worker Uniform,false,,Common,Outfit
+366,Straight Jacket,false,,Common,Outfit
+367,Straight Jacket Clean,false,,Rare,Outfit
+368,Striped Bandana,false,,Common,Headwear
+369,Strongman Outfit,false,,Uncommon,Outfit
+370,Sunburst Sequin Dress,true,Sunburst Sequin Dress,Rare,Outfit
+371,Sunglasses,false,,Common,Eyewear
+372,Surgical Mask,false,,Common,Headwear
+373,Surveyor Outfit,false,,Common,Outfit
+374,Suspenders and Slacks,false,,Common,Outfit
+375,Swamp Camo Hazmat Suit,false,,Common,Outfit
+376,Swimsuit,false,,Common,Outfit
+377,T Shirt and Slacks,false,,Common,Outfit
+378,Tattered Dress,false,,Common,Outfit
+379,Tattered Field Jacket,false,,Ultra Rare,Outfit
+380,Tattered Mole Head,false,,Common,Headwear
+381,Tattered Mole Outfit,false,,Common,Outfit
+382,Tattered Rags,false,,Common,Outfit
+383,Tin Foil Hat,false,,Common,Headwear
+384,Tinkerer's Goggles,true,Tinkerer's Goggles,Rare,Eyewear
+385,Tinkerer's Overalls,true,Tinkerer's Overalls,Rare,Outfit
+386,Traveling Leather Coat,false,,Ultra Rare,Outfit
+387,Treasure Hunter Hat,true,Treasure Hunter Outfit Hat,Common,Outfit
+388,Treasure Hunter Outfit,true,Treasure Hunter Outfit,Common,Outfit
+389,Trench Runner's Coat,true,Trench Runner's Coat,Rare,Outfit
+390,Trench Runner's Hood,true,Trench Runner's Hood,Rare,Headwear
+391,Trilby Hat,false,,Common,Headwear
+392,Trucker Uniform,true,Trucker Uniform,Common,Outfit
+393,Tulip Sky Blue Pant Suit,false,,Uncommon,Outfit
+394,Umbrella Hat,true,Umbrella Hat,Uncommon,Headwear
+395,Undershirt & Jeans,true,Undershirt & Jeans,Common,Underarmor (Casual)
+396,Union Hat,true,Union Hat,Common,Headwear
+397,Union Uniform,true,Union Uniform,Common,Outfit
+398,Urban Operative Underarmor,false,,Common,Underarmor (Enclave)
+399,Urban Scout Armor Mask,false,,Ultra Rare,Headwear
+400,Ushanka Hat,false,,Common,Headwear
+401,Vault 51 Jumpsuit,true,Plan: Vault 51 jumpsuit,Rare,Underarmor (Vault Suit)
+402,Vault 63 Burnt Jumpsuit,true,Vault 63 Burnt Jumpsuit,Common,Outfit
+403,Vault 63 Hazmat Suit,true,Vault 63 Hazmat Suit,Common,Outfit
+404,Vault 63 Recon Helmet,true,Vault 63 Recon Helmet,Uncommon,Headwear
+405,Vault 63 Recon Outfit,true,Vault 63 Recon Outfit,Uncommon,Outfit
+406,Vault 63 Riot Control Helmet,true,Vault 63 Riot Control Helmet,Uncommon,Headwear
+407,Vault 63 Riot Control Outfit,true,Vault 63 Riot Control Outfit,Uncommon,Outfit
+408,Vault 63 Security Helmet,true,Vault 63 Security Helmet,Uncommon,Headwear
+409,Vault 63 Security Outfit,true,Vault 63 Security Outfit,Uncommon,Outfit
+410,Vault 76 Jumpsuit,true,Vault 76 Jumpsuit,Common,Underarmor (Vault Suit)
+411,Vault 94 Jumpsuit,false,Vault 94 Jumpsuit,Common,Underarmor (Vault Suit)
+412,Vault 94 Scout Armor Mask,true,Vault 94 Scout Armor Mask,Common,Headwear
+413,Vault Tec University Jumpsuit,true,Vault Tec University Jumpsuit,Common,Underarmor (Vault Suit)
+414,Vault Tec Jumpsuit,true,Vault Tec Jumpsuit,Common,Outfit
+415,Veil of Secrets,false,,Common,Headwear
+416,Vera's Outfit,true,Vera's Outfit,Common,Outfit
+417,VTU Baseball Cap,false,,Common,Headwear
+418,VTU Jacket and Jeans,false,,Common,Outfit
+419,Wedding Ring,false,,Common,Accessory
+420,Welding Goggles,false,,Common,Eyewear
+421,Welding Helmet,false,,Common,Headwear
+422,Western Outfit,false,,Uncommon,Outfit
+423,Western Outfit & Chaps,false,,Uncommon,Outfit
+424,White Hard Hat,false,,Common,Headwear
+425,White Powder Jumpsuit,false,,Uncommon,Outfit
+426,White Wolf Fedora,false,,Common,Headwear
+427,Whitespring Jumpsuit,false,,Common,Outfit
+428,Winter Jacket and Jeans,false,,Rare,Outfit
+429,Wool Fisherman's Cap,false,,Common,Headwear
+430,Worker Hat,false,,Common,Headwear
+431,Worker Outfit,false,,Common,Outfit
+432,Worn Veil,false,,Common,Headwear
+433,Wraparound Goggles,false,,Common,Eyewear
+434,Wrapped Cap,false,,Common,Headwear
+435,Yellow Slicker Hat,false,,Common,Headwear
