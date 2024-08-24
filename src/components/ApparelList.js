@@ -1,6 +1,28 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { supabase } from "../supabaseClient";
 
+// Name mappings object
+const nameMappings = {
+  // Add mappings as needed, e.g.:
+  // "Asylum Worker Uniform Forrest": "Asylum Worker Uniform Forest",
+};
+
+// Composite ID function
+const createCompositeId = (item) => {
+  let name = item.outfit_name;
+  if (nameMappings[name]) {
+    name = nameMappings[name];
+  }
+  
+  const components = [
+    item.type,
+    name,
+    item.rarity
+  ];
+  
+  return components.join('|').toLowerCase();
+};
+
 const CollapsibleItem = ({
   title,
   children,
@@ -49,7 +71,6 @@ const ApparelList = ({ session }) => {
     'ultra rare': true
   });
 
-
   const fetchApparel = useCallback(async () => {
     try {
       console.log("Fetching apparel data...");
@@ -63,8 +84,14 @@ const ApparelList = ({ session }) => {
         throw error;
       }
 
-      console.log("Fetched apparel data:", data);
-      setApparel(data);
+      // Apply name mappings to fetched data
+      const updatedData = data.map(item => ({
+        ...item,
+        outfit_name: nameMappings[item.outfit_name] || item.outfit_name
+      }));
+
+      console.log("Fetched apparel data:", updatedData);
+      setApparel(updatedData);
     } catch (error) {
       console.error("Error fetching apparel:", error);
       setApparel([]);
@@ -90,15 +117,26 @@ const ApparelList = ({ session }) => {
     } else {
       const savedCompletedApparel = localStorage.getItem("completedApparel");
       if (savedCompletedApparel) {
-        setCompletedApparel(JSON.parse(savedCompletedApparel));
+        const savedData = JSON.parse(savedCompletedApparel);
+        const newCompletedApparel = {};
+        apparel.forEach(item => {
+          const compositeId = createCompositeId(item);
+          if (savedData[compositeId]) {
+            newCompletedApparel[item.a_id] = true;
+          }
+        });
+        setCompletedApparel(newCompletedApparel);
       }
     }
-  }, [session]);
+  }, [session, apparel]);
 
   useEffect(() => {
     fetchApparel();
+  }, [fetchApparel]);
+
+  useEffect(() => {
     fetchCompletedApparel();
-  }, [fetchApparel, fetchCompletedApparel]);
+  }, [fetchCompletedApparel]);
 
   const handleCheckboxChange = async (a_id) => {
     const newValue = !completedApparel[a_id];
@@ -120,7 +158,14 @@ const ApparelList = ({ session }) => {
           .match({ user_id: session.user.id, a_id: a_id });
       }
     } else {
-      localStorage.setItem("completedApparel", JSON.stringify(newCompletedApparel));
+      const savedData = {};
+      apparel.forEach(item => {
+        const compositeId = createCompositeId(item);
+        if (newCompletedApparel[item.a_id]) {
+          savedData[compositeId] = true;
+        }
+      });
+      localStorage.setItem("completedApparel", JSON.stringify(savedData));
     }
   };
 
@@ -146,17 +191,23 @@ const ApparelList = ({ session }) => {
     setCompletedApparel(newCompletedApparel);
 
     if (!session) {
-      localStorage.setItem("completedApparel", JSON.stringify(newCompletedApparel));
+      const savedData = {};
+      apparel.forEach(item => {
+        const compositeId = createCompositeId(item);
+        if (newCompletedApparel[item.a_id]) {
+          savedData[compositeId] = true;
+        }
+      });
+      localStorage.setItem("completedApparel", JSON.stringify(savedData));
     }
   };
 
   const handleDownload = () => {
-    const completedApparelIds = Object.keys(completedApparel).filter(
-      (id) => completedApparel[id]
-    );
+    const completedApparelIds = apparel
+      .filter(item => completedApparel[item.a_id])
+      .map(item => createCompositeId(item));
     const dataStr = JSON.stringify(completedApparelIds);
-    const dataUri =
-      "data:application/json;charset=utf-8," + encodeURIComponent(dataStr);
+    const dataUri = "data:application/json;charset=utf-8," + encodeURIComponent(dataStr);
 
     const exportFileDefaultName = "completed_apparel.json";
 
@@ -174,81 +225,65 @@ const ApparelList = ({ session }) => {
       const reader = new FileReader();
       reader.onload = async (e) => {
         try {
-          const uploadedApparelIds = JSON.parse(e.target.result);
-          console.log(`Total apparel to upload: ${uploadedApparelIds.length}`);
+          const uploadedCompositeIds = JSON.parse(e.target.result);
+          console.log(`Total apparel to upload: ${uploadedCompositeIds.length}`);
           const newCompletedApparel = { ...completedApparel };
+
+          apparel.forEach(item => {
+            const compositeId = createCompositeId(item);
+            if (uploadedCompositeIds.includes(compositeId)) {
+              newCompletedApparel[item.a_id] = true;
+            }
+          });
 
           if (session) {
             const batchSize = 1000;
             let totalUploaded = 0;
 
-            for (let i = 0; i < uploadedApparelIds.length; i += batchSize) {
-              const batch = uploadedApparelIds.slice(
-                i,
-                Math.min(i + batchSize, uploadedApparelIds.length)
-              );
-              console.log(
-                `Processing batch: ${i / batchSize + 1}, Size: ${batch.length}`
-              );
+            for (let i = 0; i < Object.keys(newCompletedApparel).length; i += batchSize) {
+              const batch = Object.entries(newCompletedApparel).slice(i, i + batchSize);
               const { data, error } = await supabase
                 .from("completed_apparel")
                 .upsert(
-                  batch.map((a_id) => ({
+                  batch.map(([a_id, completed]) => ({
                     user_id: session.user.id,
-                    a_id: a_id,
+                    a_id: parseInt(a_id),
+                    completed
                   })),
-                  { onConflict: ["user_id", "a_id"], ignoreDuplicates: true }
-                )
-                .select();
+                  { onConflict: ["user_id", "a_id"] }
+                );
 
               if (error) {
                 console.error("Error in batch upload:", error);
                 throw error;
               } else {
                 totalUploaded += data.length;
-                console.log(
-                  `Batch uploaded. Total uploaded so far: ${totalUploaded}`
-                );
-
-                batch.forEach((a_id) => {
-                  newCompletedApparel[a_id] = true;
-                });
+                console.log(`Batch uploaded. Total uploaded so far: ${totalUploaded}`);
               }
 
-              const progress = Math.round(
-                ((i + batch.length) / uploadedApparelIds.length) * 100
-              );
+              const progress = Math.round(((i + batch.length) / Object.keys(newCompletedApparel).length) * 100);
               setUploadProgress(progress);
             }
-
-            console.log(
-              `Upload complete. Total apparel uploaded: ${totalUploaded}`
-            );
           } else {
-            uploadedApparelIds.forEach((id) => {
-              newCompletedApparel[id] = true;
+            const savedData = {};
+            apparel.forEach(item => {
+              const compositeId = createCompositeId(item);
+              if (newCompletedApparel[item.a_id]) {
+                savedData[compositeId] = true;
+              }
             });
-            localStorage.setItem(
-              "completedApparel",
-              JSON.stringify(newCompletedApparel)
-            );
+            localStorage.setItem("completedApparel", JSON.stringify(savedData));
           }
 
-          setTimeout(() => {
-            setCompletedApparel(newCompletedApparel);
-            setIsUploading(false);
-            setUploadProgress(0);
-            alert("Upload complete. All apparel have been added.");
-          }, 1000);
-
-          await fetchCompletedApparel();
+          setCompletedApparel(newCompletedApparel);
+          setIsUploading(false);
+          setUploadProgress(100);
+          alert("Upload complete. Your progress has been updated.");
         } catch (error) {
           console.error("Error during upload:", error);
-          alert(
-            "An error occurred during the upload. Please check the console for details."
-          );
           setIsUploading(false);
           setUploadProgress(0);
+          alert("An error occurred during the upload. Please check the console for details.");
         }
       };
       reader.readAsText(file);
@@ -297,28 +332,6 @@ const ApparelList = ({ session }) => {
     });
     return filtered;
   }, [organizedApparel, searchTerm, hideCompleted, completedApparel, rarityFilters]);
-
-  const getRaritySymbol = (rarity) => {
-    switch (rarity.toLowerCase()) {
-      case 'common': return 'C';
-      case 'uncommon': return 'UC';
-      case 'rare': return 'R';
-      case 'ultra rare': return 'UR';
-      case 'nuclear winter': return 'NW';
-      default: return '';
-    }
-  };
-
-  const getRarityColor = (rarity) => {
-    if (!rarity) return '#ffffff'; // Default white
-    switch (rarity.toLowerCase()) {
-      case 'common': return '#ffffff'; // White
-      case 'uncommon': return '#00ff00'; // Green
-      case 'rare': return '#0070dd'; // Blue
-      case 'ultra rare': return '#ffd700'; // Gold
-      default: return '#ffffff'; // Default white
-    }
-  };
 
   const { totalApparel, completedApparelCount } = useMemo(() => {
     const total = apparel.length;
@@ -387,7 +400,6 @@ const ApparelList = ({ session }) => {
               <label 
                 key={rarity} 
                 className="rarity-filter-label"
-                style={{ color: getRarityColor(rarity) }}
               >
                 <input
                   type="checkbox"
@@ -427,8 +439,7 @@ const ApparelList = ({ session }) => {
                     {item.rarity && (
                       <span 
                         className="apparel-symbol rarity-symbol"
-                        style={{ color: getRarityColor(item.rarity) }}
-                      > [{getRaritySymbol(item.rarity)}]</span>
+                      > [{item.rarity}]</span>
                     )}
                   </span>
                 </label>
