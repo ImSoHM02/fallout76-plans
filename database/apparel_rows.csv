@@ -104,8 +104,8 @@ a_id,outfit_name,craftable,plan_name,rarity,type
 102,Communist Commander Outfit,false,,Uncommon,Outfit
 103,Confederate Hat,true,Confederate Hat,Common,Headwear
 104,Confederate Uniform,true,Confederate Uniform,Common,Outfit
-105,Cop Cap,false,,Common,Headwear
-106,Cop Cap,false,,Common,Headwear
+105,Cop Cap (Clean),false,,Common,Headwear
+106,Cop Cap (Dirty),false,,Common,Headwear
 107,Covert Scout Armor Mask,true,Plan: Covert scout armor mask,Common,Headwear
 108,Cowboy Chaps,true,Cowboy Chaps,Uncommon,Outfit
 109,Cowboy Duster,true,Cowboy Duster,Uncommon,Outfit
@@ -115,10 +115,10 @@ a_id,outfit_name,craftable,plan_name,rarity,type
 113,Cryptid Hunter Boonie Hat,true,Cryptid Hunter Boonie Hat,Uncommon,Headwear
 114,Cultist Adept Hood,true,Cultist Adept Hood,Uncommon,Headwear
 115,Cultist Adept Robe,true,Cultist Adept Robes,Uncommon,Outfit
-116,Cultist Elder Hood,false,,Uncommon,Outfit
-117,Cultist Elder Robe,false,,Uncommon,Headwear
-118,Cultist Enlightened Hood,true,Cultist Enlightened Robes,Uncommon,Headwear
-119,Cultist Enlightened Robe,true,Cultist Enlightened Hood,Uncommon,Outfit
+116,Cultist Elder Hood,false,,Uncommon,Headwear
+117,Cultist Elder Robe,false,,Uncommon,Outfit
+118,Cultist Enlightened Hood,true,Cultist Enlightened Hood,Uncommon,Headwear
+119,Cultist Enlightened Robe,true,Cultist Enlightened Robe,Uncommon,Outfit
 120,Cultist Eventide Hood,true,Cultist Eventide Hood,Uncommon,Headwear
 121,Cultist Eventide Robe,true,Cultist Eventide Robes,Uncommon,Outfit
 122,Cultist Incarnate Helmet,true,Cultist Incarnate Helmet,Uncommon,Headwear
@@ -206,7 +206,7 @@ a_id,outfit_name,craftable,plan_name,rarity,type
 204,Forest Operative Underarmor,false,,Common,Underarmor (Enclave)
 205,Forest Scout Armor Mask,false,,Ultra Rare,Headwear
 206,Garb of Mysteries,false,,Common,Outfit
-207,Garrahan Foreman Helmet,false,,Uncommon,Outfit
+207,Garrahan Foreman Helmet,false,,Uncommon,Headwear
 208,Garrahan Foreman Outfit,false,,Uncommon,Outfit
 209,Gas Mask,false,,Common,Headwear
 210,Gas Mask with Goggles,false,,Common,Headwear
@@ -255,7 +255,7 @@ a_id,outfit_name,craftable,plan_name,rarity,type
 253,Marine Wetsuit,true,Marine Wetsuit,Common,Underarmor (Marine)
 254,Mechanic Jumpsuit,false,,Common,Outfit
 255,Medical Goggles,false,,Common,Eyewear
-256,Mercenary Outfit,true,Mercenary Outfit,Common,Headwear
+256,Mercenary Outfit,true,Mercenary Outfit,Common,Outfit
 257,Metal Helmet,true,Learn from scrapping Metal Helmet,Common,Headwear
 258,Military Cap,false,,Common,Headwear
 259,Military Fatigues,false,,Common,Underarmor (Casual)
@@ -264,21 +264,21 @@ a_id,outfit_name,craftable,plan_name,rarity,type
 262,Miner Hat,false,,Common,Headwear
 263,Miner Hat Clean,false,,Common,Headwear
 264,Miner Uniform,false,,Common,Outfit
-265,Mining Helmet,false,,Common,Headwear
-266,Mr. Fuzzy Mining Helmet,false,,Uncommon,Headwear
+265,Mining Helmet (Green),false,,Common,Headwear
+266,Mr. Fuzzy Mining Helmet (Yellow),false,,Uncommon,Headwear
 267,Mr. Fuzzy Yellow Hard Hat,false,,Common,Headwear
 268,Muni Drudger Outfit,true,Plan: Muni drudger outfit,Rare,Outfit
 269,Muni Operator Outfit,true,Plan: Muni operator outfit,Common,Outfit
 270,Muni Worker Outfit,true,Plan: Muni worker outfit,Common,Outfit
 271,Newsboy Cap,false,,Common,Headwear
-272,Nuka Cade Jumpsuit,false,,Common,Outfit
-273,Nuka Cola Jacket and Jeans,false,,Common,Outfit
-274,Nuka World Cowboy Duster,true,Nuka World Cowboy Duster,Uncommon,Outfit
-275,Nuka World Cowboy Hat,true,Nuka World Cowboy Hat,Uncommon,Headwear
-276,Nuka World Geyser Jacket & Jeans,false,,Common,Outfit
-277,Nuka World Jacket & Jeans,false,,Common,Outfit
-278,Nuka World Jacket and Jeans,false,,Common,Outfit
-279,Nuka World On Tour Shirt,false,,Common,Outfit
+272,Nuka-Cade Jumpsuit,false,,Common,Outfit
+273,Nuka-Cola Jacket and Jeans,false,,Common,Outfit
+274,Nuka-World Cowboy Duster,true,Nuka World Cowboy Duster,Uncommon,Outfit
+275,Nuka-World Cowboy Hat,true,Nuka World Cowboy Hat,Uncommon,Headwear
+276,Nuka-World Geyser Jacket & Jeans,false,,Common,Outfit
+277,Nuka-World Jacket & Jeans,false,,Common,Outfit
+278,Nuka-World Jacket and Jeans,false,,Common,Outfit
+279,Nuka-World On Tour Shirt,false,,Common,Outfit
 280,Nurse Uniform,false,,Common,Outfit
 281,Ogua Hunter Hood,true,Ogua Hunter Hood,Uncommon,Headwear
 282,Ogua Hunter Outfit,true,Ogua Hunter Outfit,Uncommon,Outfit
@@ -289,7 +289,7 @@ a_id,outfit_name,craftable,plan_name,rarity,type
 287,Party Hat,false,,Common,Headwear
 288,Pastor's Vestments,false,,Common,Outfit
 289,Patched Suit,false,,Common,Outfit
-290,Patched Three Piece Suit,false,,Common,Outfit
+290,Patched Three-Piece Suit,false,,Common,Outfit
 291,Patrolman Sunglasses,false,,Common,Eyewear
 292,Pioneer Scout Hat: Possum,false,,Common,Headwear
 293,Pioneer Scout Hat: Tadpole,false,,Common,Headwear
@@ -342,7 +342,7 @@ a_id,outfit_name,craftable,plan_name,rarity,type
 340,Sentry Bot Helmet,true,Learn from scrapping Military Grade Circuitboard,Common,Headwear
 341,Sheepsquatch Mascot Head,false,,Common,Headwear
 342,Sheepsquatch Mascot Outfit,false,,Common,Outfit
-343,Shedoah T Shirt and Jeans,true,Shedoah T Shirt and Jeans,Uncommon,Outfit
+343,Shenandoah T-Shirt and Jeans,true,Shedoah T-Shirt and Jeans,Uncommon,Outfit
 344,Sheriff's Hat,true,Sheriff's Hat,Uncommon,Headwear
 345,Skiing Navy And Orange Outfit,false,,Common,Outfit
 346,Skiing Outfit,false,,Common,Outfit
@@ -352,7 +352,7 @@ a_id,outfit_name,craftable,plan_name,rarity,type
 350,Skiing Red And Green Outfit,false,,Rare,Outfit
 351,Skull Bandana,false,,Common,Headwear
 352,Skull Lord Blood Eagle Helmet,false,,Uncommon,Headwear
-353,Skull Lord Blood Eagle Suit,false,,Uncommon,Headwear
+353,Skull Lord Blood Eagle Suit,false,,Uncommon,Outfit
 354,Snake Wrangler Hat,true,Snake Wrangler Hat,Rare,Headwear
 355,Snake Wrangler Outfit,true,Snake Wrangler Outfit,Rare,Outfit
 356,Socialite Outfit,true,Socialite Outfit,Common,Outfit
@@ -361,7 +361,7 @@ a_id,outfit_name,craftable,plan_name,rarity,type
 359,Spacesuit,false,,Common,Outfit
 360,Spacesuit Helmet,false,,Common,Headwear
 361,Spectacular Performer's Headwear,true,Plan: Spectacular performer's headwear,Common,Headwear
-362,Spectacular Performer's Outfit,true,,Atom Shop,Outfit
+362,Spectacular Performer's Outfit,true,,Rare,Outfit
 363,Steel Worker Hat,false,,Common,Headwear
 364,Steel Worker Hat Clean,false,,Common,Headwear
 365,Steel Worker Uniform,false,,Common,Outfit
@@ -376,7 +376,7 @@ a_id,outfit_name,craftable,plan_name,rarity,type
 374,Suspenders and Slacks,false,,Common,Outfit
 375,Swamp Camo Hazmat Suit,false,,Common,Outfit
 376,Swimsuit,false,,Common,Outfit
-377,T Shirt and Slacks,false,,Common,Outfit
+377,T-Shirt and Slacks,false,,Common,Outfit
 378,Tattered Dress,false,,Common,Outfit
 379,Tattered Field Jacket,false,,Ultra Rare,Outfit
 380,Tattered Mole Head,false,,Common,Headwear
@@ -386,7 +386,7 @@ a_id,outfit_name,craftable,plan_name,rarity,type
 384,Tinkerer's Goggles,true,Tinkerer's Goggles,Rare,Eyewear
 385,Tinkerer's Overalls,true,Tinkerer's Overalls,Rare,Outfit
 386,Traveling Leather Coat,false,,Ultra Rare,Outfit
-387,Treasure Hunter Hat,true,Treasure Hunter Outfit Hat,Common,Outfit
+387,Treasure Hunter Hat,true,Treasure Hunter Outfit Hat,Common,Headwear
 388,Treasure Hunter Outfit,true,Treasure Hunter Outfit,Common,Outfit
 389,Trench Runner's Coat,true,Trench Runner's Coat,Rare,Outfit
 390,Trench Runner's Hood,true,Trench Runner's Hood,Rare,Headwear
@@ -424,7 +424,7 @@ a_id,outfit_name,craftable,plan_name,rarity,type
 422,Western Outfit,false,,Uncommon,Outfit
 423,Western Outfit & Chaps,false,,Uncommon,Outfit
 424,White Hard Hat,false,,Common,Headwear
-425,White Powder Jumpsuit,false,,Uncommon,Outfit
+425,White Powder Jumpsuit,false,,Ultra Rare,Outfit
 426,White Wolf Fedora,false,,Common,Headwear
 427,Whitespring Jumpsuit,false,,Common,Outfit
 428,Winter Jacket and Jeans,false,,Rare,Outfit
@@ -435,3 +435,15 @@ a_id,outfit_name,craftable,plan_name,rarity,type
 433,Wraparound Goggles,false,,Common,Eyewear
 434,Wrapped Cap,false,,Common,Headwear
 435,Yellow Slicker Hat,false,,Common,Headwear
+436,Mining Helmet (Black),false,,Common,Headwear
+437,Mining Helmet (Blue),false,,Common,Headwear
+438,Mining Helmet (Gray),false,,Common,Headwear
+439,Mining Helmet (Orange),false,,Common,Headwear
+440,Mining Helmet (Pink),false,,Common,Headwear
+441,Mining Helmet (Red),false,,Common,Headwear
+442,Mining Helmet (White),false,,Common,Headwear
+443,Mr. Fuzzy Mining Helmet (Green),false,,Uncommon,Headwear
+444,Mr. Fuzzy Mining Helmet (Pink),false,,Uncommon,Headwear
+445,Brotherhood Recon Helmet,true,common,,Headwear
+446,Cultist Elder Helmet,,common,,Headwear
+447,Cultist Enlightened Hood,,common,,Headwear

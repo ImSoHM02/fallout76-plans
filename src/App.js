@@ -8,6 +8,7 @@ import ApparelList from "./components/ApparelList";
 import Calculator from "./components/Calculator";
 import PublicTradeProfile from "./components/PublicTradeProfile";
 import ThemeSwitcher from "./components/ThemeSwitcher";
+import AdminPanel from "./components/AdminPanel"; 
 import "./App.css";
 import "./themes.css";
 
@@ -98,7 +99,7 @@ function AppContent() {
   };
 
   const renderMainContent = () => {
-    const hash = window.location.hash.slice(1); // Remove the '#' from the start
+    const hash = window.location.hash.slice(1);
     switch (hash) {
       case "plans":
         return <PlanList session={session} />;
@@ -108,8 +109,10 @@ function AppContent() {
         return <Calculator />;
       case "trader":
         return <PublicTradeProfile />;
+      case "admin":
+        return <AdminPanel session={session} />; // Add this line
       default:
-        return <PlanList session={session} />; // Default to PlanList
+        return <PlanList session={session} />;
     }
   };
 
@@ -143,6 +146,13 @@ function AppContent() {
                 Calculator
               </button>
             </li>
+            {session && session.user.id === 'b706232f-7389-4746-ba37-fa2df80b6829' && (
+              <li>
+                <button onClick={() => handleCategoryChange("admin")}>
+                  Admin
+                </button>
+              </li>
+            )}
           </ul>
         </nav>
       </div>

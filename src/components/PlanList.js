@@ -1,52 +1,21 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { supabase } from "../supabaseClient";
-
-const CollapsibleItem = ({
-  title,
-  children,
-  isCheckAll,
-  onCheckAllChange,
-  isUnobtainable,
-}) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <div className="item-container-style">
-      <div className="group-title-container-style">
-        <button
-          className={`group-title-style ${
-            isUnobtainable ? "unobtainable-plan" : ""
-          }`}
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? "▼" : "►"} {title}
-        </button>
-        {isCheckAll !== undefined && (
-          <label className="check-all-label">
-            <input
-              type="checkbox"
-              className="check-all-checkbox"
-              checked={isCheckAll}
-              onChange={onCheckAllChange}
-            />
-            Check All
-          </label>
-        )}
-      </div>
-      {isOpen && <div className="details-container-style">{children}</div>}
-    </div>
-  );
-};
+import CollapsibleItem from "./CollapsibleItem";
 
 const PlanList = ({ session }) => {
   const [plans, setPlans] = useState([]);
   const [completedPlans, setCompletedPlans] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadingProgress, setLoadingProgress] = useState(0);
+  const [hideCompleted, setHideCompleted] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
-  const [hideCompleted, setHideCompleted] = useState(false);
+  const [uploadStatus, setUploadStatus] = useState("");
 
   const fetchPlans = useCallback(async () => {
+    setIsLoading(true);
+    setLoadingProgress(0);
     try {
       const cachedPlans = localStorage.getItem("cachedPlans");
       const cacheTimestamp = localStorage.getItem("plansCacheTimestamp");
@@ -54,6 +23,7 @@ const PlanList = ({ session }) => {
   
       if (cachedPlans && cacheAge < 60 * 60 * 1000) { // 1 hour cache
         setPlans(JSON.parse(cachedPlans));
+        setIsLoading(false);
         return;
       }
   
@@ -75,6 +45,9 @@ const PlanList = ({ session }) => {
         allPlans = [...allPlans, ...data];
         hasMore = count > (page + 1) * pageSize;
         page++;
+        
+        // Update loading progress
+        setLoadingProgress(Math.round((allPlans.length / count) * 100));
       }
   
       setPlans(allPlans);
@@ -84,6 +57,8 @@ const PlanList = ({ session }) => {
     } catch (error) {
       console.error("Error fetching plans:", error);
       setPlans([]);
+    } finally {
+      setIsLoading(false);
     }
   }, []);
 
@@ -111,9 +86,6 @@ const PlanList = ({ session }) => {
         page++;
       }
 
-      console.log(
-        `Fetched ${allCompletedPlans.length} completed plans from the database`
-      );
       const completedPlanIds = allCompletedPlans.reduce((acc, item) => {
         acc[item.plan_id] = true;
         return acc;
@@ -131,19 +103,6 @@ const PlanList = ({ session }) => {
     fetchPlans();
     fetchCompletedPlans();
   }, [fetchPlans, fetchCompletedPlans]);
-
-  useEffect(() => {
-    // Initial fetch
-    fetchPlans();
-  
-    // Set up background sync
-    const intervalId = setInterval(() => {
-      fetchPlans();
-    }, 30 * 60 * 1000); // Refresh every 30 minutes
-  
-    // Clean up the interval on component unmount
-    return () => clearInterval(intervalId);
-  }, [fetchPlans]);
 
   const handleCheckboxChange = async (planId, forceValue = null) => {
     const newValue = forceValue !== null ? forceValue : !completedPlans[planId];
@@ -220,26 +179,23 @@ const PlanList = ({ session }) => {
     if (file) {
       setIsUploading(true);
       setUploadProgress(0);
+      setUploadStatus("Uploading...");
       const reader = new FileReader();
       reader.onload = async (e) => {
         try {
           const uploadedPlanIds = JSON.parse(e.target.result);
-          console.log(`Total plans to upload: ${uploadedPlanIds.length}`);
           const newCompletedPlans = { ...completedPlans };
 
           if (session) {
             const batchSize = 1000;
-            let totalUploaded = 0;
+            const totalPlans = uploadedPlanIds.length;
 
             for (let i = 0; i < uploadedPlanIds.length; i += batchSize) {
               const batch = uploadedPlanIds.slice(
                 i,
                 Math.min(i + batchSize, uploadedPlanIds.length)
               );
-              console.log(
-                `Processing batch: ${i / batchSize + 1}, Size: ${batch.length}`
-              );
-              const { data, error } = await supabase
+              const { error } = await supabase
                 .from("completed_plans")
                 .upsert(
                   batch.map((planId) => ({
@@ -247,34 +203,19 @@ const PlanList = ({ session }) => {
                     plan_id: planId,
                   })),
                   { onConflict: ["user_id", "plan_id"], ignoreDuplicates: true }
-                )
-                .select();
-
-              if (error) {
-                console.error("Error in batch upload:", error);
-                throw error;
-              } else {
-                totalUploaded += data.length;
-                console.log(
-                  `Batch uploaded. Total uploaded so far: ${totalUploaded}`
                 );
 
-                // Update newCompletedPlans after each successful batch
-                batch.forEach((planId) => {
-                  newCompletedPlans[planId] = true;
-                });
+              if (error) {
+                throw error;
               }
 
-              // Update progress
-              const progress = Math.round(
-                ((i + batch.length) / uploadedPlanIds.length) * 100
-              );
+              batch.forEach((planId) => {
+                newCompletedPlans[planId] = true;
+              });
+
+              const progress = Math.round(((i + batch.length) / totalPlans) * 100);
               setUploadProgress(progress);
             }
-
-            console.log(
-              `Upload complete. Total plans uploaded: ${totalUploaded}`
-            );
           } else {
             uploadedPlanIds.forEach((id) => {
               newCompletedPlans[id] = true;
@@ -283,24 +224,27 @@ const PlanList = ({ session }) => {
               "completedPlans",
               JSON.stringify(newCompletedPlans)
             );
+            setUploadProgress(100);
           }
 
-          // Set a small delay before updating state and closing overlay
+          setCompletedPlans(newCompletedPlans);
+          setUploadStatus("Upload complete. All plans have been added.");
+
           setTimeout(() => {
-            setCompletedPlans(newCompletedPlans);
             setIsUploading(false);
             setUploadProgress(0);
-            alert("Upload complete. All plans have been added.");
-          }, 1000); // 1 second delay
+            setUploadStatus("");
+          }, 3000);
 
-          await fetchCompletedPlans(); // Refetch to ensure sync with database
+          await fetchCompletedPlans();
         } catch (error) {
           console.error("Error during upload:", error);
-          alert(
-            "An error occurred during the upload. Please check the console for details."
-          );
-          setIsUploading(false);
-          setUploadProgress(0);
+          setUploadStatus("An error occurred during the upload. Please try again.");
+          setTimeout(() => {
+            setIsUploading(false);
+            setUploadProgress(0);
+            setUploadStatus("");
+          }, 3000);
         }
       };
       reader.readAsText(file);
@@ -332,22 +276,16 @@ const PlanList = ({ session }) => {
           obtainable,
         } = plan;
 
-        const category =
-          obtainable === true || obtainable === "true"
-            ? "obtainable"
-            : "unobtainable";
+        const category = obtainable === true || obtainable === "true" ? "obtainable" : "unobtainable";
         if (obtainable === true) {
           totalObtainable++;
         } else {
           totalUnobtainable++;
         }
 
-        if (!organized[category][item_type])
-          organized[category][item_type] = {};
-        if (!organized[category][item_type][item_name])
-          organized[category][item_type][item_name] = {};
-        if (!organized[category][item_type][item_name][section])
-          organized[category][item_type][item_name][section] = [];
+        if (!organized[category][item_type]) organized[category][item_type] = {};
+        if (!organized[category][item_type][item_name]) organized[category][item_type][item_name] = {};
+        if (!organized[category][item_type][item_name][section]) organized[category][item_type][item_name][section] = [];
 
         organized[category][item_type][item_name][section].push({
           name,
@@ -376,10 +314,6 @@ const PlanList = ({ session }) => {
           (plan.obtainable === false || plan.obtainable === "false") &&
           completedPlans[plan.plan_id]
       ).length;
-
-      console.log(
-        `Calculated completed plans: Obtainable - ${obtainable}, Unobtainable - ${unobtainable}`
-      );
 
       return {
         completedObtainablePlans: obtainable,
@@ -429,12 +363,12 @@ const PlanList = ({ session }) => {
 
   return (
     <div className="plan-list">
-      <div className={`content-wrapper ${isUploading ? "blurred" : ""}`}>
+      <div className={`content-wrapper ${isLoading || isUploading ? "blurred" : ""}`}>
         <div className="button-container">
           <button
             onClick={handleDownload}
             className="custom-button"
-            disabled={isUploading}
+            disabled={isLoading || isUploading}
           >
             Download Progress
           </button>
@@ -443,13 +377,13 @@ const PlanList = ({ session }) => {
               type="file"
               onChange={handleUpload}
               accept=".json"
-              disabled={isUploading}
+              disabled={isLoading || isUploading}
             />
             Upload Progress
           </label>
-          {isUploading && (
+          {(isUploading || uploadStatus) && (
             <span className="loading-indicator">
-              Uploading... Please don't refresh the page.
+              {uploadStatus || "Uploading... Please don't refresh the page."}
             </span>
           )}
         </div>
@@ -488,7 +422,7 @@ const PlanList = ({ session }) => {
               onChange={handleHideCompletedChange}
               className="hide-completed-checkbox"
             />
-            Hide Completed
+Hide Completed
           </label>
         </div>
         {["obtainable", "unobtainable"].map((category) => (
@@ -560,11 +494,21 @@ const PlanList = ({ session }) => {
           </div>
         ))}
       </div>
+      {isLoading && (
+        <div className="upload-overlay">
+          <div className="upload-message">
+            <h3>Loading Plans</h3>
+            <p>Please wait while we fetch the plans. This may take a few moments.</p>
+            <progress value={loadingProgress} max="100"></progress>
+            <p>{loadingProgress}% Complete</p>
+          </div>
+        </div>
+      )}
       {isUploading && (
         <div className="upload-overlay">
           <div className="upload-message">
             <h3>Uploading Progress</h3>
-            <p>Please don't refresh the page. This may take a few moments.</p>
+            <p>{uploadStatus || "Please don't refresh the page. This may take a few moments."}</p>
             <progress value={uploadProgress} max="100"></progress>
             <p>{uploadProgress}% Complete</p>
           </div>

@@ -607,6 +607,11 @@ input[type="file"] {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
+.upload-message progress {
+  width: 100%;
+  margin-top: 10px;
+}
+
 .search-container {
   margin-bottom: 10px;
 }
@@ -880,6 +885,91 @@ input[type="file"] {
 
 .rarity-filter-checkbox {
   margin-right: 5px;
+}
+/* Add these styles to your existing admin panel styles in App.css */
+
+.admin-panel {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.csv-upload {
+  margin-bottom: 20px;
+}
+
+.csv-upload button {
+  padding: 10px 20px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.csv-upload button:hover {
+  background-color: var(--border-color);
+}
+
+.csv-changes-preview {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.csv-changes-preview h3 {
+  margin-bottom: 15px;
+}
+
+.csv-changes-preview table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.csv-changes-preview th,
+.csv-changes-preview td {
+  border: 1px solid var(--border-color);
+  padding: 10px;
+  text-align: left;
+}
+
+.csv-changes-preview th {
+  background-color: var(--background-color);
+  font-weight: bold;
+}
+
+.csv-changes-preview tr:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.csv-changes-preview .field-comparison {
+  display: flex;
+  flex-direction: column;
+}
+
+.csv-changes-preview .current-value {
+  color: var(--text-color);
+}
+
+.csv-changes-preview .new-value {
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+.csv-changes-preview button {
+  padding: 10px 20px;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.csv-changes-preview button:hover {
+  background-color: var(--border-color);
 }
 
 @media (max-width: 768px) {

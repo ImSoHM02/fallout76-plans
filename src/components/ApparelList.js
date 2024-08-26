@@ -1,14 +1,8 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { supabase } from "../supabaseClient";
 
-// Name mappings object
-const nameMappings = {
-  // Add mappings as needed, e.g.:
-  // "Asylum Worker Uniform Forrest": "Asylum Worker Uniform Forest",
-};
-
 // Composite ID function
-const createCompositeId = (item) => {
+const createCompositeId = (item, nameMappings) => {
   let name = item.outfit_name;
   if (nameMappings[name]) {
     name = nameMappings[name];
@@ -61,42 +55,87 @@ const ApparelList = ({ session }) => {
   const [apparel, setApparel] = useState([]);
   const [completedApparel, setCompletedApparel] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadingProgress, setLoadingProgress] = useState(0);
   const [isUploading, setIsUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
   const [hideCompleted, setHideCompleted] = useState(false);
+  const [uploadStatus, setUploadStatus] = useState("");
   const [rarityFilters, setRarityFilters] = useState({
     common: true,
     uncommon: true,
     rare: true,
     'ultra rare': true
   });
+  const [nameMappings, setNameMappings] = useState({});
+
+  const fetchNameMappings = useCallback(async () => {
+    const { data, error } = await supabase
+      .from('name_mappings')
+      .select('*');
+
+    if (error) {
+      console.error("Error fetching name mappings:", error);
+    } else {
+      const mappings = data.reduce((acc, mapping) => {
+        acc[mapping.old_name] = mapping.new_name;
+        return acc;
+      }, {});
+      setNameMappings(mappings);
+    }
+  }, []);
 
   const fetchApparel = useCallback(async () => {
+    setIsLoading(true);
+    setLoadingProgress(0);
     try {
-      console.log("Fetching apparel data...");
-      const { data, error } = await supabase
-        .from("apparel")
-        .select("*")
-        .order("type", { ascending: true })
-        .order("outfit_name", { ascending: true });
+      const cachedApparel = localStorage.getItem("cachedApparel");
+      const cacheTimestamp = localStorage.getItem("apparelCacheTimestamp");
+      const cacheAge = Date.now() - parseInt(cacheTimestamp || "0");
 
-      if (error) {
-        throw error;
+      if (cachedApparel && cacheAge < 60 * 60 * 1000) { // 1 hour cache
+        setApparel(JSON.parse(cachedApparel));
+        setIsLoading(false);
+        return;
       }
 
-      // Apply name mappings to fetched data
-      const updatedData = data.map(item => ({
+      let allApparel = [];
+      let page = 0;
+      const pageSize = 1000;
+      let hasMore = true;
+
+      while (hasMore) {
+        const { data, error, count } = await supabase
+          .from("apparel")
+          .select("*", { count: "exact" })
+          .range(page * pageSize, (page + 1) * pageSize - 1)
+          .order("type", { ascending: true })
+          .order("outfit_name", { ascending: true });
+
+        if (error) throw error;
+
+        allApparel = [...allApparel, ...data];
+        hasMore = count > (page + 1) * pageSize;
+        page++;
+
+        setLoadingProgress(Math.round((allApparel.length / count) * 100));
+      }
+
+      const updatedData = allApparel.map(item => ({
         ...item,
         outfit_name: nameMappings[item.outfit_name] || item.outfit_name
       }));
 
-      console.log("Fetched apparel data:", updatedData);
       setApparel(updatedData);
+      localStorage.setItem("cachedApparel", JSON.stringify(updatedData));
+      localStorage.setItem("apparelCacheTimestamp", Date.now().toString());
     } catch (error) {
       console.error("Error fetching apparel:", error);
       setApparel([]);
+    } finally {
+      setIsLoading(false);
     }
-  }, []);
+  }, [nameMappings]);
 
   const fetchCompletedApparel = useCallback(async () => {
     if (session) {
@@ -117,22 +156,14 @@ const ApparelList = ({ session }) => {
     } else {
       const savedCompletedApparel = localStorage.getItem("completedApparel");
       if (savedCompletedApparel) {
-        const savedData = JSON.parse(savedCompletedApparel);
-        const newCompletedApparel = {};
-        apparel.forEach(item => {
-          const compositeId = createCompositeId(item);
-          if (savedData[compositeId]) {
-            newCompletedApparel[item.a_id] = true;
-          }
-        });
-        setCompletedApparel(newCompletedApparel);
+        setCompletedApparel(JSON.parse(savedCompletedApparel));
       }
     }
-  }, [session, apparel]);
+  }, [session]);
 
   useEffect(() => {
-    fetchApparel();
-  }, [fetchApparel]);
+    fetchNameMappings().then(() => fetchApparel());
+  }, [fetchNameMappings, fetchApparel]);
 
   useEffect(() => {
     fetchCompletedApparel();
@@ -160,7 +191,7 @@ const ApparelList = ({ session }) => {
     } else {
       const savedData = {};
       apparel.forEach(item => {
-        const compositeId = createCompositeId(item);
+        const compositeId = createCompositeId(item, nameMappings);
         if (newCompletedApparel[item.a_id]) {
           savedData[compositeId] = true;
         }
@@ -193,7 +224,7 @@ const ApparelList = ({ session }) => {
     if (!session) {
       const savedData = {};
       apparel.forEach(item => {
-        const compositeId = createCompositeId(item);
+        const compositeId = createCompositeId(item, nameMappings);
         if (newCompletedApparel[item.a_id]) {
           savedData[compositeId] = true;
         }
@@ -205,7 +236,7 @@ const ApparelList = ({ session }) => {
   const handleDownload = () => {
     const completedApparelIds = apparel
       .filter(item => completedApparel[item.a_id])
-      .map(item => createCompositeId(item));
+      .map(item => createCompositeId(item, nameMappings));
     const dataStr = JSON.stringify(completedApparelIds);
     const dataUri = "data:application/json;charset=utf-8," + encodeURIComponent(dataStr);
 
@@ -222,6 +253,7 @@ const ApparelList = ({ session }) => {
     if (file) {
       setIsUploading(true);
       setUploadProgress(0);
+      setUploadStatus("Uploading...");
       const reader = new FileReader();
       reader.onload = async (e) => {
         try {
@@ -230,7 +262,7 @@ const ApparelList = ({ session }) => {
           const newCompletedApparel = { ...completedApparel };
 
           apparel.forEach(item => {
-            const compositeId = createCompositeId(item);
+            const compositeId = createCompositeId(item, nameMappings);
             if (uploadedCompositeIds.includes(compositeId)) {
               newCompletedApparel[item.a_id] = true;
             }
@@ -238,11 +270,11 @@ const ApparelList = ({ session }) => {
 
           if (session) {
             const batchSize = 1000;
-            let totalUploaded = 0;
+            const totalItems = Object.keys(newCompletedApparel).length;
 
-            for (let i = 0; i < Object.keys(newCompletedApparel).length; i += batchSize) {
+            for (let i = 0; i < totalItems; i += batchSize) {
               const batch = Object.entries(newCompletedApparel).slice(i, i + batchSize);
-              const { data, error } = await supabase
+              const { error } = await supabase
                 .from("completed_apparel")
                 .upsert(
                   batch.map(([a_id, completed]) => ({
@@ -254,36 +286,41 @@ const ApparelList = ({ session }) => {
                 );
 
               if (error) {
-                console.error("Error in batch upload:", error);
                 throw error;
-              } else {
-                totalUploaded += data.length;
-                console.log(`Batch uploaded. Total uploaded so far: ${totalUploaded}`);
               }
 
-              const progress = Math.round(((i + batch.length) / Object.keys(newCompletedApparel).length) * 100);
+              const progress = Math.round(((i + batch.length) / totalItems) * 100);
               setUploadProgress(progress);
             }
           } else {
             const savedData = {};
             apparel.forEach(item => {
-              const compositeId = createCompositeId(item);
+              const compositeId = createCompositeId(item, nameMappings);
               if (newCompletedApparel[item.a_id]) {
                 savedData[compositeId] = true;
               }
             });
             localStorage.setItem("completedApparel", JSON.stringify(savedData));
+            setUploadProgress(100);
           }
 
           setCompletedApparel(newCompletedApparel);
-          setIsUploading(false);
-          setUploadProgress(100);
-          alert("Upload complete. Your progress has been updated.");
+          setUploadStatus("Upload complete. Your progress has been updated.");
+          
+          setTimeout(() => {
+            setIsUploading(false);
+            setUploadProgress(0);
+            setUploadStatus("");
+          }, 3000);
+
         } catch (error) {
           console.error("Error during upload:", error);
-          setIsUploading(false);
-          setUploadProgress(0);
-          alert("An error occurred during the upload. Please check the console for details.");
+          setUploadStatus("An error occurred during the upload. Please try again.");
+          setTimeout(() => {
+            setIsUploading(false);
+            setUploadProgress(0);
+            setUploadStatus("");
+          }, 3000);
         }
       };
       reader.readAsText(file);
@@ -341,12 +378,12 @@ const ApparelList = ({ session }) => {
 
   return (
     <div className="plan-list">
-      <div className={`content-wrapper ${isUploading ? "blurred" : ""}`}>
+      <div className={`content-wrapper ${isLoading || isUploading ? "blurred" : ""}`}>
         <div className="button-container">
           <button
             onClick={handleDownload}
             className="custom-button"
-            disabled={isUploading}
+            disabled={isLoading || isUploading}
           >
             Download Progress
           </button>
@@ -355,13 +392,13 @@ const ApparelList = ({ session }) => {
               type="file"
               onChange={handleUpload}
               accept=".json"
-              disabled={isUploading}
+              disabled={isLoading || isUploading}
             />
             Upload Progress
           </label>
-          {isUploading && (
+          {(isUploading || uploadStatus) && (
             <span className="loading-indicator">
-              Uploading... Please don't refresh the page.
+              {uploadStatus || "Uploading... Please don't refresh the page."}
             </span>
           )}
         </div>
@@ -436,11 +473,6 @@ const ApparelList = ({ session }) => {
                     {item.craftable && (
                       <span className="apparel-symbol craftable-symbol"> [CR]</span>
                     )}
-                    {item.rarity && (
-                      <span 
-                        className="apparel-symbol rarity-symbol"
-                      > [{item.rarity}]</span>
-                    )}
                   </span>
                 </label>
               </div>
@@ -448,11 +480,21 @@ const ApparelList = ({ session }) => {
           </CollapsibleItem>
         ))}
       </div>
+      {isLoading && (
+        <div className="upload-overlay">
+          <div className="upload-message">
+            <h3>Loading Apparel</h3>
+            <p>Please wait while we fetch the apparel. This may take a few moments.</p>
+            <progress value={loadingProgress} max="100"></progress>
+            <p>{loadingProgress}% Complete</p>
+          </div>
+        </div>
+      )}
       {isUploading && (
         <div className="upload-overlay">
           <div className="upload-message">
             <h3>Uploading Progress</h3>
-            <p>Please don't refresh the page. This may take a few moments.</p>
+            <p>{uploadStatus || "Please don't refresh the page. This may take a few moments."}</p>
             <progress value={uploadProgress} max="100"></progress>
             <p>{uploadProgress}% Complete</p>
           </div>
