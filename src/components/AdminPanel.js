@@ -1,53 +1,118 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { supabase } from '../supabaseClient';
+import { Navigate } from 'react-router-dom';
 
-const AdminPanel = ({ session }) => {
-  const [apparel, setApparel] = useState([]);
+const GenericAdminPanel = ({ session }) => {
+  const [isAuthorized, setIsAuthorized] = useState(false);
+  const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [loadingMessage, setLoadingMessage] = useState('');
   const [loadingProgress, setLoadingProgress] = useState(0);
   const [csvFile, setCsvFile] = useState(null);
   const [csvChanges, setCsvChanges] = useState([]);
+  const [databaseType, setDatabaseType] = useState('apparel');
+  const [error, setError] = useState(null);
   const fileInputRef = useRef(null);
 
-  const fetchApparel = useCallback(async () => {
-    setIsLoading(true);
-    setLoadingMessage('Loading Apparel Data');
-    setLoadingProgress(0);
-
-    let allApparel = [];
-    let page = 0;
-    const pageSize = 1000;
-    let hasMore = true;
-
-    while (hasMore) {
-      const { data, error, count } = await supabase
-        .from('apparel')
-        .select('*', { count: 'exact' })
-        .range(page * pageSize, (page + 1) * pageSize - 1)
-        .order('a_id', { ascending: true });
-
-      if (error) {
-        console.error('Error fetching apparel:', error);
+  useEffect(() => {
+    const checkAuthorization = async () => {
+      if (!session) {
+        setIsAuthorized(false);
         setIsLoading(false);
         return;
       }
 
-      allApparel = [...allApparel, ...data];
-      hasMore = count > (page + 1) * pageSize;
-      page++;
+      const { data: { user } } = await supabase.auth.getUser();
+      const currentUserUUID = user?.id;
 
-      setLoadingProgress(Math.round((allApparel.length / count) * 100));
+      const adminUUID = process.env.REACT_APP_ADMIN_UUID;
+      const additionalAdminUUIDs = process.env.REACT_APP_ADDITIONAL_ADMIN_UUIDS?.split(',') || [];
+
+      if (currentUserUUID === adminUUID || additionalAdminUUIDs.includes(currentUserUUID)) {
+        setIsAuthorized(true);
+      } else {
+        setIsAuthorized(false);
+      }
+
+      setIsLoading(false);
+    };
+
+    checkAuthorization();
+  }, [session]);
+
+  const getConfig = useCallback(() => {
+    const configs = {
+      apparel: {
+        tableName: 'apparel',
+        idField: 'a_id',
+        displayName: 'Apparel',
+        fieldsToDisplay: ['a_id', 'outfit_name', 'craftable', 'plan_name', 'rarity', 'type'],
+      },
+      plan: {
+        tableName: 'plans',
+        idField: 'plan_id',
+        displayName: 'Plan',
+        fieldsToDisplay: ['plan_id', 'item_type', 'item_name', 'section', 'name', 'location', 'obtainable'],
+      },
+    };
+    return configs[databaseType];
+  }, [databaseType]);
+
+  const fetchData = useCallback(async () => {
+    const config = getConfig();
+    setIsLoading(true);
+    setLoadingMessage(`Loading ${config.displayName} Data`);
+    setLoadingProgress(0);
+    setError(null);
+
+    try {
+      let allData = [];
+      let page = 0;
+      const pageSize = 1000;
+      let hasMore = true;
+
+      while (hasMore) {
+        const { data, error, count } = await supabase
+          .from(config.tableName)
+          .select('*', { count: 'exact' })
+          .range(page * pageSize, (page + 1) * pageSize - 1)
+          .order(config.idField, { ascending: true });
+
+        if (error) {
+          console.error(`Error fetching ${config.displayName.toLowerCase()}:`, error);
+          setError(`Error fetching ${config.displayName} data: ${error.message}. This might be a permissions issue.`);
+          setIsLoading(false);
+          return;
+        }
+
+        if (!data || data.length === 0) {
+          setError(`No ${config.displayName.toLowerCase()} data found. This might be due to an empty table or insufficient permissions.`);
+          setIsLoading(false);
+          return;
+        }
+
+        allData = [...allData, ...data];
+        hasMore = count > (page + 1) * pageSize;
+        page++;
+
+        setLoadingProgress(Math.round((allData.length / count) * 100));
+      }
+
+      setData(allData);
+      setLoadingProgress(100);
+    } catch (error) {
+      console.error(`Unexpected error while fetching ${config.displayName.toLowerCase()}:`, error);
+      setError(`An unexpected error occurred while fetching ${config.displayName} data. Please check the console for more details.`);
+    } finally {
+      setIsLoading(false);
     }
-
-    setApparel(allApparel);
-    setLoadingProgress(100);
-    setIsLoading(false);
-  }, []);
+  }, [getConfig]);
 
   useEffect(() => {
-    fetchApparel();
-  }, [fetchApparel]);
+    if (isAuthorized) {
+      fetchData();
+    }
+  }, [fetchData, isAuthorized]);
 
   const handleCsvButtonClick = (event) => {
     event.preventDefault();
@@ -57,113 +122,139 @@ const AdminPanel = ({ session }) => {
   const handleCsvUpload = (event) => {
     const file = event.target.files[0];
     if (!file) return;
-    
+
     setCsvFile(file);
+    setError(null);
 
     const reader = new FileReader();
     reader.onload = (e) => {
-      const csv = e.target.result;
-      const lines = csv.split('\n');
-      const headers = lines[0].split(',').map(header => header.trim());
-      const changes = [];
+      try {
+        const csv = e.target.result;
+        const lines = csv.split('\n');
+        const headers = lines[0].split(',').map(header => header.trim());
+        const changes = [];
 
-      for (let i = 1; i < lines.length; i++) {
-        const values = lines[i].split(',');
-        if (values.length === headers.length) {
-          const change = {};
-          headers.forEach((header, index) => {
-            const value = values[index].trim();
-            change[header] = value === '' ? null : value;
-          });
-          changes.push(change);
+        for (let i = 1; i < lines.length; i++) {
+          const values = lines[i].split(',');
+          if (values.length === headers.length) {
+            const change = {};
+            headers.forEach((header, index) => {
+              const value = values[index].trim();
+              change[header] = value === '' ? null : value;
+            });
+            changes.push(change);
+          }
         }
+
+        const config = getConfig();
+        const newAndModifiedItems = changes.filter(change => {
+          const existingItem = data.find(item => String(item[config.idField]) === String(change[config.idField]));
+          if (!existingItem) {
+            return true; // New item
+          }
+          // Check if any fields are different
+          return Object.keys(change).some(key => String(change[key]) !== String(existingItem[key]));
+        });
+
+        if (newAndModifiedItems.length === 0) {
+          setError("No new or modified items found in the CSV file.");
+        } else {
+          setCsvChanges(newAndModifiedItems);
+        }
+      } catch (error) {
+        console.error('Error processing CSV file:', error);
+        setError(`Error processing CSV file: ${error.message}`);
       }
+    };
 
-      const filteredChanges = changes.filter(change => {
-        const currentApparel = apparel.find(item => item.a_id === parseInt(change.a_id));
-        if (!currentApparel) return false;
-        return Object.keys(change).some(key => 
-          key !== 'a_id' && String(change[key]) !== String(currentApparel[key])
-        );
-      });
-
-      setCsvChanges(filteredChanges);
+    reader.onerror = (error) => {
+      console.error('Error reading CSV file:', error);
+      setError(`Error reading CSV file: ${error.message}`);
     };
 
     reader.readAsText(file);
   };
 
   const applyCsvChanges = async () => {
+    const config = getConfig();
     setIsLoading(true);
-    setLoadingMessage('Applying CSV Changes');
+    setLoadingMessage(`Updating ${config.displayName} Database`);
     setLoadingProgress(0);
+    setError(null);
 
     const totalChanges = csvChanges.length;
     let completedChanges = 0;
+    let errorOccurred = false;
 
-    for (const change of csvChanges) {
-      const { error } = await supabase
-        .from('apparel')
-        .upsert([change]);
+    for (const item of csvChanges) {
+      const existingItem = data.find(dataItem => String(dataItem[config.idField]) === String(item[config.idField]));
+      let result;
 
-      if (error) {
-        console.error('Error updating apparel:', error);
+      if (existingItem) {
+        // Update existing item
+        result = await supabase
+          .from(config.tableName)
+          .update(item)
+          .eq(config.idField, item[config.idField]);
+      } else {
+        // Insert new item
+        result = await supabase
+          .from(config.tableName)
+          .insert([item]);
+      }
+
+      if (result.error) {
+        console.error(`Error updating/adding ${config.displayName.toLowerCase()}:`, result.error);
+        setError(`Error updating/adding ${config.displayName}: ${result.error.message}. This might be a permissions issue.`);
+        errorOccurred = true;
+        break;
       } else {
         completedChanges++;
         setLoadingProgress(Math.round((completedChanges / totalChanges) * 100));
       }
     }
 
-    // Update name mappings
-    const nameChanges = csvChanges.filter(change => 
-      change.outfit_name && change.outfit_name !== apparel.find(item => item.a_id === change.a_id)?.outfit_name
-    );
-
-    if (nameChanges.length > 0) {
-      setLoadingMessage('Updating Name Mappings');
-      await updateNameMappings(nameChanges);
+    if (!errorOccurred) {
+      setCsvChanges([]);
+      setCsvFile(null);
+      await fetchData();
     }
-
-    setCsvChanges([]);
-    setCsvFile(null);
-    await fetchApparel();
 
     setIsLoading(false);
   };
 
-  const updateNameMappings = async (changes) => {
-    const mappingsToUpdate = changes
-      .filter(change => change.outfit_name && change.a_id)
-      .map(change => {
-        const currentApparel = apparel.find(item => item.a_id === change.a_id);
-        return {
-          old_name: currentApparel?.outfit_name,
-          new_name: change.outfit_name
-        };
-      })
-      .filter(mapping => mapping.old_name && mapping.new_name && mapping.old_name !== mapping.new_name);
+  if (isLoading && !isAuthorized) {
+    return <div>Loading...</div>;
+  }
 
-    if (mappingsToUpdate.length === 0) {
-      console.log('No valid name mappings to update');
-      return;
-    }
-
-    const { data, error } = await supabase
-      .from('name_mappings')
-      .upsert(mappingsToUpdate, { onConflict: ['old_name'] });
-
-    if (error) {
-      console.error('Error updating name mappings:', error);
-    } else {
-      console.log('Name mappings updated successfully:', data);
-    }
-  };
-
-  const fieldsToDisplay = ['a_id', 'outfit_name', 'craftable', 'plan_name', 'rarity', 'type'];
+  if (!isAuthorized) {
+    return <Navigate to="/" replace />;
+  }
 
   return (
     <div className="admin-panel">
-      <h2>Apparel Database CSV Update</h2>
+      <h2>{getConfig().displayName} Database CSV Update</h2>
+      <div className="database-selector">
+        <label>
+          <input
+            type="radio"
+            value="apparel"
+            checked={databaseType === 'apparel'}
+            onChange={() => setDatabaseType('apparel')}
+          />
+          Apparel Database
+        </label>
+        <label>
+          <input
+            type="radio"
+            value="plan"
+            checked={databaseType === 'plan'}
+            onChange={() => setDatabaseType('plan')}
+          />
+          Plan Database
+        </label>
+      </div>
+      {error && <div className="error-message">{error}</div>}
       <div className={`content-wrapper ${isLoading ? "blurred" : ""}`}>
         <div className="csv-upload">
           <input 
@@ -180,49 +271,30 @@ const AdminPanel = ({ session }) => {
         </div>
         {csvChanges.length > 0 && (
           <div className="csv-changes-preview">
-            <h3>CSV Changes Preview</h3>
+            <h3>New and Modified Items Preview</h3>
             <table>
               <thead>
                 <tr>
-                  {fieldsToDisplay.map(field => (
+                  {getConfig().fieldsToDisplay.map(field => (
                     <th key={field}>{field}</th>
                   ))}
                 </tr>
               </thead>
               <tbody>
-                {csvChanges.map(change => {
-                  const currentApparel = apparel.find(item => item.a_id === parseInt(change.a_id));
-                  return (
-                    <tr key={change.a_id}>
-                      {fieldsToDisplay.map(field => (
-                        <td key={field}>
-                          <div className="field-comparison">
-                            <span className="current-value">
-                              {currentApparel[field] !== null
-                                ? String(currentApparel[field])
-                                : 'NULL'}
-                            </span>
-                            {String(change[field]) !== String(currentApparel[field]) && (
-                              <span className="new-value">
-                                {change[field] !== null && change[field] !== undefined
-                                  ? String(change[field])
-                                  : 'NULL'}
-                              </span>
-                            )}
-                            {field === 'outfit_name' && String(change[field]) !== String(currentApparel[field]) && (
-                              <span className="mapping-update">
-                                (Mapping will be updated)
-                              </span>
-                            )}
-                          </div>
-                        </td>
-                      ))}
-                    </tr>
-                  );
-                })}
+                {csvChanges.map(newItem => (
+                  <tr key={newItem[getConfig().idField]}>
+                    {getConfig().fieldsToDisplay.map(field => (
+                      <td key={field}>
+                        {newItem[field] !== null && newItem[field] !== undefined
+                          ? String(newItem[field])
+                          : 'NULL'}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
               </tbody>
             </table>
-            <button onClick={applyCsvChanges}>Apply CSV Changes</button>
+            <button onClick={applyCsvChanges}>Apply Changes</button>
           </div>
         )}
       </div>
@@ -240,4 +312,4 @@ const AdminPanel = ({ session }) => {
   );
 };
 
-export default AdminPanel;
+export default GenericAdminPanel;

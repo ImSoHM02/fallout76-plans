@@ -3089,124 +3089,124 @@ plan_id,item_type,item_name,section,name,location,obtainable
 3108,Tinker,All,Ultracite Ammo,Ultracite Plasma Core,Prime Receivers: Gatling Plasma,true
 3109,Tinker,All,Ultracite Ammo,Ultracite Railway Spike,Prime Receiver: Railway Rifle,true
 3110,Tinker,All,Ultracite Ammo,Ultracite Shotgun Shell,Prime Receivers: Combat Shotgun/Double-Barrel Shotgun Pump Action Shotgun,true
-3111,Weapons,,Melee,Assultron Blade,Sold by Freestates & Watoga Vendors,true
-3112,Weapons,,Melee,Auto-Axe,Sold by Giuseppe,true
-3113,Weapons,,Melee,Baseball Bat,Sold by Responder Vendors,true
-3114,Weapons,,Melee,Bear Arm,Event: Project Paradise Mutated Event Packages/Blade of Bastet | Quest: Forging a Legend,true
-3115,Weapons,,Melee,Bowie Knife,Sold by Raider Vendors,true
-3116,Weapons,,Melee,Boxing Glove,Sold by Responder Vendors 175 Caps,true
-3117,Weapons,,Melee,Cattle Prod,Sold by Samuel (Cautious) & Minerva (Lists 1/4/17/20),true
-3118,Weapons,,Melee,Chinese Officer Sword,Random Weapon Plans: Toxic Valley  | Sold By Grahm,true
-3119,Weapons,,Melee,Cultist Blade,Sold by Free States & Watoga Vendors,true
-3120,Weapons,,Melee,Cultist Dagger,Sold by Free States & Watoga Vendors,true
-3121,Weapons,,Melee,Death Tambo,Sold by Free States & Watoga Vendors,true
-3122,Weapons,,Melee,Deathclaw Gauntlet,Goverment Aid Drops | Safes: Ash Heap | Mutated Event Packages,true
-3123,Weapons,,Melee,Electro Enforcer,Event: Invaders from Beyond,true
-3124,Weapons,,Melee,Face Breaker,Daily Ops (Rare),true
-3125,Weapons,,Melee,Fire Axe,Firebreather & Responder Corpses | Generic Events: Forest | Sold By Grahm,true
-3126,Weapons,,Melee,Gauntlet,Sold by Samuel (Friendly) & Minerva (Lists 10/12/19/20),true
-3127,Weapons,,Melee,Golf Club,Sold by Cunningham (Whitespring),true
-3128,Weapons,,Melee,Replica Grognak's Axe,Event: Test Your Metal,true
-3129,Weapons,,Melee,Guitar Sword,Random Weapon Plans: Savage Divide,true
-3130,Weapons,,Melee,Gulper Smacker,Event: Moonshine Jamboree,true
-3131,Weapons,,Melee,Knuckles,Sold by: Raider Vendors,true
-3132,Weapons,,Melee,Lead Pipe,Generic Events: Forest,true
-3133,Weapons,,Melee,Meat Hook,Random Weapon Plans: Forest | Sold By Grahm & Maul (Ally),true
-3134,Weapons,,Melee,Meat Tenderizer,Event: Grahm's Meat-Cook,true
-3135,Weapons,,Melee,Mechanic's Best Friend,Daily Ops (Rare) | Sold By Minerva (Lists 21/24),true
-3136,Weapons,,Melee,Mole Miner Gauntlet,Dropped from Mole Miners,true
-3137,Weapons,,Melee,Mr. Handy Buzz Blade,Dropped from Mr. Handies,true
-3138,Weapons,,Melee,Wood Axe (Multi-purpose),Sold by Brotherhood & Responder Vendors,true
-3139,Weapons,,Melee,Nuka Shank Knife,Event: Grahm's Meat-Cook,true
-3140,Weapons,,Melee,Pickaxe,Sold by Responder Vendors,true
-3141,Weapons,,Melee,Pipe Wrench,Sold by Responder Vendors,true
-3142,Weapons,,Melee,Pitchfork,Sold by Responder Vendors,true
-3143,Weapons,,Melee,Plasma Cutter,Daily Ops (Rare) | Sold By Minerva (Lists 13/16),true
-3144,Weapons,,Melee,Pole Hook,Random Weapon Plans: Toxic Valley,true
-3145,Weapons,,Melee,Pool Cue,Sold by Responder Vendors,true
-3146,Weapons,,Melee,Power Fist,Sold by Brotherood Vendors,true
-3147,Weapons,,Melee,Revolutionary War Sword,Sold by Filntlock (Whitespring),true
-3148,Weapons,,Melee,Ripper,Random Weapon Plans: Cranberry Bog/Mire | Sold By Grahm,true
-3149,Weapons,,Melee,Rolling Pin,Sold by Responder Vendors,true
-3150,Weapons,,Melee,Baton (Security),Sold by Responder Vendors,true
-3151,Weapons,,Melee,Sheepsquatch Club,Event: Free Range,true
-3152,Weapons,,Melee,Sheepsquatch Staff,Event: Free Range,true
-3153,Weapons,,Melee,Shepherd's Crook,Event: Free Range,true
-3154,Weapons,,Melee,Shishkebab,Random Weapon Plans: Ash Heap/Cranberry Bog/Mire | Sold By Grahm,true
-3155,Weapons,,Melee,Sickle,Sold by Raider Vendors,true
-3156,Weapons,,Melee,Ski Sword,Sold by Free States & Watoga Vendors,true
-3157,Weapons,,Melee,Sledge Hammer,Random Weapon Plans: Toxic Valley | Sold By Grahm,true
-3158,Weapons,,Melee,Spear,Generic Events: Savage Divide | Random Weapon Plans: Savage Divide/Toxic Valley,true
-3159,Weapons,,Melee,Super Sledge,Random Weapon Plans: Cranberry Bog | Sold By Grahm,true
-3160,Weapons,,Melee,Switchblade,Sold by Brotherhood Vendors,true
-3161,Weapons,,Melee,The Gutter,Daily Ops (Rare) | Sold By Minerva (Lists 6/8/22/24),true
-3162,Weapons,,Melee,Tire Iron,Sold by Raider Vendors,true
-3163,Weapons,,Melee,Unstoppable Monster,Daily Ops (Rare) | Sold By Minerva (Lists 10/12),true
-3164,Weapons,,Melee,Walking Cane,Sold by Cunningham,true
-3165,Weapons,,Melee,War Drum,Random Weapon Plans: Ash Heap/Cranberry Bog/Mire,true
-3166,Weapons,,Melee,War Glaive,Daily Ops (Rare) | Sold By Minerva (Lists 1/4/14/16/17/20),true
-3167,Weapons,,Ranged,.44 Revolver,Sold by Raider & Responder Vendors,true
-3168,Weapons,,Ranged,.50 Cal Machine Gun,Sold by Brotherhood & Raider Vendors,true
-3169,Weapons,,Ranged,10mm Pistol,Sold by Responder Vendors,true
-3170,Weapons,,Ranged,10mm Submachine Gun,Sold By Raider Vendors,true
-3171,Weapons,,Ranged,Alien Blaster,Event: Invaders From Beyond,true
-3172,Weapons,,Ranged,Alien Disintegrator,Event: Invaders From Beyond,true
-3173,Weapons,,Ranged,Assault Rifle,Generic Events & Quests: Cranberry Bog/Mire | Mutated Event Packages,true
-3174,Weapons,,Ranged,Assaultron Head,Sold by Brotherhood Vendors,true
-3175,Weapons,,Ranged,Auto Grenade Launcher,Sold by Brotherhood & Raider Vendors,true
-3176,Weapons,,Ranged,Backpowder Pistol,Sold by Flintlock,true
-3177,Weapons,,Ranged,Backpowder Rifle,Sold by Flintlock,true
-3178,Weapons,,Ranged,Bow,Quest: The Elusive Crane | Sold By Ae-Ri (Friendly) & Sunny (Friendly),true
-3179,Weapons,,Ranged,Broadsider,Sold by Free States & Watoga Vendors,true
-3180,Weapons,,Ranged,Brotherhood Recon Rifle,Fort Defiance: Artillery Battery Terminal (Millitary ID Card),true
-3181,Weapons,,Ranged,Circut Breaker,Sold by Giuseppe,true
-3182,Weapons,,Ranged,Combat Shotgun,Sold by Brotherhood Vendors,true
-3183,Weapons,,Ranged,Compound Bow,Sold by Ae-Ri (Ally) & Sunny (Ally),true
-3184,Weapons,,Ranged,Crossbow,Sold by Free States & Watoga Vendors,true
-3185,Weapons,,Ranged,Crusader Pistol,Daily Ops (Rare) | Minerva (Lists 9/12/23/24),true
-3186,Weapons,,Ranged,Cryolater,Sold by Free States & Watoga Vendors,true
-3187,Weapons,,Ranged,Double Barrel Shotgun,Quest: Flavors of Mayhem,true
-3188,Weapons,,Ranged,Fatman,Generic Events & Quests: Cranberry Bog,true
-3189,Weapons,,Ranged,Flamer,Sold by Free States & Watoga Vendors,true
-3190,Weapons,,Ranged,Flare Gun,Sold by Responder Vendors,true
-3191,Weapons,,Ranged,Gamma Gun,Sold by Grahm,true
-3192,Weapons,,Ranged,Gatling Gun,Sold by Brotherhood Vendors,true
-3193,Weapons,,Ranged,Gatling Laser,Sold by Brotherhood Vendors & MODUS Armory Terminal,true
-3194,Weapons,,Ranged,Gatling Plasma,Sold by MODUS Armory Terminal,true
-3195,Weapons,,Ranged,Gauss Minigun,Sold by Mortimer (Ally) | Minerva (Lists 5/8/13/16/21/24),true
-3196,Weapons,,Ranged,Gauss Pistol,Sold by Regs | Minerva (Lists 2/4/18/20),true
-3197,Weapons,,Ranged,Gauss Rifle,Sold by Brotherhood Vendors & MODUS Armory Terminal,true
-3198,Weapons,,Ranged,Gauss Shotgun,Sold by Samuel (Ally) |Minerva (Lists 7/8),true
-3199,Weapons,,Ranged,Handmade Gun,Sold by Free States & Watoga Vendors,true
-3200,Weapons,,Ranged,Harpoon Gun,Sold by Free States & Watoga Vendors,true
-3201,Weapons,,Ranged,Hellstorm Missile Launcher,Daily Ops (Rare) | Sold By Minerva (Lists 10/12),true
-3202,Weapons,,Ranged,Hunting Rifle,Quest: Hunter for Hire | Sold By Responder Vendors,true
-3203,Weapons,,Ranged,Laser Gun,Random Weapon Plans: Forest/Toxic Valley,true
-3204,Weapons,,Ranged,Lever Gun,Sold by Responder Vendors,true
-3205,Weapons,,Ranged,M79 Grenade Launcher,Sold by Raider Vendors,true
-3206,Weapons,,Ranged,MG42 Light Machine Gun,Sold by Responder Vendors,true
-3207,Weapons,,Ranged,Medical Malpractice,Daily Ops (Rare) | Sold By Minerva (Lists 14/16),true
-3208,Weapons,,Ranged,Minigun,Quest: Belly of the Beast,true
-3209,Weapons,,Ranged,Missile Launcher,Quest: Key to the Past,true
-3210,Weapons,,Ranged,Pepper Shaker,Event: Grahm's Meat-Cook,true
-3211,Weapons,,Ranged,Plasma Caster,Sold by Regs | Minerva (Lists 6/8/22/24),true
-3212,Weapons,,Ranged,Plasma Gun,Sold by Brotherhood Vendors,true
-3213,Weapons,,Ranged,Pump-Action Shotgun,Random Weapon Plans: Forest/Toxic Valley,true
-3214,Weapons,,Ranged,Radium Rifle,Sold by Free States & Watoga Vendors,true
-3215,Weapons,,Ranged,Railway Rifle,Sold by Free States & Watoga Vendors/2025 Caps,true
-3216,Weapons,,Ranged,Single-Action Revolver,Sold by Responder Vendors,true
-3217,Weapons,,Ranged,Sole Survivor,Daily Ops (Rare) | Sold By Minerva (Lists 18/20),true
-3218,Weapons,,Ranged,Submachine Gun,Sold by Responder Vendors,true
-3219,Weapons,,Ranged,Tesla Rifle,Sold by Brotherhood Vendors,true
-3220,Weapons,,Ranged,The Fixer,Event: Encryptid (Quest: The Lowe-Down Completed) | Mutated Event Packages,true
-3221,Weapons,,Ranged,Thirst Zapper,Learn from Scrapping Thirst Zapper (Nuka-Cade Prize Terminal Lvl 3),true
-3222,Weapons,,Ranged,Ultracite Gatling Laser,Generic Events & Quests: Cranberry Bog,true
-3223,Weapons,,Ranged,Ultracite Laser Gun,Sold by Brotherhood Vendors,true
-3224,Weapons,,Ranged,Revolver (Western),Sold by Brotherhood & Raider Vendors,true
-3225,Weapons,,Ranged,Whistle In The Dark,Daily Ops (Rare) | Sold By Minerva (Lists 6/8/22/24),true
-3226,Weapons,,Throwing Weapons,Meat Cleaver,Event: Grahm's Meat-Cook,true
-3227,Weapons,,Throwing Weapons,Sheepsquatch Shard,Event: Free Range,true
-3228,Weapons,,Throwing Weapons,Tomahawk,Generic Events & Quests: Forest,true
+3111,Weapons,Weapons,Melee,Assultron Blade,Sold by Freestates & Watoga Vendors,true
+3112,Weapons,Weapons,Melee,Auto-Axe,Sold by Giuseppe,true
+3113,Weapons,Weapons,Melee,Baseball Bat,Sold by Responder Vendors,true
+3114,Weapons,Weapons,Melee,Bear Arm,Event: Project Paradise Mutated Event Packages/Blade of Bastet | Quest: Forging a Legend,true
+3115,Weapons,Weapons,Melee,Bowie Knife,Sold by Raider Vendors,true
+3116,Weapons,Weapons,Melee,Boxing Glove,Sold by Responder Vendors 175 Caps,true
+3117,Weapons,Weapons,Melee,Cattle Prod,Sold by Samuel (Cautious) & Minerva (Lists 1/4/17/20),true
+3118,Weapons,Weapons,Melee,Chinese Officer Sword,Random Weapon Plans: Toxic Valley  | Sold By Grahm,true
+3119,Weapons,Weapons,Melee,Cultist Blade,Sold by Free States & Watoga Vendors,true
+3120,Weapons,Weapons,Melee,Cultist Dagger,Sold by Free States & Watoga Vendors,true
+3121,Weapons,Weapons,Melee,Death Tambo,Sold by Free States & Watoga Vendors,true
+3122,Weapons,Weapons,Melee,Deathclaw Gauntlet,Goverment Aid Drops | Safes: Ash Heap | Mutated Event Packages,true
+3123,Weapons,Weapons,Melee,Electro Enforcer,Event: Invaders from Beyond,true
+3124,Weapons,Weapons,Melee,Face Breaker,Daily Ops (Rare),true
+3125,Weapons,Weapons,Melee,Fire Axe,Firebreather & Responder Corpses | Generic Events: Forest | Sold By Grahm,true
+3126,Weapons,Weapons,Melee,Gauntlet,Sold by Samuel (Friendly) & Minerva (Lists 10/12/19/20),true
+3127,Weapons,Weapons,Melee,Golf Club,Sold by Cunningham (Whitespring),true
+3128,Weapons,Weapons,Melee,Replica Grognak's Axe,Event: Test Your Metal,true
+3129,Weapons,Weapons,Melee,Guitar Sword,Random Weapon Plans: Savage Divide,true
+3130,Weapons,Weapons,Melee,Gulper Smacker,Event: Moonshine Jamboree,true
+3131,Weapons,Weapons,Melee,Knuckles,Sold by: Raider Vendors,true
+3132,Weapons,Weapons,Melee,Lead Pipe,Generic Events: Forest,true
+3133,Weapons,Weapons,Melee,Meat Hook,Random Weapon Plans: Forest | Sold By Grahm & Maul (Ally),true
+3134,Weapons,Weapons,Melee,Meat Tenderizer,Event: Grahm's Meat-Cook,true
+3135,Weapons,Weapons,Melee,Mechanic's Best Friend,Daily Ops (Rare) | Sold By Minerva (Lists 21/24),true
+3136,Weapons,Weapons,Melee,Mole Miner Gauntlet,Dropped from Mole Miners,true
+3137,Weapons,Weapons,Melee,Mr. Handy Buzz Blade,Dropped from Mr. Handies,true
+3138,Weapons,Weapons,Melee,Wood Axe (Multi-purpose),Sold by Brotherhood & Responder Vendors,true
+3139,Weapons,Weapons,Melee,Nuka Shank Knife,Event: Grahm's Meat-Cook,true
+3140,Weapons,Weapons,Melee,Pickaxe,Sold by Responder Vendors,true
+3141,Weapons,Weapons,Melee,Pipe Wrench,Sold by Responder Vendors,true
+3142,Weapons,Weapons,Melee,Pitchfork,Sold by Responder Vendors,true
+3143,Weapons,Weapons,Melee,Plasma Cutter,Daily Ops (Rare) | Sold By Minerva (Lists 13/16),true
+3144,Weapons,Weapons,Melee,Pole Hook,Random Weapon Plans: Toxic Valley,true
+3145,Weapons,Weapons,Melee,Pool Cue,Sold by Responder Vendors,true
+3146,Weapons,Weapons,Melee,Power Fist,Sold by Brotherood Vendors,true
+3147,Weapons,Weapons,Melee,Revolutionary War Sword,Sold by Filntlock (Whitespring),true
+3148,Weapons,Weapons,Melee,Ripper,Random Weapon Plans: Cranberry Bog/Mire | Sold By Grahm,true
+3149,Weapons,Weapons,Melee,Rolling Pin,Sold by Responder Vendors,true
+3150,Weapons,Weapons,Melee,Baton (Security),Sold by Responder Vendors,true
+3151,Weapons,Weapons,Melee,Sheepsquatch Club,Event: Free Range,true
+3152,Weapons,Weapons,Melee,Sheepsquatch Staff,Event: Free Range,true
+3153,Weapons,Weapons,Melee,Shepherd's Crook,Event: Free Range,true
+3154,Weapons,Weapons,Melee,Shishkebab,Random Weapon Plans: Ash Heap/Cranberry Bog/Mire | Sold By Grahm,true
+3155,Weapons,Weapons,Melee,Sickle,Sold by Raider Vendors,true
+3156,Weapons,Weapons,Melee,Ski Sword,Sold by Free States & Watoga Vendors,true
+3157,Weapons,Weapons,Melee,Sledge Hammer,Random Weapon Plans: Toxic Valley | Sold By Grahm,true
+3158,Weapons,Weapons,Melee,Spear,Generic Events: Savage Divide | Random Weapon Plans: Savage Divide/Toxic Valley,true
+3159,Weapons,Weapons,Melee,Super Sledge,Random Weapon Plans: Cranberry Bog | Sold By Grahm,true
+3160,Weapons,Weapons,Melee,Switchblade,Sold by Brotherhood Vendors,true
+3161,Weapons,Weapons,Melee,The Gutter,Daily Ops (Rare) | Sold By Minerva (Lists 6/8/22/24),true
+3162,Weapons,Weapons,Melee,Tire Iron,Sold by Raider Vendors,true
+3163,Weapons,Weapons,Melee,Unstoppable Monster,Daily Ops (Rare) | Sold By Minerva (Lists 10/12),true
+3164,Weapons,Weapons,Melee,Walking Cane,Sold by Cunningham,true
+3165,Weapons,Weapons,Melee,War Drum,Random Weapon Plans: Ash Heap/Cranberry Bog/Mire,true
+3166,Weapons,Weapons,Melee,War Glaive,Daily Ops (Rare) | Sold By Minerva (Lists 1/4/14/16/17/20),true
+3167,Weapons,Weapons,Ranged,.44 Revolver,Sold by Raider & Responder Vendors,true
+3168,Weapons,Weapons,Ranged,.50 Cal Machine Gun,Sold by Brotherhood & Raider Vendors,true
+3169,Weapons,Weapons,Ranged,10mm Pistol,Sold by Responder Vendors,true
+3170,Weapons,Weapons,Ranged,10mm Submachine Gun,Sold By Raider Vendors,true
+3171,Weapons,Weapons,Ranged,Alien Blaster,Event: Invaders From Beyond,true
+3172,Weapons,Weapons,Ranged,Alien Disintegrator,Event: Invaders From Beyond,true
+3173,Weapons,Weapons,Ranged,Assault Rifle,Generic Events & Quests: Cranberry Bog/Mire | Mutated Event Packages,true
+3174,Weapons,Weapons,Ranged,Assaultron Head,Sold by Brotherhood Vendors,true
+3175,Weapons,Weapons,Ranged,Auto Grenade Launcher,Sold by Brotherhood & Raider Vendors,true
+3176,Weapons,Weapons,Ranged,Backpowder Pistol,Sold by Flintlock,true
+3177,Weapons,Weapons,Ranged,Backpowder Rifle,Sold by Flintlock,true
+3178,Weapons,Weapons,Ranged,Bow,Quest: The Elusive Crane | Sold By Ae-Ri (Friendly) & Sunny (Friendly),true
+3179,Weapons,Weapons,Ranged,Broadsider,Sold by Free States & Watoga Vendors,true
+3180,Weapons,Weapons,Ranged,Brotherhood Recon Rifle,Fort Defiance: Artillery Battery Terminal (Millitary ID Card),true
+3181,Weapons,Weapons,Ranged,Circut Breaker,Sold by Giuseppe,true
+3182,Weapons,Weapons,Ranged,Combat Shotgun,Sold by Brotherhood Vendors,true
+3183,Weapons,Weapons,Ranged,Compound Bow,Sold by Ae-Ri (Ally) & Sunny (Ally),true
+3184,Weapons,Weapons,Ranged,Crossbow,Sold by Free States & Watoga Vendors,true
+3185,Weapons,Weapons,Ranged,Crusader Pistol,Daily Ops (Rare) | Minerva (Lists 9/12/23/24),true
+3186,Weapons,Weapons,Ranged,Cryolater,Sold by Free States & Watoga Vendors,true
+3187,Weapons,Weapons,Ranged,Double Barrel Shotgun,Quest: Flavors of Mayhem,true
+3188,Weapons,Weapons,Ranged,Fatman,Generic Events & Quests: Cranberry Bog,true
+3189,Weapons,Weapons,Ranged,Flamer,Sold by Free States & Watoga Vendors,true
+3190,Weapons,Weapons,Ranged,Flare Gun,Sold by Responder Vendors,true
+3191,Weapons,Weapons,Ranged,Gamma Gun,Sold by Grahm,true
+3192,Weapons,Weapons,Ranged,Gatling Gun,Sold by Brotherhood Vendors,true
+3193,Weapons,Weapons,Ranged,Gatling Laser,Sold by Brotherhood Vendors & MODUS Armory Terminal,true
+3194,Weapons,Weapons,Ranged,Gatling Plasma,Sold by MODUS Armory Terminal,true
+3195,Weapons,Weapons,Ranged,Gauss Minigun,Sold by Mortimer (Ally) | Minerva (Lists 5/8/13/16/21/24),true
+3196,Weapons,Weapons,Ranged,Gauss Pistol,Sold by Regs | Minerva (Lists 2/4/18/20),true
+3197,Weapons,Weapons,Ranged,Gauss Rifle,Sold by Brotherhood Vendors & MODUS Armory Terminal,true
+3198,Weapons,Weapons,Ranged,Gauss Shotgun,Sold by Samuel (Ally) |Minerva (Lists 7/8),true
+3199,Weapons,Weapons,Ranged,Handmade Gun,Sold by Free States & Watoga Vendors,true
+3200,Weapons,Weapons,Ranged,Harpoon Gun,Sold by Free States & Watoga Vendors,true
+3201,Weapons,Weapons,Ranged,Hellstorm Missile Launcher,Daily Ops (Rare) | Sold By Minerva (Lists 10/12),true
+3202,Weapons,Weapons,Ranged,Hunting Rifle,Quest: Hunter for Hire | Sold By Responder Vendors,true
+3203,Weapons,Weapons,Ranged,Laser Gun,Random Weapon Plans: Forest/Toxic Valley,true
+3204,Weapons,Weapons,Ranged,Lever Gun,Sold by Responder Vendors,true
+3205,Weapons,Weapons,Ranged,M79 Grenade Launcher,Sold by Raider Vendors,true
+3206,Weapons,Weapons,Ranged,MG42 Light Machine Gun,Sold by Responder Vendors,true
+3207,Weapons,Weapons,Ranged,Medical Malpractice,Daily Ops (Rare) | Sold By Minerva (Lists 14/16),true
+3208,Weapons,Weapons,Ranged,Minigun,Quest: Belly of the Beast,true
+3209,Weapons,Weapons,Ranged,Missile Launcher,Quest: Key to the Past,true
+3210,Weapons,Weapons,Ranged,Pepper Shaker,Event: Grahm's Meat-Cook,true
+3211,Weapons,Weapons,Ranged,Plasma Caster,Sold by Regs | Minerva (Lists 6/8/22/24),true
+3212,Weapons,Weapons,Ranged,Plasma Gun,Sold by Brotherhood Vendors,true
+3213,Weapons,Weapons,Ranged,Pump-Action Shotgun,Random Weapon Plans: Forest/Toxic Valley,true
+3214,Weapons,Weapons,Ranged,Radium Rifle,Sold by Free States & Watoga Vendors,true
+3215,Weapons,Weapons,Ranged,Railway Rifle,Sold by Free States & Watoga Vendors/2025 Caps,true
+3216,Weapons,Weapons,Ranged,Single-Action Revolver,Sold by Responder Vendors,true
+3217,Weapons,Weapons,Ranged,Sole Survivor,Daily Ops (Rare) | Sold By Minerva (Lists 18/20),true
+3218,Weapons,Weapons,Ranged,Submachine Gun,Sold by Responder Vendors,true
+3219,Weapons,Weapons,Ranged,Tesla Rifle,Sold by Brotherhood Vendors,true
+3220,Weapons,Weapons,Ranged,The Fixer,Event: Encryptid (Quest: The Lowe-Down Completed) | Mutated Event Packages,true
+3221,Weapons,Weapons,Ranged,Thirst Zapper,Learn from Scrapping Thirst Zapper (Nuka-Cade Prize Terminal Lvl 3),true
+3222,Weapons,Weapons,Ranged,Ultracite Gatling Laser,Generic Events & Quests: Cranberry Bog,true
+3223,Weapons,Weapons,Ranged,Ultracite Laser Gun,Sold by Brotherhood Vendors,true
+3224,Weapons,Weapons,Ranged,Revolver (Western),Sold by Brotherhood & Raider Vendors,true
+3225,Weapons,Weapons,Ranged,Whistle In The Dark,Daily Ops (Rare) | Sold By Minerva (Lists 6/8/22/24),true
+3226,Weapons,Weapons,Throwing Weapons,Meat Cleaver,Event: Grahm's Meat-Cook,true
+3227,Weapons,Weapons,Throwing Weapons,Sheepsquatch Shard,Event: Free Range,true
+3228,Weapons,Weapons,Throwing Weapons,Tomahawk,Generic Events & Quests: Forest,true
 3229,Paints,,Ranged Weapons,.44 Blue Camo Paint,Event: Holiday Scorched,true
 3230,Paints,,Ranged Weapons,.44 roulette paint,Weekly Expedition Reward: Tax Evasion| Sold By Giuseppe,true
 3231,Paints,,Ranged Weapons,10mm Pistol Hot Rod Shark Paint,Event: Encryptid,true
@@ -3236,19 +3236,19 @@ plan_id,item_type,item_name,section,name,location,obtainable
 3255,Paints,,Melee Weapons,Strongman's Super Sledge Paint,Event: Treasure Hunter,true
 3256,Paints,,Ranged Weapons,Showstopper Shotgun Paint,Weekly Expedition Reward: Tax Evasion | Sold By Giuseppe,true
 3257,Paints,,Ranged Weapons,Vault-Tec Weapon Loadout Paints,Sold by June Seaver,true
-3258,Legacy Plans,,Removed From Game,Display Cases,N/A,false
-3259,Legacy Plans,,Removed From Game,Mounted Antlers,N/A,false
-3260,Legacy Plans,,Removed From Game,Mounted Beaver,N/A,false
-3261,Legacy Plans,,Removed From Game,Mounted Brahmin Heads,N/A,false
-3262,Legacy Plans,,Removed From Game,Mounted cat head,N/A,false
-3263,Legacy Plans,,Removed From Game,Mounted deer head,N/A,false
-3264,Legacy Plans,,Removed From Game,Mounted dog head,N/A,false
-3265,Legacy Plans,,Removed From Game,Mounted fox,N/A,false
-3266,Legacy Plans,,Removed From Game,Mounted molerat head,N/A,false
-3267,Legacy Plans,,Removed From Game,Mounted mongrel head,N/A,false
-3268,Legacy Plans,,Removed From Game,Mounted opossum,N/A,false
-3269,Legacy Plans,,Removed From Game,Mounted squirrel,N/A,false
-3270,Legacy Plans,,Removed From Game,T-60 BOS initiate paint,N/A,false
+3258,Legacy Plans,Removed From Game,No Longer Available,Display Cases,N/A,false
+3259,Legacy Plans,Removed From Game,No Longer Available,Mounted Antlers,N/A,false
+3260,Legacy Plans,Removed From Game,No Longer Available,Mounted Beaver,N/A,false
+3261,Legacy Plans,Removed From Game,No Longer Available,Mounted Brahmin Heads,N/A,false
+3262,Legacy Plans,Removed From Game,No Longer Available,Mounted cat head,N/A,false
+3263,Legacy Plans,Removed From Game,No Longer Available,Mounted deer head,N/A,false
+3264,Legacy Plans,Removed From Game,No Longer Available,Mounted dog head,N/A,false
+3265,Legacy Plans,Removed From Game,No Longer Available,Mounted fox,N/A,false
+3266,Legacy Plans,Removed From Game,No Longer Available,Mounted molerat head,N/A,false
+3267,Legacy Plans,Removed From Game,No Longer Available,Mounted mongrel head,N/A,false
+3268,Legacy Plans,Removed From Game,No Longer Available,Mounted opossum,N/A,false
+3269,Legacy Plans,Removed From Game,No Longer Available,Mounted squirrel,N/A,false
+3270,Legacy Plans,Removed From Game,No Longer Available,T-60 BOS initiate paint,N/A,false
 3271,Unobtainables,Cut Recipe,Plans,Atom Cats Leather Armor Paint,Cut Plan,false
 3272,Unobtainables,Cut Recipe,Plans,Alien Blaster Short NV Scope,Cut Plan,false
 3273,Unobtainables,Moved to Atomic Shop,Plans,Alpine Horn,Moved to Atomic Shop,false
@@ -3378,7 +3378,7 @@ plan_id,item_type,item_name,section,name,location,obtainable
 3397,C.A.M.P,Decorations,Wall Decor,Alien Target Practice Poster,Event: Invaders From Beyond,true
 3398,C.A.M.P,Building,Lights,Glowing Flatwoods Monster Lamp,Event: Invaders From Beyond,true
 3399,Clothing,Accessories,Outfits,Hazmat Suit - Teal,Event: Invaders From Beyond,true
-3400,Paints,,Ranged Paints,Zenith Alien Blaster Paint,Event: Invaders From Beyond,true
+3400,Weapons,Paints,Ranged Paints,Zenith Alien Blaster Paint,Event: Invaders From Beyond,true
 3401,C.A.M.P,Decorations,Displays,Megalonyx Display Case,Event: Grahm's Meat-Cook,true
 3402,C.A.M.P,Decorations,Wall Decor,Cattle Flour Billboards,Event: Grahm's Meat-Cook,true
 3403,C.A.M.P,Utilities,Resources,Weenie Wagon,Event: Grahm's Meat-Cook,true
@@ -3461,7 +3461,7 @@ plan_id,item_type,item_name,section,name,location,obtainable
 3492,C.A.M.P,Decorations,Floor Decor,Plastiform Snowman,Event: Holiday Scorched,true
 3493,C.A.M.P,Decorations,Floor Decor,Plastiform Vaultboy Elf,Event: Holiday Scorched,true
 3494,Clothing,Backpack,Flairs,Snowman Head Backpack Flair,Event: Holiday Scorched,true
-3495,Weapons,,Ranged,Cremator,Sold by Mortimer (Ally),true
+3495,Weapons,Weapons,Ranged,Cremator,Sold by Mortimer (Ally),true
 3496,Mods,Ranged Weapons,Cremator,Cremator Chemical Color Mods,Sold by Mortimer (Ally),true
 3497,Mods,Ranged Weapons,Cremator,Cremator Double Shot and Multi Shot Barrels,Sold by Mortimer (Ally),true
 3498,Mods,Ranged Weapons,Cremator,Cremator Heavy Barrel Mod,Sold by Mortimer (Ally),true

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
-import { supabase } from "../supabaseClient";
+import { supabase, getTable, getCompletedPlansTable } from "../supabaseClient";
 import CollapsibleItem from "./CollapsibleItem";
 
 const PlanList = ({ session }) => {
@@ -34,7 +34,7 @@ const PlanList = ({ session }) => {
   
       while (hasMore) {
         const { data, error, count } = await supabase
-          .from("plans")
+          .from(getTable())
           .select("*", { count: "exact" })
           .range(page * pageSize, (page + 1) * pageSize - 1);
   
@@ -46,7 +46,6 @@ const PlanList = ({ session }) => {
         hasMore = count > (page + 1) * pageSize;
         page++;
         
-        // Update loading progress
         setLoadingProgress(Math.round((allPlans.length / count) * 100));
       }
   
@@ -71,7 +70,7 @@ const PlanList = ({ session }) => {
 
       while (hasMore) {
         const { data, error, count } = await supabase
-          .from("completed_plans")
+          .from(getCompletedPlansTable())
           .select("plan_id", { count: "exact" })
           .eq("user_id", session.user.id)
           .range(page * pageSize, (page + 1) * pageSize - 1);
@@ -115,13 +114,13 @@ const PlanList = ({ session }) => {
     if (session) {
       if (newValue) {
         const { error } = await supabase
-          .from("completed_plans")
+          .from(getCompletedPlansTable())
           .insert({ user_id: session.user.id, plan_id: planId });
 
         if (error) console.error("Error saving completed plan:", error);
       } else {
         const { error } = await supabase
-          .from("completed_plans")
+          .from(getCompletedPlansTable())
           .delete()
           .match({ user_id: session.user.id, plan_id: planId });
 
@@ -139,11 +138,11 @@ const PlanList = ({ session }) => {
       if (session) {
         if (checked) {
           await supabase
-            .from("completed_plans")
+            .from(getCompletedPlansTable())
             .upsert({ user_id: session.user.id, plan_id: item.planId });
         } else {
           await supabase
-            .from("completed_plans")
+            .from(getCompletedPlansTable())
             .delete()
             .match({ user_id: session.user.id, plan_id: item.planId });
         }
@@ -196,7 +195,7 @@ const PlanList = ({ session }) => {
                 Math.min(i + batchSize, uploadedPlanIds.length)
               );
               const { error } = await supabase
-                .from("completed_plans")
+                .from(getCompletedPlansTable())
                 .upsert(
                   batch.map((planId) => ({
                     user_id: session.user.id,
@@ -284,22 +283,58 @@ const PlanList = ({ session }) => {
         }
 
         if (!organized[category][item_type]) organized[category][item_type] = {};
-        if (!organized[category][item_type][item_name]) organized[category][item_type][item_name] = {};
-        if (!organized[category][item_type][item_name][section]) organized[category][item_type][item_name][section] = [];
 
-        organized[category][item_type][item_name][section].push({
+        if (!item_name || item_name.trim() === '') {
+          // If item_name is null, undefined, or an empty string, nest section directly under item_type
+          if (!organized[category][item_type][section]) organized[category][item_type][section] = [];
+          organized[category][item_type][section].push({
+            name,
+            location,
+            planId: plan_id,
+          });
+        } else {
+          if (!organized[category][item_type][item_name]) organized[category][item_type][item_name] = {};
+          if (!organized[category][item_type][item_name][section]) organized[category][item_type][item_name][section] = [];
+          organized[category][item_type][item_name][section].push({
           name,
           location,
           planId: plan_id,
         });
-      });
+      }
+    });
 
-      return {
-        organizedPlans: organized,
-        totalObtainablePlans: totalObtainable,
-        totalUnobtainablePlans: totalUnobtainable,
-      };
-    }, [plans]);
+    // Sort at all levels: item_type, item_name/section, and name
+    ["obtainable", "unobtainable"].forEach(category => {
+      organized[category] = Object.entries(organized[category])
+        .sort(([a], [b]) => a.localeCompare(b))
+        .reduce((sorted, [itemType, content]) => {
+          sorted[itemType] = Object.entries(content)
+            .sort(([a], [b]) => a.localeCompare(b))
+            .reduce((sortedContent, [key, value]) => {
+              if (Array.isArray(value)) {
+                // This is a section directly under item_type (when item_name was null or empty)
+                sortedContent[key] = value.sort((a, b) => a.name.localeCompare(b.name));
+              } else {
+                // This is an item_name
+                sortedContent[key] = Object.entries(value)
+                  .sort(([a], [b]) => a.localeCompare(b))
+                  .reduce((sortedSections, [section, items]) => {
+                    sortedSections[section] = items.sort((a, b) => a.name.localeCompare(b.name));
+                    return sortedSections;
+                  }, {});
+              }
+              return sortedContent;
+            }, {});
+          return sorted;
+        }, {});
+    });
+
+    return {
+      organizedPlans: organized,
+      totalObtainablePlans: totalObtainable,
+      totalUnobtainablePlans: totalUnobtainable,
+    };
+  }, [plans]);
 
   const { completedObtainablePlans, completedUnobtainablePlans } =
     useMemo(() => {
@@ -323,16 +358,16 @@ const PlanList = ({ session }) => {
 
   const filteredPlans = useMemo(() => {
     if (!searchTerm && !hideCompleted) return organizedPlans;
-
+  
     const filtered = { obtainable: {}, unobtainable: {} };
     ["obtainable", "unobtainable"].forEach((category) => {
       Object.entries(organizedPlans[category]).forEach(
-        ([itemType, itemNames]) => {
-          const filteredItemNames = {};
-          Object.entries(itemNames).forEach(([itemName, sections]) => {
-            const filteredSections = {};
-            Object.entries(sections).forEach(([section, items]) => {
-              const filteredItems = items.filter(
+        ([itemType, content]) => {
+          const filteredContent = {};
+          Object.entries(content).forEach(([key, value]) => {
+            if (Array.isArray(value)) {
+              // This is a section directly under item_type (when item_name was null or empty)
+              const filteredItems = value.filter(
                 (item) =>
                   (!hideCompleted || !completedPlans[item.planId]) &&
                   ((item.name &&
@@ -345,177 +380,243 @@ const PlanList = ({ session }) => {
                         .includes(searchTerm.toLowerCase())))
               );
               if (filteredItems.length > 0) {
-                filteredSections[section] = filteredItems;
+                filteredContent[key] = filteredItems;
               }
-            });
-            if (Object.keys(filteredSections).length > 0) {
-              filteredItemNames[itemName] = filteredSections;
+            } else {
+              // This is an item_name
+              const filteredSections = {};
+              Object.entries(value).forEach(([section, items]) => {
+                const filteredItems = items.filter(
+                  (item) =>
+                    (!hideCompleted || !completedPlans[item.planId]) &&
+                    ((item.name &&
+                      item.name
+                        .toLowerCase()
+                        .includes(searchTerm.toLowerCase())) ||
+                      (item.location &&
+                        item.location
+                          .toLowerCase()
+                          .includes(searchTerm.toLowerCase())))
+                );
+                if (filteredItems.length > 0) {
+                  filteredSections[section] = filteredItems;
+                }
+              });
+              if (Object.keys(filteredSections).length > 0) {
+                filteredContent[key] = filteredSections;
+              }
             }
           });
-          if (Object.keys(filteredItemNames).length > 0) {
-            filtered[category][itemType] = filteredItemNames;
+          if (Object.keys(filteredContent).length > 0) {
+            filtered[category][itemType] = filteredContent;
           }
         }
       );
     });
     return filtered;
   }, [organizedPlans, searchTerm, hideCompleted, completedPlans]);
-
-  return (
-    <div className="plan-list">
-      <div className={`content-wrapper ${isLoading || isUploading ? "blurred" : ""}`}>
-        <div className="button-container">
-          <button
-            onClick={handleDownload}
-            className="custom-button"
-            disabled={isLoading || isUploading}
-          >
-            Download Progress
-          </button>
-          <label className="custom-file-upload">
-            <input
-              type="file"
-              onChange={handleUpload}
-              accept=".json"
+  
+    return (
+      <div className="plan-list">
+        <div className={`content-wrapper ${isLoading || isUploading ? "blurred" : ""}`}>
+          <div className="button-container">
+            <button
+              onClick={handleDownload}
+              className="custom-button"
               disabled={isLoading || isUploading}
-            />
-            Upload Progress
-          </label>
-          {(isUploading || uploadStatus) && (
-            <span className="loading-indicator">
-              {uploadStatus || "Uploading... Please don't refresh the page."}
-            </span>
-          )}
-        </div>
-        <div className="infobox">
-          <div className="info-container">
-            <div className="plans-section">
-              <span className="plans-label">Obtainable Progress: </span>
-              <span className="plans-numbers">
-                {completedObtainablePlans} / {totalObtainablePlans}
-              </span>
-              <span> obtainable plans completed</span>
-            </div>
-            <div className="plans-section">
-              <span className="plans-label">Unobtainable Progress: </span>
-              <span className="plans-numbers">
-                {completedUnobtainablePlans} / {totalUnobtainablePlans}
-              </span>
-              <span> unobtainable plans completed</span>
-            </div>
-          </div>
-        </div>
-        <div className="search-container">
-          <input
-            type="text"
-            placeholder="Search plans..."
-            value={searchTerm}
-            onChange={handleSearch}
-            className="search-input"
-          />
-        </div>
-        <div className="hide-completed-container">
-          <label className="hide-completed-label">
-            <input
-              type="checkbox"
-              checked={hideCompleted}
-              onChange={handleHideCompletedChange}
-              className="hide-completed-checkbox"
-            />
-Hide Completed
-          </label>
-        </div>
-        {["obtainable", "unobtainable"].map((category) => (
-          <div key={category}>
-            <h2
-              className={
-                category === "unobtainable" ? "unobtainable-plans-title" : ""
-              }
             >
-              {category === "obtainable" ? "Obtainable" : "Unobtainable"} Plans
-            </h2>
-            {Object.entries(filteredPlans[category]).map(
-              ([itemType, itemNames]) => (
-                <CollapsibleItem
-                  key={itemType}
-                  title={itemType}
-                  isUnobtainable={category === "unobtainable"}
-                >
-                  {Object.entries(itemNames).map(([itemName, sections]) => (
-                    <CollapsibleItem
-                      key={itemName}
-                      title={itemName}
-                      isUnobtainable={category === "unobtainable"}
-                    >
-                      {Object.entries(sections).map(([section, items]) => (
-                        <CollapsibleItem
-                          key={section}
-                          title={section}
-                          isCheckAll={items.every(
-                            (item) => completedPlans[item.planId]
-                          )}
-                          onCheckAllChange={() => {
-                            const allChecked = items.every(
-                              (item) => completedPlans[item.planId]
-                            );
-                            handleCheckAll(items, !allChecked);
-                          }}
-                          isUnobtainable={category === "unobtainable"}
-                        >
-                          {items.map((item) => (
-                            <div key={item.planId} className="plan-container-style">
-                              <label className="plan-label">
-                                <input
-                                  type="checkbox"
-                                  className="plan-checkbox-style"
-                                  checked={completedPlans[item.planId] || false}
-                                  onChange={() => handleCheckboxChange(item.planId)}
-                                />
-                                <span
-                                  className={`plan-name-style ${
-                                    category === "unobtainable" ? "unobtainable-plan" : ""
-                                  }`}
-                                >
-                                  {item.name}
-                                </span>
-                              </label>
-                              <div className="location-text-style">
-                                {item.location}
-                              </div>
-                            </div>
-                          ))}
-                        </CollapsibleItem>
-                      ))}
-                    </CollapsibleItem>
-                  ))}
-                </CollapsibleItem>
-              )
+              Download Progress
+            </button>
+            <label className="custom-file-upload">
+              <input
+                type="file"
+                onChange={handleUpload}
+                accept=".json"
+                disabled={isLoading || isUploading}
+              />
+              Upload Progress
+            </label>
+            {(isUploading || uploadStatus) && (
+              <span className="loading-indicator">
+                {uploadStatus || "Uploading... Please don't refresh the page."}
+              </span>
             )}
           </div>
-        ))}
+          <div className="infobox">
+            <div className="info-container">
+              <div className="plans-section">
+                <span className="plans-label">Obtainable Progress: </span>
+                <span className="plans-numbers">
+                  {completedObtainablePlans} / {totalObtainablePlans}
+                </span>
+                <span> obtainable plans completed</span>
+              </div>
+              <div className="plans-section">
+                <span className="plans-label">Unobtainable Progress: </span>
+                <span className="plans-numbers">
+                  {completedUnobtainablePlans} / {totalUnobtainablePlans}
+                </span>
+                <span> unobtainable plans completed</span>
+              </div>
+            </div>
+          </div>
+          <div className="search-container">
+            <input
+              type="text"
+              placeholder="Search plans..."
+              value={searchTerm}
+              onChange={handleSearch}
+              className="search-input"
+            />
+          </div>
+          <div className="hide-completed-container">
+            <label className="hide-completed-label">
+              <input
+                type="checkbox"
+                checked={hideCompleted}
+                onChange={handleHideCompletedChange}
+                className="hide-completed-checkbox"
+              />
+              Hide Completed
+            </label>
+          </div>
+          {["obtainable", "unobtainable"].map((category) => (
+            <div key={category}>
+              <h2
+                className={
+                  category === "unobtainable" ? "unobtainable-plans-title" : ""
+                }
+              >
+                {category === "obtainable" ? "Obtainable" : "Unobtainable"} Plans
+              </h2>
+              {Object.entries(filteredPlans[category]).map(
+                ([itemType, content]) => (
+                  <CollapsibleItem
+                    key={itemType}
+                    title={itemType}
+                    isUnobtainable={category === "unobtainable"}
+                  >
+                    {Object.entries(content).map(([key, value]) => {
+                      if (Array.isArray(value)) {
+                        // This is a section directly under item_type (when item_name was null)
+                        return (
+                          <CollapsibleItem
+                            key={key}
+                            title={key}
+                            isUnobtainable={category === "unobtainable"}
+                            isCheckAll={value.every(
+                              (item) => completedPlans[item.planId]
+                            )}
+                            onCheckAllChange={() => {
+                              const allChecked = value.every(
+                                (item) => completedPlans[item.planId]
+                              );
+                              handleCheckAll(value, !allChecked);
+                            }}
+                          >
+                            {value.map((item) => (
+                              <div key={item.planId} className="plan-container-style">
+                                <label className="plan-label">
+                                  <input
+                                    type="checkbox"
+                                    className="plan-checkbox-style"
+                                    checked={completedPlans[item.planId] || false}
+                                    onChange={() => handleCheckboxChange(item.planId)}
+                                  />
+                                  <span
+                                    className={`plan-name-style ${
+                                      category === "unobtainable" ? "unobtainable-plan" : ""
+                                    }`}
+                                  >
+                                    {item.name}
+                                  </span>
+                                </label>
+                                <div className="location-text-style">
+                                  {item.location}
+                                </div>
+                              </div>
+                            ))}
+                          </CollapsibleItem>
+                        );
+                      } else {
+                        // This is an item_name
+                        return (
+                          <CollapsibleItem
+                            key={key}
+                            title={key}
+                            isUnobtainable={category === "unobtainable"}
+                          >
+                            {Object.entries(value).map(([section, items]) => (
+                              <CollapsibleItem
+                                key={section}
+                                title={section}
+                                isCheckAll={items.every(
+                                  (item) => completedPlans[item.planId]
+                                )}
+                                onCheckAllChange={() => {
+                                  const allChecked = items.every(
+                                    (item) => completedPlans[item.planId]
+                                  );
+                                  handleCheckAll(items, !allChecked);
+                                }}
+                                isUnobtainable={category === "unobtainable"}
+                              >
+                                {items.map((item) => (
+                                  <div key={item.planId} className="plan-container-style">
+                                    <label className="plan-label">
+                                      <input
+                                        type="checkbox"
+                                        className="plan-checkbox-style"
+                                        checked={completedPlans[item.planId] || false}
+                                        onChange={() => handleCheckboxChange(item.planId)}
+                                      />
+                                      <span
+                                        className={`plan-name-style ${
+                                          category === "unobtainable" ? "unobtainable-plan" : ""
+                                        }`}
+                                      >
+                                        {item.name}
+                                      </span>
+                                    </label>
+                                    <div className="location-text-style">
+                                      {item.location}
+                                    </div>
+                                  </div>
+                                ))}
+                              </CollapsibleItem>
+                            ))}
+                          </CollapsibleItem>
+                        );
+                      }
+                    })}
+                  </CollapsibleItem>
+                )
+              )}
+            </div>
+          ))}
+        </div>
+        {isLoading && (
+          <div className="upload-overlay">
+            <div className="upload-message">
+              <h3>Loading Plans</h3>
+              <p>Please wait while we fetch the plans. This may take a few moments.</p>
+              <progress value={loadingProgress} max="100"></progress>
+              <p>{loadingProgress}% Complete</p>
+            </div>
+          </div>
+        )}
+        {isUploading && (
+          <div className="upload-overlay">
+            <div className="upload-message">
+              <h3>Uploading Progress</h3>
+              <p>{uploadStatus || "Please don't refresh the page. This may take a few moments."}</p>
+              <progress value={uploadProgress} max="100"></progress>
+              <p>{uploadProgress}% Complete</p>
+            </div>
+          </div>
+        )}
       </div>
-      {isLoading && (
-        <div className="upload-overlay">
-          <div className="upload-message">
-            <h3>Loading Plans</h3>
-            <p>Please wait while we fetch the plans. This may take a few moments.</p>
-            <progress value={loadingProgress} max="100"></progress>
-            <p>{loadingProgress}% Complete</p>
-          </div>
-        </div>
-      )}
-      {isUploading && (
-        <div className="upload-overlay">
-          <div className="upload-message">
-            <h3>Uploading Progress</h3>
-            <p>{uploadStatus || "Please don't refresh the page. This may take a few moments."}</p>
-            <progress value={uploadProgress} max="100"></progress>
-            <p>{uploadProgress}% Complete</p>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-};
-
-export default PlanList;
+    );
+  };
+  
+  export default PlanList;

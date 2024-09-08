@@ -2002,7 +2002,7 @@ plan_id,item_type,item_name,section,name,location,obtainable
 28,Armor,Paints,Power Armor,T-60 BOS Officer Paint,Quest: Forbidden Knowledge,true
 280,C.A.M.P,Furniture,Chairs,Pianos,Random Workshop Plans & Events: Any Region| Sold By Responder Vendors,true
 2800,Recipes,Consumables,Brewing,Fermentable Nukashine,Quest: Wasted on Nukashine,true
-2801,Recipes,Consumables,Brewing,Oak Hollar Lager,Quest: Tipsy Taste-Test,true
+2801,Recipes,Consumables,Brewing,Oak Holler Lager,Quest: Tipsy Taste-Test,true
 2802,Recipes,Consumables,Brewing,Old Possum,Quest: Tipsy Taste-Test,true
 2803,Recipes,Consumables,Brewing,Pickaxe Pilsner,Quest: Tipsy Taste-Test,true
 2804,Recipes,Consumables,Brewing,Fermentable Rad Ant Lager,Quest: Wasted on Alcohol,true
@@ -2064,18 +2064,7 @@ plan_id,item_type,item_name,section,name,location,obtainable
 2855,Recipes,Consumables,Drugs,Overdrive,Sold by MODUS Medical Terminal,true
 2856,Recipes,Consumables,Drugs,Psycho,Sold by MODUS Medical Terminal,true
 2857,Recipes,Consumables,Drugs,Psychobuff,Sold by MODUS Medical Terminal,true
-2858,Recipes,Consumables,Drugs,Berry Mentats,Sold by MODUS Medical Terminal,true
-2859,Recipes,Consumables,Drugs,Bufftats,Sold by MODUS Medical Terminal,true
 286,C.A.M.P,Utilities,Crafting,Brahmin Grill,Event: Grahm's Meat-Cook,true
-2860,Recipes,Consumables,Drugs,Formula P,Event: Project Paradise,true
-2861,Recipes,Consumables,Drugs,Fury,Sold by MODUS Medical Terminal,true
-2862,Recipes,Consumables,Drugs,Grape Mentats,Sold by MODUS Medical Terminal,true
-2863,Recipes,Consumables,Drugs,Insect Repellent,Quest: Sting & Things,true
-2864,Recipes,Consumables,Drugs,Mentats,Sold by MODUS Medical Terminal,true
-2865,Recipes,Consumables,Drugs,Orange Mentats,Sold by MODUS Medical Terminal,true
-2866,Recipes,Consumables,Drugs,Overdrive,Sold by MODUS Medical Terminal,true
-2867,Recipes,Consumables,Drugs,Psycho,Sold by MODUS Medical Terminal,true
-2868,Recipes,Consumables,Drugs,Psychobuff,Sold by MODUS Medical Terminal,true
 2869,Recipes,Consumables,Food,Aged Mirelurk Queen Steak,Sold by Antoine,true
 287,C.A.M.P,Utilities,Crafting,Grocery Cart Grill,Event: Grahm's Meat-Cook,true
 2870,Recipes,Consumables,Food,Delbert's Appalachili,Flatwoods: Across from Tavern,true
@@ -2497,7 +2486,7 @@ plan_id,item_type,item_name,section,name,location,obtainable
 3244,Weapons,Paints,Ranged Paints,Laser Gun Hot Rod Flames Paint,Event: A Colossal Problem,true
 3245,Weapons,Paints,Ranged Paints,Minigun Hot Rod Shark Paint,Event: Project Paradise,true
 3246,Weapons,Paints,Ranged Paints,Minigun Vault-Tec Paint,Event: Encryptid,true
-3247,Weapons,Paints,Ranged Paints,Missile Launcher Atom Cats Pain,Event: Treasure Hunter,true
+3247,Weapons,Paints,Ranged Paints,Missile Launcher Atom Cats Paint,Event: Treasure Hunter,true
 3248,Weapons,Paints,Ranged Paints,Missile Launcher Shi Paint,Event: Project Paradise,true
 3249,Weapons,Paints,Ranged Paints,Overgrown Assault Rifle Paint,Weekly Expedition Reward: The Most Sensational Game | Sold By Giuseppe,true
 325,C.A.M.P,Decorations,Floor Decor,Classic Jack-O'-Lantern,Event: Spooky Scorched,true
@@ -2506,7 +2495,7 @@ plan_id,item_type,item_name,section,name,location,obtainable
 3252,Weapons,Paints,Ranged Paints,Pioneer Scout Bowie Knife Paint,Quest: Operation Tidy,true
 3253,Weapons,Paints,Melee Paints,Radstag Hunting Knife,Event: Treasure Hunter,true
 3254,Weapons,Paints,Ranged Paints,Rusted Weapon Loadout Paints,Sold by June Seaver,true
-3255,Weapons,Paints,Melee Paints,Stronman's Super Sledge Paint,Event: Treasure Hunter,true
+3255,Weapons,Paints,Melee Paints,Strongman's Super Sledge Paint,Event: Treasure Hunter,true
 3256,Weapons,Paints,Ranged Paints,Showstopper Shotgun Paint,Weekly Expedition Reward: Tax Evasion | Sold By Giuseppe,true
 3257,Weapons,Paints,Ranged Paints,Vault-Tec Weapon Loadout Paints,Sold by June Seaver,true
 3258,Legacy Plans,Removed From Game,No Longer Available,Display Cases,N/A,false
@@ -2745,19 +2734,7 @@ plan_id,item_type,item_name,section,name,location,obtainable
 3468,C.A.M.P,Decorations,Displays,Herdsman's Bell - Lincoln,Event: Fasnacht Day,true
 3469,C.A.M.P,Utilities,Resources,Motorized Butter Churn,Event: Fasnacht Day,true
 347,C.A.M.P,Decorations,Floor Decor,Fasnacht Ribbons Pole 02,Event: Fasnacht Day,true
-3470,Clothing,Accessories,Headwear,Fasnacht Alien Mask,Event: Fasnacht Day,true
-3471,Clothing,Accessories,Headwear,Fasnacht Minotaur Mask,Event: Fasnacht Day,true
-3472,Clothing,Accessories,Headwear,Fasnacht Pig Mask,Event: Fasnacht Day,true
-3473,Clothing,Accessories,Headwear,Fasnacht Robot Mask,Event: Fasnacht Day,true
-3474,Clothing,Accessories,Headwear,Fasnacht Turkey Mask,Event: Fasnacht Day,true
-3475,Clothing,Accessories,Headwear,Fasnacht Unicorn Mask,Event: Fasnacht Day,true
-3476,Clothing,Accessories,Headwear,Fasnacht Glowing Alien Mask,Event: Fasnacht Day,true
-3477,Clothing,Accessories,Headwear,Fasnacht Glowing Minotaur Mask,Event: Fasnacht Day,true
-3478,Clothing,Accessories,Headwear,Fasnacht Glowing Pig Mask,Event: Fasnacht Day,true
-3479,Clothing,Accessories,Headwear,Fasnacht Glowing Robot Mask,Event: Fasnacht Day,true
 348,C.A.M.P,Decorations,Floor Decor,Fasnacht Flag Pole 01,Event: Fasnacht Day,true
-3480,Clothing,Accessories,Headwear,Fasnacht Glowing Turkey Mask,Event: Fasnacht Day,true
-3481,Clothing,Accessories,Headwear,Fasnacht Glowing Unicorn Mask,Event: Fasnacht Day,true
 3482,C.A.M.P,Decorations,Misc. Structures,Aquarium Signs,Daily Ops (Uncommon),true
 3483,C.A.M.P,Decorations,Floor Decor,Atlantic Emblem,Daily Ops (Uncommon),true
 3484,C.A.M.P,Decorations,Floor Decor,Foundry Smelter,Daily Ops (Uncommon),true
@@ -3506,3 +3483,9 @@ plan_id,item_type,item_name,section,name,location,obtainable
 997,Mods,Armor,(Arctic) Marine Armor,Dense Marine Armor Torso,Sold by Ash Heap/Cranberry Bog/Mire Vendors,true
 998,Mods,Armor,(Arctic) Marine Armor,Lead Lined Marine Armor Chest,Sold by Ash Heap/Mire/Savage Divide Vendors,true
 999,Mods,Armor,(Arctic) Marine Armor,Lighter Build Marine Chest,Learn from Scrapping: (Arctic) Marine Armor,true
+3517,Mods,Ranged Weapons,Flamer,Napalm tank,"Sold by vendor bots: Phoenix, Raider, Resin, Wallace, and Watoga",true
+3518,Mods,Ranged Weapons,Flamer,Long Barrel,Learn from Scrapping: Flamer,true
+3519,Mods,Ranged Weapons,Flamer,Huge propellant tank,Learn from Scrapping: Flamer,true
+3520,Mods,Ranged Weapons,Flamer,Large propellant tank,Learn from Scrapping: Flamer,true
+3521,Mods,Ranged Weapons,Flamer,Compression nozzle,Learn from Scrapping: Flamer,true
+3522,Mods,Ranged Weapons,Flamer,Vaporization nozzle,Learn from Scrapping: Flamer,true

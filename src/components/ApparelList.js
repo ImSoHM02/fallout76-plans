@@ -1,22 +1,6 @@
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { supabase } from "../supabaseClient";
 
-// Composite ID function
-const createCompositeId = (item, nameMappings) => {
-  let name = item.outfit_name;
-  if (nameMappings[name]) {
-    name = nameMappings[name];
-  }
-  
-  const components = [
-    item.type,
-    name,
-    item.rarity
-  ];
-  
-  return components.join('|').toLowerCase();
-};
-
 const CollapsibleItem = ({
   title,
   children,
@@ -67,23 +51,6 @@ const ApparelList = ({ session }) => {
     rare: true,
     'ultra rare': true
   });
-  const [nameMappings, setNameMappings] = useState({});
-
-  const fetchNameMappings = useCallback(async () => {
-    const { data, error } = await supabase
-      .from('name_mappings')
-      .select('*');
-
-    if (error) {
-      console.error("Error fetching name mappings:", error);
-    } else {
-      const mappings = data.reduce((acc, mapping) => {
-        acc[mapping.old_name] = mapping.new_name;
-        return acc;
-      }, {});
-      setNameMappings(mappings);
-    }
-  }, []);
 
   const fetchApparel = useCallback(async () => {
     setIsLoading(true);
@@ -121,13 +88,8 @@ const ApparelList = ({ session }) => {
         setLoadingProgress(Math.round((allApparel.length / count) * 100));
       }
 
-      const updatedData = allApparel.map(item => ({
-        ...item,
-        outfit_name: nameMappings[item.outfit_name] || item.outfit_name
-      }));
-
-      setApparel(updatedData);
-      localStorage.setItem("cachedApparel", JSON.stringify(updatedData));
+      setApparel(allApparel);
+      localStorage.setItem("cachedApparel", JSON.stringify(allApparel));
       localStorage.setItem("apparelCacheTimestamp", Date.now().toString());
     } catch (error) {
       console.error("Error fetching apparel:", error);
@@ -135,7 +97,7 @@ const ApparelList = ({ session }) => {
     } finally {
       setIsLoading(false);
     }
-  }, [nameMappings]);
+  }, []);
 
   const fetchCompletedApparel = useCallback(async () => {
     if (session) {
@@ -162,8 +124,8 @@ const ApparelList = ({ session }) => {
   }, [session]);
 
   useEffect(() => {
-    fetchNameMappings().then(() => fetchApparel());
-  }, [fetchNameMappings, fetchApparel]);
+    fetchApparel();
+  }, [fetchApparel]);
 
   useEffect(() => {
     fetchCompletedApparel();
@@ -189,54 +151,38 @@ const ApparelList = ({ session }) => {
           .match({ user_id: session.user.id, a_id: a_id });
       }
     } else {
-      const savedData = {};
-      apparel.forEach(item => {
-        const compositeId = createCompositeId(item, nameMappings);
-        if (newCompletedApparel[item.a_id]) {
-          savedData[compositeId] = true;
-        }
-      });
-      localStorage.setItem("completedApparel", JSON.stringify(savedData));
+      localStorage.setItem("completedApparel", JSON.stringify(newCompletedApparel));
     }
   };
 
   const handleCheckAll = async (items, checked) => {
     const newCompletedApparel = { ...completedApparel };
-    const promises = items.map(async (item) => {
+    const operations = items.map(item => ({
+      user_id: session?.user.id,
+      a_id: item.a_id
+    }));
+  
+    if (session) {
+      const { error } = checked
+        ? await supabase.from("completed_apparel").upsert(operations)
+        : await supabase.from("completed_apparel").delete().in('a_id', items.map(item => item.a_id));
+      
+      if (error) throw error;
+    }
+  
+    items.forEach(item => {
       newCompletedApparel[item.a_id] = checked;
-      if (session) {
-        if (checked) {
-          await supabase
-            .from("completed_apparel")
-            .upsert({ user_id: session.user.id, a_id: item.a_id });
-        } else {
-          await supabase
-            .from("completed_apparel")
-            .delete()
-            .match({ user_id: session.user.id, a_id: item.a_id });
-        }
-      }
     });
-
-    await Promise.all(promises);
+  
     setCompletedApparel(newCompletedApparel);
-
+  
     if (!session) {
-      const savedData = {};
-      apparel.forEach(item => {
-        const compositeId = createCompositeId(item, nameMappings);
-        if (newCompletedApparel[item.a_id]) {
-          savedData[compositeId] = true;
-        }
-      });
-      localStorage.setItem("completedApparel", JSON.stringify(savedData));
+      localStorage.setItem("completedApparel", JSON.stringify(newCompletedApparel));
     }
   };
 
   const handleDownload = () => {
-    const completedApparelIds = apparel
-      .filter(item => completedApparel[item.a_id])
-      .map(item => createCompositeId(item, nameMappings));
+    const completedApparelIds = Object.keys(completedApparel).filter(id => completedApparel[id]);
     const dataStr = JSON.stringify(completedApparelIds);
     const dataUri = "data:application/json;charset=utf-8," + encodeURIComponent(dataStr);
 
@@ -257,56 +203,36 @@ const ApparelList = ({ session }) => {
       const reader = new FileReader();
       reader.onload = async (e) => {
         try {
-          const uploadedCompositeIds = JSON.parse(e.target.result);
-          console.log(`Total apparel to upload: ${uploadedCompositeIds.length}`);
+          const uploadedData = JSON.parse(e.target.result);
+          console.log(`Total apparel to process: ${uploadedData.length}`);
           const newCompletedApparel = { ...completedApparel };
 
-          apparel.forEach(item => {
-            const compositeId = createCompositeId(item, nameMappings);
-            if (uploadedCompositeIds.includes(compositeId)) {
-              newCompletedApparel[item.a_id] = true;
-            }
+          // Process the uploaded data
+          uploadedData.forEach(id => {
+            newCompletedApparel[id] = true;
           });
 
           if (session) {
-            const batchSize = 1000;
-            const totalItems = Object.keys(newCompletedApparel).length;
+            const { error } = await supabase
+              .from("completed_apparel")
+              .upsert(
+                Object.keys(newCompletedApparel).map(a_id => ({
+                  user_id: session.user.id,
+                  a_id: parseInt(a_id)
+                })),
+                { onConflict: ['user_id', 'a_id'] }
+              );
 
-            for (let i = 0; i < totalItems; i += batchSize) {
-              const batch = Object.entries(newCompletedApparel).slice(i, i + batchSize);
-              const { error } = await supabase
-                .from("completed_apparel")
-                .upsert(
-                  batch.map(([a_id, completed]) => ({
-                    user_id: session.user.id,
-                    a_id: parseInt(a_id),
-                    completed
-                  })),
-                  { onConflict: ["user_id", "a_id"] }
-                );
-
-              if (error) {
-                throw error;
-              }
-
-              const progress = Math.round(((i + batch.length) / totalItems) * 100);
-              setUploadProgress(progress);
+            if (error) {
+              throw error;
             }
           } else {
-            const savedData = {};
-            apparel.forEach(item => {
-              const compositeId = createCompositeId(item, nameMappings);
-              if (newCompletedApparel[item.a_id]) {
-                savedData[compositeId] = true;
-              }
-            });
-            localStorage.setItem("completedApparel", JSON.stringify(savedData));
-            setUploadProgress(100);
+            localStorage.setItem("completedApparel", JSON.stringify(newCompletedApparel));
           }
 
           setCompletedApparel(newCompletedApparel);
           setUploadStatus("Upload complete. Your progress has been updated.");
-          
+
           setTimeout(() => {
             setIsUploading(false);
             setUploadProgress(0);
